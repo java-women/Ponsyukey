@@ -55,7 +55,8 @@ maaya8585
  
 ##  決まったこと
 - 機能一覧の要件を洗い出し完了(今後アップデートあり)
-<iframe width="640" height="360" src="https://miro.com/app/embed/o9J_ktzRgdo=/?" frameborder="0" scrolling="no" allowfullscreen></iframe>
+    
+[書いた図はこちら](https://miro.com/app/embed/o9J_ktzRgdo=/?)
  
 ## next action(タスク洗い出し)
 - システム設計〜画面編〜
