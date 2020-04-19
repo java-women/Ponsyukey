@@ -7,6 +7,17 @@ maaya8585
 - maaya8585
 - ihcomega
 - mii
+- らん
+- aya
+- 桑折
+- れいな
+- えり
+- miki
+- robo
+- さおり
+- yuki
+- さえ
+- きのこ
 
 ## 議題にしたいこと or 前回の next action
 - 参加者皆さんの得意分野を教えてください
@@ -16,9 +27,33 @@ maaya8585
 - 今後プロジェクトを進めていくために必要なツールの選定
     
  ## 議事内容
+ ### 参加者みんなの得意分野を教えてください
+- maaya8585 : cloud(Azure/AWS/OCI) / ミドルウェア / PM / SE / springboot / batch / Python雰囲気 / mysql / postgresql / NoSQL
+- ihcomega
+- mii : インフラちょっと / ミドルちょっと / Springboot / SpringBatch / Python雰囲気 / mysql /postgresql
+- らん : オンプレちょこっと / Springboot / WEB得意 / mysql
+- aya : Springboot / Python入門 / Go / WEB得意 / Androidちょっと / mysql / postgresql
+- 桑折 : オンプレ全般 / Sringboot / Spring / Maven / docker / redhat openstack&openshift / postgresql
+- れいな : Python雰囲気 / Go雰囲気 / mysql /potgresql
+- えり : 保険システム / Java SE ちょっとわかる / Oracle DB
+- miki : cloud(Azure/GCP) / コンテナ入門 / Go読める / Java SE 学校レベル  
+- robo : Android / Flutter / Java8まで(その先もやりたい) / Dart / Cloud(Firebase) / OracleDB / NoSQL
+- さおり : Cloud(GCP) / Java8まで / NoSQL
+- yuki : Java SE / 流行りのフレームワーク触りたい / Jersey / MongoDB / mysql 
+- さえ : Java入門 / postgresql入門 / Cloud(AWS)
+- きのこ : WEBサーバーサイド / Java / Scala / Springboot / Android / Kotlin / Vue.js / Nuxt.js / Firebaseちょっと / インフラ雰囲気 / Go雰囲気 / mysql / postgresql / 要件定義
  
- ##  決まったこと
+### システムの出来上がりイメージ
+#### まず目的をみんなで合わせよう
+- RDRA という手法を使って、要件定義・アプリイメージを構築します via miro ボード : きのこさん主導
+
+
+### 今後プロジェクトを進めていくために必要なツールの選定
+- 図を書くツール
+   - miro
  
- ## next action(タスク洗い出し)
+##  決まったこと
+ 
+## next action(タスク洗い出し)
   
-  ## 議事録作成者の感想ひとこと
+## 議事録作成者の感想ひとこと
