@@ -51,7 +51,7 @@ maaya8585
 - 図を書くツール
    - miro
 - チャットツール
-   - discord : [こちらのサーバ](https://discord.gg/dVXSgx)
+   - discord : [こちらのサーバ](https://discord.gg/U38xfhY)
  
 ##  決まったこと
 - 機能一覧の要件を洗い出し完了(今後アップデートあり)
