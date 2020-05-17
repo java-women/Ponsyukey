@@ -57,6 +57,8 @@ maaya8585
 - 機能一覧の要件を洗い出し完了(今後アップデートあり)
     
 [書いた図はこちら](https://miro.com/app/embed/o9J_ktzRgdo=/?)
+
+![RDRA](images/1-ideathon-rdra.jpg)
  
 ## next action(タスク洗い出し)
 - システム設計〜画面編〜
