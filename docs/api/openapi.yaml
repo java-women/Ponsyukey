@@ -1,0 +1,52 @@
+openapi: 3.0.1
+info:
+  title: ぽんしゅきー
+  description: ぽんしゅきーサイトで使用するバックエンドAPI
+  contact:
+    email: javawoman.tokyo@gmail.com 
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.0.1
+externalDocs:
+  description: GitHubはこちら
+  url: https://github.com/java-women/Ponsyukey
+paths:
+  /saketomo:
+    post:
+      summary: 会員登録API
+      operationId: createSaketomo
+      requestBody: 
+        description: 会員登録に必要な情報
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/Saketomo'
+        required: true
+      responses:
+        200:
+          description: ok
+          content: {}
+        500:
+          description: error
+          content: {}
+components:
+  schemas:
+    Saketomo: 
+      type: object
+      properties:
+        name:
+          type: string
+        password: 
+          type: string
+          format: password
+        email:
+          type: string
+        image:
+          type: string
+          description: 既存画像から選んでもらう(キーもしくはURL)
+          enum:
+          - icon1
+          - icon2
+          - icon3
+    
