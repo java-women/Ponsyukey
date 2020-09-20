@@ -21,32 +21,61 @@ paths:
         content:
           application/json:
             schema: 
-              $ref: '#/components/schemas/Saketomo'
+              properties:
+                Saketomo:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    image:
+                      type: string
+                      description: 既存画像から選んでもらう(キーもしくはURL)。enumにない値もしくは空/nullの場合はバリデーションチェックでエラーにします
+                      enum:
+                      - icon1
+                      - icon2
+                      - icon3
+                    auth:
+                      type: object
+                      properties:
+                        password: 
+                          type: string
+                          format: password
+                          description: ハッシュ
+                        email:
+                          type: string
+                      required:
+                        - password
+                        - email
+                  required: 
+                    - name
         required: true
       responses:
         200:
-          description: ok
-          content: {}
+          description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
+          content:
+            application/json:
+              schema: 
+                properties:
+                  resultCode:
+                    type: string
+                  Saketomo:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      name:
+                        type: string
+                      image:
+                        type: string
+                        enum:
+                        - icon1
+                        - icon2
+                        - icon3
+        400:
+          description: http ステータスコード 400 error
         500:
-          description: error
-          content: {}
-components:
-  schemas:
-    Saketomo: 
-      type: object
-      properties:
-        name:
-          type: string
-        password: 
-          type: string
-          format: password
-        email:
-          type: string
-        image:
-          type: string
-          description: 既存画像から選んでもらう(キーもしくはURL)
-          enum:
-          - icon1
-          - icon2
-          - icon3
+          description: http ステータスコード 500 error
+
+
     
