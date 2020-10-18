@@ -76,6 +76,115 @@ paths:
           description: http ステータスコード 400 error
         500:
           description: http ステータスコード 500 error
+          
+  /saketomo/{saketomoId}:
+    get:
+      summary: 会員情報取得API
+      operationId: getSaketomo
+      parameters:
+        - in: path
+          name: saketomoId
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
+          content:
+            application/json:
+              schema: 
+                properties:
+                  resultCode:
+                    type: string
+                  Saketomo:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      name:
+                        type: string
+                      image:
+                        type: string
+                        enum:
+                        - icon1
+                        - icon2
+                        - icon3
+        400:
+          description: http ステータスコード 400 error
+        500:
+          description: http ステータスコード 500 error
+          
+    post:
+      summary: 会員編集API
+      parameters:
+        - in: path
+          name: saketomoId
+          schema:
+            type: string
+          required: true
+      operationId: updateSaketomo
+      requestBody: 
+        description: 会員編集に必要な情報
+        content:
+          application/json:
+            schema: 
+              properties:
+                Saketomo:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    image:
+                      type: string
+                      description: 既存画像から選んでもらう(キーもしくはURL)。enumにない値もしくは空/nullの場合はバリデーションチェックでエラーにします
+                      enum:
+                      - icon1
+                      - icon2
+                      - icon3
+                    auth:
+                      type: object
+                      properties:
+                        password: 
+                          type: string
+                          format: password
+                          description: ハッシュ
+                        email:
+                          type: string
+                      required:
+                        - password
+                        - email
+                  required: 
+                    - name
+        required: true
+      responses:
+        200:
+          description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
+          content:
+            application/json:
+              schema: 
+                properties:
+                  resultCode:
+                    type: string
+                  Saketomo:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      name:
+                        type: string
+                      image:
+                        type: string
+                        enum:
+                        - icon1
+                        - icon2
+                        - icon3
+        400:
+          description: http ステータスコード 400 error
+        500:
+          description: http ステータスコード 500 error
+   
 
 
     
