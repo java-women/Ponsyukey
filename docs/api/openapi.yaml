@@ -185,6 +185,28 @@ paths:
         500:
           description: http ステータスコード 500 error
    
-
-
+    
+  /sake:
+    get:
+      summary: 酒情報一覧取得API
+      operationId: getSake
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          required: true
+        - in: query 
+          name: offset
+          schema:
+            type: integer
+          required: true  
+      responses:
+        
+        400:
+          description: http ステータスコード 400 error
+        500:
+          description: http ステータスコード 500 error
+          
+  
     
