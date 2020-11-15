@@ -249,3 +249,146 @@ paths:
         500:
           description: http ステータスコード 500 error
           
+    post:
+      summary: 酒情報登録API
+      operationId: createSake
+      requestBody: 
+        description: 酒情報登録に必要な情報
+        content:
+          application/json:
+            schema: 
+              properties:
+                sake:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    image:
+                      type: string
+                    brewery:
+                      type: object
+                      properties:
+                        name:
+                          type: string  
+                        prefecture:
+                          type: string  
+                    alcohol:
+                      type: number
+                      format: float
+                    polishingRatio:
+                      type: number
+                      format: float
+                    type:
+                      type: string
+                      description: 特定名称 (例)吟醸酒、大吟醸など
+                    description:
+                      type: string
+                    taste:
+                      type: object
+                      description: 味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ
+                  required:
+                    - name 
+                    - image
+                    - type
+        required: true          
+      responses:
+        200:
+          description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
+          content:
+            application/json:
+              schema: 
+                properties:
+                  resultCode:
+                    type: string
+                  sake:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      name:
+                        type: string
+                      image:
+                        type: string
+                      brewery:
+                        type: object
+                        properties:
+                          name:
+                            type: string  
+                          prefecture:
+                            type: string  
+                      alcohol:
+                        type: number
+                        format: float
+                      polishingRatio:
+                        type: number
+                        format: float
+                      type:
+                        type: string
+                        description: 特定名称 (例)吟醸酒、大吟醸など
+                      description:
+                        type: string
+                      taste:
+                        type: object
+                        description: 味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ
+        400:
+          description: http ステータスコード 400 error
+        500:
+          description: http ステータスコード 500 error
+                  
+  
+  /sake/{sakeId}:
+    get:
+      summary: 酒情報取得API
+      operationId: getSakeDetail
+      parameters:
+        - in: path
+          name: sakeId
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
+          content:
+            application/json:
+              schema: 
+                properties:
+                  resultCode:
+                    type: string
+                  sake:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      name:
+                        type: string
+                      image:
+                        type: string
+                      brewery:
+                        type: object
+                        properties:
+                          name:
+                            type: string  
+                          prefecture:
+                            type: string  
+                      alcohol:
+                        type: number
+                        format: float
+                      polishingRatio:
+                        type: number
+                        format: float
+                      type:
+                        type: string
+                        description: 特定名称 (例)吟醸酒、大吟醸など
+                      description:
+                        type: string
+                      taste:
+                        type: object
+                        description: 味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ
+        400:
+          description: http ステータスコード 400 error
+        500:
+          description: http ステータスコード 500 error
+          
