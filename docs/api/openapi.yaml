@@ -22,7 +22,7 @@ paths:
           application/json:
             schema: 
               properties:
-                Saketomo:
+                saketomo:
                   type: object
                   properties:
                     name:
@@ -58,7 +58,7 @@ paths:
                 properties:
                   resultCode:
                     type: string
-                  Saketomo:
+                  saketomo:
                     type: object
                     properties:
                       id:
@@ -96,7 +96,7 @@ paths:
                 properties:
                   resultCode:
                     type: string
-                  Saketomo:
+                  saketomo:
                     type: object
                     properties:
                       id:
@@ -130,7 +130,7 @@ paths:
           application/json:
             schema: 
               properties:
-                Saketomo:
+                saketomo:
                   type: object
                   properties:
                     name:
@@ -166,7 +166,7 @@ paths:
                 properties:
                   resultCode:
                     type: string
-                  Saketomo:
+                  saketomo:
                     type: object
                     properties:
                       id:
@@ -392,3 +392,66 @@ paths:
         500:
           description: http ステータスコード 500 error
           
+  /review:
+    get:
+      summary: 口コミ情報取得API.
+      operationId: getReview
+      description: 必ず日付順（降順）でソートされる
+      parameters:
+        - in: query
+          name: sakeId
+          schema:
+            type: string
+        - in: query
+          name: limit
+          schema: 
+            type: integer
+          required: true
+        - in: query
+          name: offset
+          schema:
+            type: integer
+          required: true
+      responses:
+        200:
+          description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
+          content:
+            application/json:
+              schema: 
+                properties:
+                  resultCode:
+                    type: string
+                  review:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        saketomo:
+                          type: object
+                          description: 登録者情報
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+                            name:
+                              type: string
+                            image:
+                              type: string
+                              enum:
+                              - icon1
+                              - icon2
+                              - icon3
+                        createdAt:
+                          type: string
+                          format: date-time
+                          description: 作成日時
+                        rating:
+                          type: integer
+                        comment:
+                          type: string
+        400:
+          description: http ステータスコード 400 error
+        500:
+          description: http ステータスコード 500 error
