@@ -65,7 +65,7 @@
   - parametersを設定する
   - in:pathを追加
   - name:reviewId
-　- schema
+　- schemaを追加
   - type Stringなど追加　←削除APIは、スッキリさせるためのAPIである。
   - postでdelieteをした際に更新はどうするか？→編集機能があるから大丈夫です
   - parameterにuseridにいるか？
@@ -78,8 +78,8 @@
   - authは会員編集はauth付きであるので、authなしとauth付きを作るのはどうか　←意見が採用になった
   - authだけ別モデルにしましょう！に決定
   - schemasから返ってくるのは、saketomoWithAuthからsaketomoAuthに決定　←とりあえず使用してみる
-  - properties 
-  - saketomo 
+  - properties を追加
+  - saketomo を追加
   - $ref:'#/components/schemas/saketomo'/を追加
   - saketomoをidから呼び出せるようにすればいいのではないか？
   - saketomoWithAuth
