@@ -455,3 +455,108 @@ paths:
           description: http ステータスコード 400 error
         500:
           description: http ステータスコード 500 error
+          
+    post:
+      summary: 口コミ情報登録API
+      operationId: createReview
+      requestBody: 
+        description: 口コミ情報登録に必要な情報
+        content:
+          application/json:
+            schema: 
+              properties:
+                review:
+                  type: object
+                  properties:
+                    saketomoId:
+                      type: string
+                      format: uuid
+                      description: 登録者ID
+                    rating:
+                      type: integer
+                    comment:
+                      type: string
+                  required:
+                  - saketomoId
+                  - rating
+                  - comment
+        required: true          
+      responses:
+        200:
+          description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
+          content:
+            application/json:
+              schema: 
+                properties:
+                  resultCode:
+                    type: string
+                  review:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        saketomo:
+                          type: object
+                          description: 登録者情報
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+                            name:
+                              type: string
+                            image:
+                              type: string
+                              enum:
+                              - icon1
+                              - icon2
+                              - icon3
+                        createdAt:
+                          type: string
+                          format: date-time
+                          description: 作成日時
+                        rating:
+                          type: integer
+                        comment:
+                          type: string
+        400:
+          description: http ステータスコード 400 error
+        500:
+          description: http ステータスコード 500 error
+          
+          
+  /review/{reviewId}:
+    post:
+      summary: 口コミ情報削除API
+      operationId: deleteReview
+      parameters:
+        - in: path
+          name: reviewId
+          schema: 
+            type: string
+          required: true
+      requestBody: 
+        description: 口コミ情報削除に必要な情報
+        content:
+          application/json:
+            schema: 
+              properties:
+                saketomoId:
+                  type: string
+                  format: uuid
+                  description: 登録者ID
+        required: true          
+      responses:
+        200:
+          description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
+          content:
+            application/json:
+              schema: 
+                properties:
+                  resultCode:
+                    type: string
+        400:
+          description: http ステータスコード 400 error
+        500:
+          description: http ステータスコード 500 error
