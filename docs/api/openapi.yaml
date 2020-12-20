@@ -23,31 +23,7 @@ paths:
             schema: 
               properties:
                 saketomo:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    image:
-                      type: string
-                      description: 既存画像から選んでもらう(キーもしくはURL)。enumにない値もしくは空/nullの場合はバリデーションチェックでエラーにします
-                      enum:
-                      - icon1
-                      - icon2
-                      - icon3
-                    auth:
-                      type: object
-                      properties:
-                        password: 
-                          type: string
-                          format: password
-                          description: ハッシュ
-                        email:
-                          type: string
-                      required:
-                        - password
-                        - email
-                  required: 
-                    - name
+                  $ref: '#/components/schemas/saketomoWithAuth'
         required: true
       responses:
         200:
@@ -59,19 +35,7 @@ paths:
                   resultCode:
                     type: string
                   saketomo:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        format: uuid
-                      name:
-                        type: string
-                      image:
-                        type: string
-                        enum:
-                        - icon1
-                        - icon2
-                        - icon3
+                    $ref: '#/components/schemas/saketomo'
         400:
           description: http ステータスコード 400 error
         500:
@@ -97,19 +61,7 @@ paths:
                   resultCode:
                     type: string
                   saketomo:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        format: uuid
-                      name:
-                        type: string
-                      image:
-                        type: string
-                        enum:
-                        - icon1
-                        - icon2
-                        - icon3
+                    $ref: '#/components/schemas/saketomo'
         400:
           description: http ステータスコード 400 error
         500:
@@ -131,31 +83,7 @@ paths:
             schema: 
               properties:
                 saketomo:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    image:
-                      type: string
-                      description: 既存画像から選んでもらう(キーもしくはURL)。enumにない値もしくは空/nullの場合はバリデーションチェックでエラーにします
-                      enum:
-                      - icon1
-                      - icon2
-                      - icon3
-                    auth:
-                      type: object
-                      properties:
-                        password: 
-                          type: string
-                          format: password
-                          description: ハッシュ
-                        email:
-                          type: string
-                      required:
-                        - password
-                        - email
-                  required: 
-                    - name
+                  $ref: '#/components/schemas/saketomoWithAuth'
         required: true
       responses:
         200:
@@ -167,19 +95,7 @@ paths:
                   resultCode:
                     type: string
                   saketomo:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        format: uuid
-                      name:
-                        type: string
-                      image:
-                        type: string
-                        enum:
-                        - icon1
-                        - icon2
-                        - icon3
+                    $ref: '#/components/schemas/saketomo'
         400:
           description: http ステータスコード 400 error
         500:
@@ -215,35 +131,7 @@ paths:
                   sake:
                     type: array
                     items: 
-                      properties:
-                        id:
-                          type: string
-                          format: uuid
-                        name:
-                          type: string
-                        image:
-                          type: string
-                        brewery:
-                          type: object
-                          properties:
-                            name:
-                              type: string  
-                            prefecture:
-                              type: string  
-                        alcohol:
-                          type: number
-                          format: float
-                        polishingRatio:
-                          type: number
-                          format: float
-                        type:
-                          type: string
-                          description: 特定名称 (例)吟醸酒、大吟醸など
-                        description:
-                          type: string
-                        taste:
-                          type: object
-                          description: 味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ
+                      $ref: '#/components/schemas/sake'
         400:
           description: http ステータスコード 400 error
         500:
@@ -259,37 +147,7 @@ paths:
             schema: 
               properties:
                 sake:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    image:
-                      type: string
-                    brewery:
-                      type: object
-                      properties:
-                        name:
-                          type: string  
-                        prefecture:
-                          type: string  
-                    alcohol:
-                      type: number
-                      format: float
-                    polishingRatio:
-                      type: number
-                      format: float
-                    type:
-                      type: string
-                      description: 特定名称 (例)吟醸酒、大吟醸など
-                    description:
-                      type: string
-                    taste:
-                      type: object
-                      description: 味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ
-                  required:
-                    - name 
-                    - image
-                    - type
+                  $ref: '#/components/schemas/sake'
         required: true          
       responses:
         200:
@@ -301,36 +159,7 @@ paths:
                   resultCode:
                     type: string
                   sake:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        format: uuid
-                      name:
-                        type: string
-                      image:
-                        type: string
-                      brewery:
-                        type: object
-                        properties:
-                          name:
-                            type: string  
-                          prefecture:
-                            type: string  
-                      alcohol:
-                        type: number
-                        format: float
-                      polishingRatio:
-                        type: number
-                        format: float
-                      type:
-                        type: string
-                        description: 特定名称 (例)吟醸酒、大吟醸など
-                      description:
-                        type: string
-                      taste:
-                        type: object
-                        description: 味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ
+                    $ref: '#/components/schemas/sake'
         400:
           description: http ステータスコード 400 error
         500:
@@ -357,36 +186,7 @@ paths:
                   resultCode:
                     type: string
                   sake:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        format: uuid
-                      name:
-                        type: string
-                      image:
-                        type: string
-                      brewery:
-                        type: object
-                        properties:
-                          name:
-                            type: string  
-                          prefecture:
-                            type: string  
-                      alcohol:
-                        type: number
-                        format: float
-                      polishingRatio:
-                        type: number
-                        format: float
-                      type:
-                        type: string
-                        description: 特定名称 (例)吟醸酒、大吟醸など
-                      description:
-                        type: string
-                      taste:
-                        type: object
-                        description: 味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ
+                    $ref: '#/components/schemas/sake'
         400:
           description: http ステータスコード 400 error
         500:
@@ -424,33 +224,7 @@ paths:
                   review:
                     type: array
                     items:
-                      properties:
-                        id:
-                          type: string
-                          format: uuid
-                        saketomo:
-                          type: object
-                          description: 登録者情報
-                          properties:
-                            id:
-                              type: string
-                              format: uuid
-                            name:
-                              type: string
-                            image:
-                              type: string
-                              enum:
-                              - icon1
-                              - icon2
-                              - icon3
-                        createdAt:
-                          type: string
-                          format: date-time
-                          description: 作成日時
-                        rating:
-                          type: integer
-                        comment:
-                          type: string
+                      $ref: '#/components/schemas/review'
         400:
           description: http ステータスコード 400 error
         500:
@@ -466,20 +240,7 @@ paths:
             schema: 
               properties:
                 review:
-                  type: object
-                  properties:
-                    saketomoId:
-                      type: string
-                      format: uuid
-                      description: 登録者ID
-                    rating:
-                      type: integer
-                    comment:
-                      type: string
-                  required:
-                  - saketomoId
-                  - rating
-                  - comment
+                  $ref: '#/components/schemas/review'
         required: true          
       responses:
         200:
@@ -493,33 +254,7 @@ paths:
                   review:
                     type: array
                     items:
-                      properties:
-                        id:
-                          type: string
-                          format: uuid
-                        saketomo:
-                          type: object
-                          description: 登録者情報
-                          properties:
-                            id:
-                              type: string
-                              format: uuid
-                            name:
-                              type: string
-                            image:
-                              type: string
-                              enum:
-                              - icon1
-                              - icon2
-                              - icon3
-                        createdAt:
-                          type: string
-                          format: date-time
-                          description: 作成日時
-                        rating:
-                          type: integer
-                        comment:
-                          type: string
+                      $ref: '#/components/schemas/review'
         400:
           description: http ステータスコード 400 error
         500:
@@ -560,3 +295,112 @@ paths:
           description: http ステータスコード 400 error
         500:
           description: http ステータスコード 500 error
+          
+          
+components:
+  schemas:
+    saketomo:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        image:
+          type: string
+          description: 既存画像から選んでもらう(キーもしくはURL)。enumにない値もしくは空/nullの場合はバリデーションチェックでエラーにします
+          enum:
+          - icon1
+          - icon2
+          - icon3
+          
+    saketomoWithAuth:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        image:
+          type: string
+          description: 既存画像から選んでもらう(キーもしくはURL)。enumにない値もしくは空/nullの場合はバリデーションチェックでエラーにします
+          enum:
+          - icon1
+          - icon2
+          - icon3
+        auth:
+          type: object
+          properties:
+            password: 
+              type: string
+              format: password
+              description: ハッシュ
+            email:
+              type: string
+          required:
+            - password
+            - email
+
+    sake:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        image:
+          type: string
+        brewery:
+          type: object
+          properties:
+            name:
+              type: string  
+            prefecture:
+              type: string  
+        alcohol:
+          type: number
+          format: float
+        polishingRatio:
+          type: number
+          format: float
+        type:
+          type: string
+          description: 特定名称 (例)吟醸酒、大吟醸など
+        description:
+          type: string
+        taste:
+          type: object
+          description: 味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ
+
+    review:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        saketomo:
+          type: object
+          description: 登録者情報
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            image:
+              type: string
+              enum:
+              - icon1
+              - icon2
+              - icon3
+        createdAt:
+          type: string
+          format: date-time
+          description: 作成日時
+        rating:
+          type: integer
+        comment:
+          type: string
