@@ -12,6 +12,8 @@
 - aya
 - yuki nishiguchi
 - yukie
+- mutsumi
+
 ## 議題にしたいこと or 前回の next action
 - アイスブレイク
   - 名前
