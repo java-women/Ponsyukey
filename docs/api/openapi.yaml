@@ -8,12 +8,23 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 0.0.1
+
+tags:
+  - name: saketomo
+    description: 会員情報操作
+  - name: sake
+    description: 酒情報操作
+  - name: review
+    description: 口コミ情報操作
+    
 externalDocs:
   description: GitHubはこちら
   url: https://github.com/java-women/Ponsyukey
 paths:
   /saketomo:
     post:
+      tags: 
+        - saketomo
       summary: 会員登録API
       operationId: createSaketomo
       requestBody: 
@@ -23,8 +34,35 @@ paths:
             schema: 
               properties:
                 saketomo:
-                  $ref: '#/components/schemas/saketomoWithAuth'
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    image:
+                      type: string
+                      description: 既存画像から選んでもらう(キーもしくはURL)。enumにない値もしくは空/nullの場合はバリデーションチェックでエラーにします
+                      enum:
+                      - icon1
+                      - icon2
+                      - icon3
+                    auth:
+                      type: object
+                      properties:
+                        password: 
+                          type: string
+                          format: password
+                          description: ハッシュ
+                        email:
+                          type: string
+                      required:
+                        - password
+                        - email
+                  required:
+                    - name
+                    - image
+                    - auth
         required: true
+
       responses:
         200:
           description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
@@ -43,6 +81,8 @@ paths:
           
   /saketomo/{saketomoId}:
     get:
+      tags: 
+        - saketomo
       summary: 会員情報取得API
       operationId: getSaketomo
       parameters:
@@ -68,6 +108,8 @@ paths:
           description: http ステータスコード 500 error
           
     post:
+      tags: 
+        - saketomo
       summary: 会員編集API
       parameters:
         - in: path
@@ -104,6 +146,8 @@ paths:
     
   /sake:
     get:
+      tags: 
+        - sake
       summary: 酒情報一覧取得API
       operationId: getSake
       parameters:
@@ -138,6 +182,8 @@ paths:
           description: http ステータスコード 500 error
           
     post:
+      tags: 
+        - sake
       summary: 酒情報登録API
       operationId: createSake
       requestBody: 
@@ -147,8 +193,35 @@ paths:
             schema: 
               properties:
                 sake:
-                  $ref: '#/components/schemas/sake'
-        required: true          
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    image:
+                      type: string
+                    brewery:
+                      type: object
+                      properties:
+                        name:
+                          type: string  
+                        prefecture:
+                          type: string  
+                    alcohol:
+                      type: number
+                      format: float
+                    polishingRatio:
+                      type: number
+                      format: float
+                    type:
+                      type: string
+                      description: 特定名称 (例)吟醸酒、大吟醸など
+                    description:
+                      type: string
+                    taste:
+                      type: object
+                      description: 味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ
+        required: true
+ 
       responses:
         200:
           description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
@@ -168,6 +241,8 @@ paths:
   
   /sake/{sakeId}:
     get:
+      tags: 
+        - sake
       summary: 酒情報取得API
       operationId: getSakeDetail
       parameters:
@@ -194,6 +269,8 @@ paths:
           
   /review:
     get:
+      tags: 
+        - review
       summary: 口コミ情報取得API.
       operationId: getReview
       description: 必ず日付順（降順）でソートされる
@@ -231,6 +308,8 @@ paths:
           description: http ステータスコード 500 error
           
     post:
+      tags: 
+        - review
       summary: 口コミ情報登録API
       operationId: createReview
       requestBody: 
@@ -239,9 +318,30 @@ paths:
           application/json:
             schema: 
               properties:
-                review:
-                  $ref: '#/components/schemas/review'
-        required: true          
+                    review:
+                      type: object
+                      properties:
+                        saketomo:
+                          type: object
+                          description: 登録者情報
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+                            name:
+                              type: string
+                            image:
+                              type: string
+                              enum:
+                              - icon1
+                              - icon2
+                              - icon3
+                        rating:
+                          type: integer
+                        comment:
+                          type: string
+        required: true
+
       responses:
         200:
           description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
@@ -263,6 +363,8 @@ paths:
           
   /review/{reviewId}:
     post:
+      tags: 
+        - review
       summary: 口コミ情報削除API
       operationId: deleteReview
       parameters:
@@ -342,6 +444,11 @@ components:
           required:
             - password
             - email
+      required:
+        - id
+        - name
+        - image
+        - auth
 
     sake:
       type: object
