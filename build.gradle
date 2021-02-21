@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.3.1.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
+	id "org.openapi.generator" version "5.0.1"
 }
 
 group = 'com.javajo'
@@ -21,4 +22,18 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+openApiGenerate {
+	generatorName = "spring"
+	inputSpec = "$rootDir/docs/api/openapi.yaml".toString()
+	outputDir = "$rootDir".toString()
+	apiPackage = "javajo.ponsyukey.controller"
+	invokerPackage = "javajo.ponsyukey.invoker"
+	modelPackage = "javajo.ponsyukey.model"
+	generateModelTests = true
+	generateApiTests = true
+	configOptions = [
+			dateLibrary: "java11"
+	]
 }
