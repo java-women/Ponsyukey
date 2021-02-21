@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 /**
  * Sake
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-02-21T07:14:50.757524300Z[UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-02-21T08:00:01.182023100Z[UTC]")
 public class Sake   {
   @JsonProperty("id")
   private UUID id;
