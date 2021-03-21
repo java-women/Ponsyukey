@@ -1,4 +1,4 @@
-# 第 11 回 API 設計-開発 2021 14:00-17:00
+# 第 11 回 API 設計-開発 2021/02/21 14:00-17:00
 
 [https://javajo.doorkeeper.jp/events/117036](https://javajo.doorkeeper.jp/events/117036)
 
