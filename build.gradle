@@ -18,10 +18,12 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-	// https://mvnrepository.com/artifact/org.springframework/spring-web
-	implementation group: 'org.springframework', name: 'spring-web', version: '5.3.4'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.4'
+	// https://mvnrepository.com/artifact/io.springfox/springfox-spring-web
+	implementation group: 'io.springfox', name: 'springfox-spring-web', version: '2.9.2'
 	// https://mvnrepository.com/artifact/org.springframework.data/spring-data-commons
-	implementation group: 'org.springframework.data', name: 'spring-data-commons', version: '2.4.5'
+	implementation group: 'org.springframework.data', name: 'spring-data-commons', version: '2.4.6'
 	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
 	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
 	// https://mvnrepository.com/artifact/javax.validation/validation-api
@@ -42,6 +44,7 @@ openApiGenerate {
 	generateModelTests = true
 	generateApiTests = true
 	configOptions = [
-			dateLibrary: "java11"
+			dateLibrary: "java11",
+			openApiNullable: "false"
 	]
 }
