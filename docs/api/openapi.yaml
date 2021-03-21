@@ -3,7 +3,7 @@ info:
   title: ぽんしゅきー
   description: ぽんしゅきーサイトで使用するバックエンドAPI
   contact:
-    email: javawoman.tokyo@gmail.com 
+    email: javawoman.tokyo@gmail.com
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -16,51 +16,23 @@ tags:
     description: 酒情報操作
   - name: review
     description: 口コミ情報操作
-    
+
 externalDocs:
   description: GitHubはこちら
   url: https://github.com/java-women/Ponsyukey
 paths:
   /saketomo:
     post:
-      tags: 
+      tags:
         - saketomo
       summary: 会員登録API
       operationId: createSaketomo
-      requestBody: 
+      requestBody:
         description: 会員登録に必要な情報
         content:
           application/json:
-            schema: 
-              properties:
-                saketomo:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    image:
-                      type: string
-                      description: 既存画像から選んでもらう(キーもしくはURL)。enumにない値もしくは空/nullの場合はバリデーションチェックでエラーにします
-                      enum:
-                      - icon1
-                      - icon2
-                      - icon3
-                    auth:
-                      type: object
-                      properties:
-                        password: 
-                          type: string
-                          format: password
-                          description: ハッシュ
-                        email:
-                          type: string
-                      required:
-                        - password
-                        - email
-                  required:
-                    - name
-                    - image
-                    - auth
+            schema:
+              $ref: '#/components/schemas/createSaketomo'
         required: true
 
       responses:
@@ -68,7 +40,7 @@ paths:
           description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
           content:
             application/json:
-              schema: 
+              schema:
                 properties:
                   resultCode:
                     type: string
@@ -78,10 +50,10 @@ paths:
           description: http ステータスコード 400 error
         500:
           description: http ステータスコード 500 error
-          
+
   /saketomo/{saketomoId}:
     get:
-      tags: 
+      tags:
         - saketomo
       summary: 会員情報取得API
       operationId: getSaketomo
@@ -96,7 +68,7 @@ paths:
           description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
           content:
             application/json:
-              schema: 
+              schema:
                 properties:
                   resultCode:
                     type: string
@@ -106,9 +78,9 @@ paths:
           description: http ステータスコード 400 error
         500:
           description: http ステータスコード 500 error
-          
+
     post:
-      tags: 
+      tags:
         - saketomo
       summary: 会員編集API
       parameters:
@@ -118,21 +90,19 @@ paths:
             type: string
           required: true
       operationId: updateSaketomo
-      requestBody: 
+      requestBody:
         description: 会員編集に必要な情報
         content:
           application/json:
-            schema: 
-              properties:
-                saketomo:
-                  $ref: '#/components/schemas/saketomoWithAuth'
+            schema:
+              $ref: '#/components/schemas/saketomoWithAuth'
         required: true
       responses:
         200:
           description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
           content:
             application/json:
-              schema: 
+              schema:
                 properties:
                   resultCode:
                     type: string
@@ -142,11 +112,11 @@ paths:
           description: http ステータスコード 400 error
         500:
           description: http ステータスコード 500 error
-   
-    
+
+
   /sake:
     get:
-      tags: 
+      tags:
         - sake
       summary: 酒情報一覧取得API
       operationId: getSake
@@ -156,11 +126,11 @@ paths:
           schema:
             type: integer
           required: true
-        - in: query 
+        - in: query
           name: offset
           schema:
             type: integer
-          required: true  
+          required: true
       responses:
         200:
           description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
@@ -174,60 +144,32 @@ paths:
                     type: integer
                   sake:
                     type: array
-                    items: 
+                    items:
                       $ref: '#/components/schemas/sake'
         400:
           description: http ステータスコード 400 error
         500:
           description: http ステータスコード 500 error
-          
+
     post:
-      tags: 
+      tags:
         - sake
       summary: 酒情報登録API
       operationId: createSake
-      requestBody: 
+      requestBody:
         description: 酒情報登録に必要な情報
         content:
           application/json:
-            schema: 
-              properties:
-                sake:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    image:
-                      type: string
-                    brewery:
-                      type: object
-                      properties:
-                        name:
-                          type: string  
-                        prefecture:
-                          type: string  
-                    alcohol:
-                      type: number
-                      format: float
-                    polishingRatio:
-                      type: number
-                      format: float
-                    type:
-                      type: string
-                      description: 特定名称 (例)吟醸酒、大吟醸など
-                    description:
-                      type: string
-                    taste:
-                      type: object
-                      description: 味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ
+            schema:
+              $ref: '#/components/schemas/createSake'
         required: true
- 
+
       responses:
         200:
           description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
           content:
             application/json:
-              schema: 
+              schema:
                 properties:
                   resultCode:
                     type: string
@@ -237,11 +179,11 @@ paths:
           description: http ステータスコード 400 error
         500:
           description: http ステータスコード 500 error
-                  
-  
+
+
   /sake/{sakeId}:
     get:
-      tags: 
+      tags:
         - sake
       summary: 酒情報取得API
       operationId: getSakeDetail
@@ -256,7 +198,7 @@ paths:
           description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
           content:
             application/json:
-              schema: 
+              schema:
                 properties:
                   resultCode:
                     type: string
@@ -266,10 +208,10 @@ paths:
           description: http ステータスコード 400 error
         500:
           description: http ステータスコード 500 error
-          
+
   /review:
     get:
-      tags: 
+      tags:
         - review
       summary: 口コミ情報取得API.
       operationId: getReview
@@ -281,7 +223,7 @@ paths:
             type: string
         - in: query
           name: limit
-          schema: 
+          schema:
             type: integer
           required: true
         - in: query
@@ -294,7 +236,7 @@ paths:
           description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
           content:
             application/json:
-              schema: 
+              schema:
                 properties:
                   resultCode:
                     type: string
@@ -306,40 +248,18 @@ paths:
           description: http ステータスコード 400 error
         500:
           description: http ステータスコード 500 error
-          
+
     post:
-      tags: 
+      tags:
         - review
       summary: 口コミ情報登録API
       operationId: createReview
-      requestBody: 
+      requestBody:
         description: 口コミ情報登録に必要な情報
         content:
           application/json:
-            schema: 
-              properties:
-                    review:
-                      type: object
-                      properties:
-                        saketomo:
-                          type: object
-                          description: 登録者情報
-                          properties:
-                            id:
-                              type: string
-                              format: uuid
-                            name:
-                              type: string
-                            image:
-                              type: string
-                              enum:
-                              - icon1
-                              - icon2
-                              - icon3
-                        rating:
-                          type: integer
-                        comment:
-                          type: string
+            schema:
+              $ref: '#/components/schemas/createReview'
         required: true
 
       responses:
@@ -347,7 +267,7 @@ paths:
           description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
           content:
             application/json:
-              schema: 
+              schema:
                 properties:
                   resultCode:
                     type: string
@@ -359,37 +279,33 @@ paths:
           description: http ステータスコード 400 error
         500:
           description: http ステータスコード 500 error
-          
-          
+
+
   /review/{reviewId}:
     post:
-      tags: 
+      tags:
         - review
       summary: 口コミ情報削除API
       operationId: deleteReview
       parameters:
         - in: path
           name: reviewId
-          schema: 
+          schema:
             type: string
           required: true
-      requestBody: 
+      requestBody:
         description: 口コミ情報削除に必要な情報
         content:
           application/json:
-            schema: 
-              properties:
-                saketomoId:
-                  type: string
-                  format: uuid
-                  description: 登録者ID
-        required: true          
+            schema:
+              $ref: '#/components/schemas/deleteReview'
+        required: true
       responses:
         200:
           description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
           content:
             application/json:
-              schema: 
+              schema:
                 properties:
                   resultCode:
                     type: string
@@ -397,10 +313,23 @@ paths:
           description: http ステータスコード 400 error
         500:
           description: http ステータスコード 500 error
-          
-          
+
+
 components:
   schemas:
+    auth:
+      type: object
+      properties:
+        password:
+          type: string
+          format: password
+          description: ハッシュ
+        email:
+          type: string
+      required:
+        - password
+        - email
+
     saketomo:
       type: object
       properties:
@@ -413,10 +342,33 @@ components:
           type: string
           description: 既存画像から選んでもらう(キーもしくはURL)。enumにない値もしくは空/nullの場合はバリデーションチェックでエラーにします
           enum:
-          - icon1
-          - icon2
-          - icon3
-          
+            - icon1
+            - icon2
+            - icon3
+
+    createSaketomo:
+      type: object
+      properties:
+        saketomo:
+          type: object
+          properties:
+            name:
+              type: string
+            image:
+              type: string
+              description: 既存画像から選んでもらう(キーもしくはURL)。enumにない値もしくは空/nullの場合はバリデーションチェックでエラーにします
+              enum:
+                - icon1
+                - icon2
+                - icon3
+            auth:
+              $ref: '#/components/schemas/auth'
+          required:
+            - name
+            - image
+            - auth
+
+
     saketomoWithAuth:
       type: object
       properties:
@@ -429,21 +381,11 @@ components:
           type: string
           description: 既存画像から選んでもらう(キーもしくはURL)。enumにない値もしくは空/nullの場合はバリデーションチェックでエラーにします
           enum:
-          - icon1
-          - icon2
-          - icon3
+            - icon1
+            - icon2
+            - icon3
         auth:
-          type: object
-          properties:
-            password: 
-              type: string
-              format: password
-              description: ハッシュ
-            email:
-              type: string
-          required:
-            - password
-            - email
+          $ref: '#/components/schemas/auth'
       required:
         - id
         - name
@@ -464,9 +406,9 @@ components:
           type: object
           properties:
             name:
-              type: string  
+              type: string
             prefecture:
-              type: string  
+              type: string
         alcohol:
           type: number
           format: float
@@ -500,9 +442,9 @@ components:
             image:
               type: string
               enum:
-              - icon1
-              - icon2
-              - icon3
+                - icon1
+                - icon2
+                - icon3
         createdAt:
           type: string
           format: date-time
@@ -511,3 +453,63 @@ components:
           type: integer
         comment:
           type: string
+
+    createReview:
+      type: object
+      properties:
+        saketomo:
+          type: object
+          description: 登録者情報
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            image:
+              type: string
+              enum:
+                - icon1
+                - icon2
+                - icon3
+        rating:
+          type: integer
+        comment:
+          type: string
+
+    deleteReview:
+      type: object
+      properties:
+        saketomoId:
+          type: string
+          format: uuid
+          description: 登録者ID
+
+    createSake:
+      type: object
+      properties:
+        name:
+          type: string
+        image:
+          type: string
+        brewery:
+          type: object
+          properties:
+            name:
+              type: string
+            prefecture:
+              type: string
+        alcohol:
+          type: number
+          format: float
+        polishingRatio:
+          type: number
+          format: float
+        type:
+          type: string
+          description: 特定名称 (例)吟醸酒、大吟醸など
+        description:
+          type: string
+        taste:
+          type: object
+          description: 味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ

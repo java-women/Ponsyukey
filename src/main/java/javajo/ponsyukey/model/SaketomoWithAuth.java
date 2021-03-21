@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.UUID;
-import javajo.ponsyukey.model.SaketomoWithAuthAuth;
+import javajo.ponsyukey.model.Auth;
 import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
 /**
  * SaketomoWithAuth
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-02-21T08:00:01.182023100Z[UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-03-21T15:29:30.596334700+09:00[Asia/Tokyo]")
 public class SaketomoWithAuth   {
   @JsonProperty("id")
   private UUID id;
@@ -64,7 +64,7 @@ public class SaketomoWithAuth   {
   private ImageEnum image;
 
   @JsonProperty("auth")
-  private SaketomoWithAuthAuth auth;
+  private Auth auth;
 
   public SaketomoWithAuth id(UUID id) {
     this.id = id;
@@ -130,7 +130,7 @@ public class SaketomoWithAuth   {
     this.image = image;
   }
 
-  public SaketomoWithAuth auth(SaketomoWithAuthAuth auth) {
+  public SaketomoWithAuth auth(Auth auth) {
     this.auth = auth;
     return this;
   }
@@ -144,11 +144,11 @@ public class SaketomoWithAuth   {
 
   @Valid
 
-  public SaketomoWithAuthAuth getAuth() {
+  public Auth getAuth() {
     return auth;
   }
 
-  public void setAuth(SaketomoWithAuthAuth auth) {
+  public void setAuth(Auth auth) {
     this.auth = auth;
   }
 

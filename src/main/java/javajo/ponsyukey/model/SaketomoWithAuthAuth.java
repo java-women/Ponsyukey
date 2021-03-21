@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
 /**
  * SaketomoWithAuthAuth
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-02-21T08:00:01.182023100Z[UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-03-21T15:13:45.353672600+09:00[Asia/Tokyo]")
 public class SaketomoWithAuthAuth   {
   @JsonProperty("password")
   private String password;
