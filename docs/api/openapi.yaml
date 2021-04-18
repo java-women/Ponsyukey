@@ -199,11 +199,7 @@ paths:
           content:
             application/json:
               schema:
-                properties:
-                  resultCode:
-                    type: string
-                  sake:
-                    $ref: '#/components/schemas/sake'
+                $ref: '#/components/schemas/sakeResponse'
         400:
           description: http ステータスコード 400 error
         500:
@@ -513,3 +509,11 @@ components:
         taste:
           type: object
           description: 味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ
+
+    sakeResponse:
+      type: object
+      properties:
+        resultCode:
+          type: string
+        sake:
+          $ref: '#/components/schemas/sake'

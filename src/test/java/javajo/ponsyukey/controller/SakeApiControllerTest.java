@@ -32,5 +32,16 @@ class SakeApiControllerTest {
         this.mockMvc.perform(get("/sake/1")).andDo(print()).andExpect(status().isOk());
     }
 
+    @Test
+    void 酒情報取得_sakeIdのデータ存在していた場合正しいResponseBodyが返却されること() {
+        //ToDo正しいresponseBodyは？
+    }
+
+    @Test
+    void 酒情報取得_sakeIdのデータ存在していなかった場合正しいResponseBodyが返却されること(){
+        //ToDo正しいresponseBodyは？
+    }
+
+
 
 }

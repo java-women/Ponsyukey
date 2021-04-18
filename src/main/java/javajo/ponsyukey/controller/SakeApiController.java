@@ -1,5 +1,8 @@
 package javajo.ponsyukey.controller;
 
+import javajo.ponsyukey.model.SakeResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -21,4 +24,8 @@ public class SakeApiController implements SakeApi {
         return Optional.ofNullable(request);
     }
 
+    @Override
+    public ResponseEntity<SakeResponse> getSakeDetail(String sakeId) {
+        return new ResponseEntity<SakeResponse>(HttpStatus.OK);
+    }
 }

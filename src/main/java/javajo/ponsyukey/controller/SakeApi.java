@@ -6,6 +6,7 @@
 package javajo.ponsyukey.controller;
 
 import javajo.ponsyukey.model.CreateSake;
+import javajo.ponsyukey.model.SakeResponse;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,7 +22,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-03-21T17:13:17.318949100+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-04-18T16:39:18.697306+09:00[Asia/Tokyo]")
 @Validated
 @Api(value = "sake", description = "the sake API")
 public interface SakeApi {
@@ -86,16 +87,25 @@ public interface SakeApi {
      *         or http ステータスコード 400 error (status code 400)
      *         or http ステータスコード 500 error (status code 500)
      */
-    @ApiOperation(value = "酒情報取得API", nickname = "getSakeDetail", notes = "", response = Object.class, tags={ "sake", })
+    @ApiOperation(value = "酒情報取得API", nickname = "getSakeDetail", notes = "", response = SakeResponse.class, tags={ "sake", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Object.class),
+        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = SakeResponse.class),
         @ApiResponse(code = 400, message = "http ステータスコード 400 error"),
         @ApiResponse(code = 500, message = "http ステータスコード 500 error") })
     @GetMapping(
         value = "/sake/{sakeId}",
         produces = { "application/json" }
     )
-    default ResponseEntity<Object> getSakeDetail(@ApiParam(value = "",required=true) @PathVariable("sakeId") String sakeId) {
+    default ResponseEntity<SakeResponse> getSakeDetail(@ApiParam(value = "",required=true) @PathVariable("sakeId") String sakeId) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"resultCode\" : \"resultCode\", \"sake\" : { \"alcohol\" : 0.8008282, \"image\" : \"image\", \"polishingRatio\" : 6.0274563, \"taste\" : \"{}\", \"name\" : \"name\", \"brewery\" : { \"prefecture\" : \"prefecture\", \"name\" : \"name\" }, \"description\" : \"description\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"type\" : \"type\" } }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

@@ -5,37 +5,60 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import javajo.ponsyukey.model.CreateSaketomoSaketomo;
+import javajo.ponsyukey.model.Sake;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * CreateSaketomo
+ * SakeResponse
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-04-18T16:39:18.697306+09:00[Asia/Tokyo]")
-public class CreateSaketomo   {
-  @JsonProperty("saketomo")
-  private CreateSaketomoSaketomo saketomo;
+public class SakeResponse   {
+  @JsonProperty("resultCode")
+  private String resultCode;
 
-  public CreateSaketomo saketomo(CreateSaketomoSaketomo saketomo) {
-    this.saketomo = saketomo;
+  @JsonProperty("sake")
+  private Sake sake;
+
+  public SakeResponse resultCode(String resultCode) {
+    this.resultCode = resultCode;
     return this;
   }
 
   /**
-   * Get saketomo
-   * @return saketomo
+   * Get resultCode
+   * @return resultCode
+  */
+  @ApiModelProperty(value = "")
+
+
+  public String getResultCode() {
+    return resultCode;
+  }
+
+  public void setResultCode(String resultCode) {
+    this.resultCode = resultCode;
+  }
+
+  public SakeResponse sake(Sake sake) {
+    this.sake = sake;
+    return this;
+  }
+
+  /**
+   * Get sake
+   * @return sake
   */
   @ApiModelProperty(value = "")
 
   @Valid
 
-  public CreateSaketomoSaketomo getSaketomo() {
-    return saketomo;
+  public Sake getSake() {
+    return sake;
   }
 
-  public void setSaketomo(CreateSaketomoSaketomo saketomo) {
-    this.saketomo = saketomo;
+  public void setSake(Sake sake) {
+    this.sake = sake;
   }
 
 
@@ -47,21 +70,23 @@ public class CreateSaketomo   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateSaketomo createSaketomo = (CreateSaketomo) o;
-    return Objects.equals(this.saketomo, createSaketomo.saketomo);
+    SakeResponse sakeResponse = (SakeResponse) o;
+    return Objects.equals(this.resultCode, sakeResponse.resultCode) &&
+        Objects.equals(this.sake, sakeResponse.sake);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(saketomo);
+    return Objects.hash(resultCode, sake);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateSaketomo {\n");
+    sb.append("class SakeResponse {\n");
     
-    sb.append("    saketomo: ").append(toIndentedString(saketomo)).append("\n");
+    sb.append("    resultCode: ").append(toIndentedString(resultCode)).append("\n");
+    sb.append("    sake: ").append(toIndentedString(sake)).append("\n");
     sb.append("}");
     return sb.toString();
   }
