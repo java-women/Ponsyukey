@@ -1,6 +1,8 @@
 package javajo.ponsyukey.controller;
 
 import javajo.ponsyukey.model.SakeResponse;
+import javajo.ponsyukey.service.SakeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,9 @@ public class SakeApiController implements SakeApi {
 
     private final NativeWebRequest request;
 
+    @Autowired
+    private SakeService sakeService;
+
     @org.springframework.beans.factory.annotation.Autowired
     public SakeApiController(NativeWebRequest request) {
         this.request = request;
@@ -26,6 +31,7 @@ public class SakeApiController implements SakeApi {
 
     @Override
     public ResponseEntity<SakeResponse> getSakeDetail(String sakeId) {
-        return new ResponseEntity<SakeResponse>(HttpStatus.OK);
+        SakeResponse sakeResponse = sakeService.getSakeResponse();
+        return new ResponseEntity<SakeResponse>(sakeResponse, HttpStatus.OK);
     }
 }

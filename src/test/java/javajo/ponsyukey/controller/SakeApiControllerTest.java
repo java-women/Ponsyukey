@@ -3,6 +3,7 @@ package javajo.ponsyukey.controller;
 import javajo.ponsyukey.model.Sake;
 import javajo.ponsyukey.model.SakeBrewery;
 import javajo.ponsyukey.model.SakeResponse;
+import javajo.ponsyukey.service.SakeService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -10,12 +11,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
@@ -24,6 +28,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 class SakeApiControllerTest {
     @Autowired
     private MockMvc mockMvc;
+
+    @MockBean
+    private SakeService service;
 
     @BeforeEach
     void setUp() {
@@ -40,6 +47,8 @@ class SakeApiControllerTest {
 
     @Nested
     class 酒情報取得_sakeIdのデータ存在していた場合正しいResponseBodyが返却されること{
+        private SakeResponse sakeResponse;
+
         @BeforeEach
         void setUp(){
             Sake sake = new Sake();
@@ -57,20 +66,19 @@ class SakeApiControllerTest {
             List<String> taste = List.of("すっきり", "洗練された", "スモークチーズっぽい");
             sake.setTaste(taste);
 
-            //testのexpectedデータを生成する
-            String expected = "{}";
-
+            sakeResponse = new SakeResponse();
+            sakeResponse.setSake(sake);
+            sakeResponse.setResultCode("200");
         }
 
         @Test
         void test() throws Exception {
             //TODO サービスモックにデータを登録
+            when(service.getSakeResponse()).thenReturn(sakeResponse);
 
             //TODO モックレスポンスを取得 => actual
-            mockMvc.perform(get("/sake/1")).andDo(   );
+            mockMvc.perform(get("/sake/1")).andExpect(jsonPath("$.resultCode").value("200"));
 
-            //ToDo 正しいresponseBody -> SakeResponse DTO のJSONに正しい値が設定されて返却されること
-            assertEquals("", "");
         }
     }
 
