@@ -11,7 +11,7 @@ import javax.validation.constraints.*;
 /**
  * Auth
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-04-18T16:39:18.697306+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-16T15:18:54.213477800+09:00[Asia/Tokyo]")
 public class Auth   {
   @JsonProperty("password")
   private String password;

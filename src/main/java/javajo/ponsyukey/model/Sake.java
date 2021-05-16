@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import javajo.ponsyukey.model.SakeBrewery;
 import javax.validation.Valid;
@@ -13,7 +15,7 @@ import javax.validation.constraints.*;
 /**
  * Sake
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-04-18T16:39:18.697306+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-16T15:18:54.213477800+09:00[Asia/Tokyo]")
 public class Sake   {
   @JsonProperty("id")
   private UUID id;
@@ -40,7 +42,8 @@ public class Sake   {
   private String description;
 
   @JsonProperty("taste")
-  private Object taste;
+  @Valid
+  private List<String> taste = null;
 
   public Sake id(UUID id) {
     this.id = id;
@@ -204,23 +207,31 @@ public class Sake   {
     this.description = description;
   }
 
-  public Sake taste(Object taste) {
+  public Sake taste(List<String> taste) {
     this.taste = taste;
     return this;
   }
 
+  public Sake addTasteItem(String tasteItem) {
+    if (this.taste == null) {
+      this.taste = new ArrayList<String>();
+    }
+    this.taste.add(tasteItem);
+    return this;
+  }
+
   /**
-   * 味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ
+   * 味情報は固定カラムを持たずに、自由入力。(例)ハッシュタグ
    * @return taste
   */
-  @ApiModelProperty(value = "味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ")
+  @ApiModelProperty(value = "味情報は固定カラムを持たずに、自由入力。(例)ハッシュタグ")
 
 
-  public Object getTaste() {
+  public List<String> getTaste() {
     return taste;
   }
 
-  public void setTaste(Object taste) {
+  public void setTaste(List<String> taste) {
     this.taste = taste;
   }
 
