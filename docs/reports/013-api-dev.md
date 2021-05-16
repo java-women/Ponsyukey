@@ -31,13 +31,14 @@ Eri Uchiyama
 ## 議事内容
 1. API作成
 　酒情報取得APIを作成
-　- SakeApiController.javaのテストを作成
-　　JUnit5を使用しテストを生成
-　　Mockmvc使用しモックを作成
-　- SakeApiController.javaに酒情報取得メソッドを記載
-　- Sakeresponceモデルを生成
-　　openapi.ymlにコンポーネントを記載し、ジェネレート時に自動生成する仕様に変更
-　　前回エラー対策のためにAPIUtil.javaをジェネーレートから外したが、コンパイルエラーが発生したためignoreから削除
+ 
+- SakeApiController.javaのテストを作成
+    - JUnit5を使用しテストを生成
+    - Mockmvc使用しモックを作成
+- SakeApiController.javaに酒情報取得メソッドを記載
+- Sakeresponceモデルを生成
+    - openapi.ymlにコンポーネントを記載し、ジェネレート時に自動生成する仕様に変更
+    - 前回エラー対策のためにAPIUtil.javaをジェネーレートから外したが、コンパイルエラーが発生したためignoreから削除
 
 ## 今回の成果
 酒情報取得APIに正常系のテストを記載し、正常に完了することを確認した
