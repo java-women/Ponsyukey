@@ -11,7 +11,7 @@ CREATE TABLE sake
     image           varchar(255),
     brewery_id      uniqueidentifier,
     alcohol         decimal(4,2),
-    polishingRatio  decimal(4,2),
+    polishing_ratio  decimal(4,2),
     type            varchar(100),
     description     varchar(2000)
 );
