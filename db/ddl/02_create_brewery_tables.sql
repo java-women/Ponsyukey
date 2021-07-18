@@ -8,7 +8,7 @@
 CREATE TABLE country
 (
     id              smallint        NOT NULL,
-    name            varchar(40)    NOT NULL
+    name            varchar(100)    NOT NULL
 );
 ALTER TABLE country ADD CONSTRAINT pk_country_id PRIMARY KEY CLUSTERED (id);
 
@@ -23,7 +23,7 @@ CREATE TABLE region
 (
     id              smallint    NOT NULL,
     country_id      smallint    NOT NULL,
-    prefecture_id   smallint
+    prefecture_id   smallint  NOT NULL
 );
 ALTER TABLE region ADD CONSTRAINT pk_region_id PRIMARY KEY CLUSTERED (id);
 -- regionからcountryへの外部キーを設定
@@ -43,7 +43,7 @@ CREATE TABLE brewery
 (
     id              uniqueidentifier    NOT NULL,
     name            varchar(100)        NOT NULL,
-    region_id       smallint
+    region_id       smallint   NOT NULL
 );
 ALTER TABLE brewery ADD CONSTRAINT pk_brewery_id PRIMARY KEY CLUSTERED (id);
 -- breweryからregionへの外部キーを設定

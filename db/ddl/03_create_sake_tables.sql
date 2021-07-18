@@ -9,7 +9,7 @@ CREATE TABLE sake
     id              uniqueidentifier    NOT NULL,
     name            varchar(100)        NOT NULL,
     image           varchar(255),
-    brewery_id      uniqueidentifier,
+    brewery_id      uniqueidentifier    NOT NULL,
     alcohol         decimal(4,2),
     polishing_ratio  decimal(4,2),
     type            varchar(100),

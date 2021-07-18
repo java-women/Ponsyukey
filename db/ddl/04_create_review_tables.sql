@@ -11,7 +11,7 @@ CREATE TABLE review
     rating          tinyint,
     comment         varchar(2000),
     created_at      datetime            NOT NULL    DEFAULT GETDATE(),
-    updated_at      datetime
+    updated_at      datetime    NOT NULL    DEFAULT GETDATE()
 );
 ALTER TABLE review ADD CONSTRAINT pk_review_id PRIMARY KEY CLUSTERED (id);
 -- reviewからsakeへの外部キーを設定
