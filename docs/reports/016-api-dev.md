@@ -3,14 +3,14 @@
 [https://javajo.doorkeeper.jp/events/123630](https://javajo.doorkeeper.jp/events/123630)
 
 ## 議事録作成者
-- ちあき
+  - ちあき
 
 ## 参加者(敬称略)
--yuki
--aya
--maaya
--miyuki
--ellie
+  - yuki
+  - aya
+  - maaya
+  - miyuki
+  - ellie
 
 ## 議題にしたいこと or 前回の next action
 
@@ -39,7 +39,7 @@
 ## next action(タスク洗い出し)
 - APIのサービスの中身の作成
 - 前回からの持ち越しネタ
-　-コメントが流れないのでどうにかする
+  - コメントが流れないのでどうにかする
 
 ## 議事録作成者の感想ひとこと
 - 議事録初挑戦でしたが、gitの使い方など勉強になりました。
