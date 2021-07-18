@@ -10,7 +10,7 @@ CREATE TABLE saketomo
     email           varchar(255)        NOT NULL,
     password        varchar(20)         NOT NULL,
     created_at      datetime            NOT NULL    DEFAULT GETDATE(),
-    updated_at      datetime
+    updated_at      datetime    NOT NULL    DEFAULT GETDATE() 
 );
 
 ALTER TABLE saketomo ADD CONSTRAINT pk_saketomo_id PRIMARY KEY CLUSTERED (id);
