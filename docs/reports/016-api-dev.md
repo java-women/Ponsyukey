@@ -3,7 +3,7 @@
 [https://javajo.doorkeeper.jp/events/123630](https://javajo.doorkeeper.jp/events/123630)
 
 ## 議事録作成者
-
+- ちあき
 
 ## 参加者(敬称略)
 
