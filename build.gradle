@@ -4,16 +4,24 @@ plugins {
 	id 'java'
 	id "org.openapi.generator" version "5.1.0"
 }
-
 group = 'com.javajo'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+
+// DOMA関係
+apply plugin: 'java'
+
+// JavaクラスとSQLファイルの出力先ディレクトリを同じにする
+processResources.destinationDir = compileJava.destinationDir
+// コンパイルより前にSQLファイルを出力先ディレクトリにコピーするために依存関係を逆転する
+compileJava.dependsOn processResources
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
+	compile "org.seasar.doma:doma:2.4.1"
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
