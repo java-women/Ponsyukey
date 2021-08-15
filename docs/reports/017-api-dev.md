@@ -110,6 +110,12 @@
     - Ponsyukey/src/main/java/javajo/ponsyukey/database/entity/SakeBrewery.java  
     https://github.com/java-women/Ponsyukey/tree/master/src/main/java/javajo/ponsyukey/database/entity/SakeBrewery.java  
 
+    エンティティ項目の国や都道府県を表す Countory.java や Prefecture.java も併せて新設します。
+    - Ponsyukey/src/main/java/javajo/ponsyukey/database/entity/Country.java  
+    https://github.com/java-women/Ponsyukey/blob/master/src/main/java/javajo/ponsyukey/database/entity/Country.java
+    - Ponsyukey/src/main/java/javajo/ponsyukey/database/entity/Prefecture.java  
+    https://github.com/java-women/Ponsyukey/blob/master/src/main/java/javajo/ponsyukey/database/entity/Prefecture.java
+
 
 - **エンティティ結合アーキテクチャとして、ORマッパ上の Application Join を採用します。**  
   - 採用理由  
@@ -120,8 +126,16 @@
 
 ## 今回の成果
 
+- Ponsyukey プロジェクトに DOMA ORマッパーを導入
+- Ssake と SakeBrewer の Entity を新規追加
+  - DAO については、先行して仮作成にチャレンジしました。
 
 ## next action(タスク洗い出し)
 
+- DOMA ORマッパーで、DAO自動生成を行う。
+
 
 ## 議事録作成者の感想ひとこと
+- ３ヶ月くらいサボっていたら、どんどん進んでて焦った。
+- 有識者の方々へのお願い。  
+Gradle 周りの設定やビルド実行については、記述に間違いがないかチェックをお願いいたします。
