@@ -3,14 +3,14 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
 	id "org.openapi.generator" version "5.1.0"
+	id 'application'
 }
 group = 'com.javajo'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+mainClassName = 'javajo.ponsyukey.PonsyukeyApplication'
 
 // DOMA関係
-apply plugin: 'java'
-
 // JavaクラスとSQLファイルの出力先ディレクトリを同じにする
 processResources.destinationDir = compileJava.destinationDir
 // コンパイルより前にSQLファイルを出力先ディレクトリにコピーするために依存関係を逆転する
