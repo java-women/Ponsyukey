@@ -1,0 +1,13 @@
+version: "3"
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-CU6-ubuntu-16.04
+    container_name: mssql-test
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=V}Q{kA*"zJlbuymS
+      - MSSQL_PID=Express
+      - MSSQL_LCID=1041
+      - MSSQL_COLLATION=Japanese_CI_AS

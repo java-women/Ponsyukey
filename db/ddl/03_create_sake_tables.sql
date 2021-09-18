@@ -3,6 +3,8 @@
     create taste table
     create taste_map table (sake, tasteへの外部キーを設定する)
 */
+USE ponsyukey;
+GO
 
 CREATE TABLE sake
 (
@@ -41,6 +43,7 @@ EXEC sys.sp_addextendedproperty
     @name=N'MS_Description', @value=N'精米歩合（パーセント）',
     @level0type=N'SCHEMA', @level0name=N'ponsyukey', @level1type=N'TABLE', @level1name=N'sake',
     @level2type=N'COLUMN', @level2name=N'polishing_ratio';
+GO
 
 CREATE TABLE taste
 (
@@ -48,6 +51,7 @@ CREATE TABLE taste
     value           varchar(100)
 );
 ALTER TABLE taste ADD CONSTRAINT pk_taste_id PRIMARY KEY CLUSTERED (id);
+GO
 
 CREATE TABLE taste_map
 (
@@ -67,3 +71,4 @@ ALTER TABLE taste_map ADD CONSTRAINT fk_taste_map_taste FOREIGN KEY (taste_id)
     ON DELETE CASCADE
     ON UPDATE CASCADE
 ;
+GO

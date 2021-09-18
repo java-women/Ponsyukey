@@ -4,6 +4,8 @@
     create region table (country, prefectureへの外部キーを設定する)
     create brewery table (regionへの外部キーを設定する)
 */
+USE ponsyukey;
+GO
 
 CREATE TABLE country
 (
@@ -11,6 +13,7 @@ CREATE TABLE country
     name            varchar(100)    NOT NULL
 );
 ALTER TABLE country ADD CONSTRAINT pk_country_id PRIMARY KEY CLUSTERED (id);
+GO
 
 CREATE TABLE prefecture
 (
@@ -24,6 +27,7 @@ EXEC sys.sp_addextendedproperty
     @level1type=N'TABLE',  @level1name=N'prefecture',
     @level2type=N'COLUMN',  @level2name=N'name'
 ;
+GO
 
 CREATE TABLE region
 (
@@ -50,6 +54,7 @@ EXEC sys.sp_addextendedproperty
     @level1type=N'TABLE',  @level1name=N'region',
     @level2type=N'COLUMN',  @level2name=N'prefecture_id'
 ;
+GO
 
 CREATE TABLE brewery
 (
@@ -70,3 +75,4 @@ EXEC sys.sp_addextendedproperty
     @level1type=N'TABLE',  @level1name=N'brewery',
     @level2type=N'COLUMN',  @level2name=N'id'
 ;
+GO
