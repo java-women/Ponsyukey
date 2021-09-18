@@ -18,6 +18,8 @@ public class SakeService {
     }
 
     public SakeResponse getSakeResponse() {
+        // こんな感じで使えますという雰囲気のサンプル↓ (改修時に消してください)
+        sakeDao.selectById("29892458-f103-89d5-a724-72f789e16e3b");
         return new SakeResponse();
     }
 }

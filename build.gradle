@@ -52,6 +52,9 @@ dependencies {
 	annotationProcessor "org.seasar.doma:doma:2.20.0"
 	// domaへの依存を示す
 	implementation "org.seasar.doma:doma:2.20.0"
+	implementation "org.seasar.doma.boot:doma-spring-boot-starter:1.5.0"
+	// SQL ServerのJDBCドライバーを使えるようにする
+	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
 
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
