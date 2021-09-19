@@ -21,5 +21,15 @@ public class SakeBreweryEntity {
     /** リージョンID (国×都道府県) */
     Integer regionId;
 
+    public String getId() {
+        return id;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public Integer getRegionId() {
+        return regionId;
+    }
 }
