@@ -16,4 +16,11 @@ public class CountryEntity {
     /** 国名 */
     String name;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

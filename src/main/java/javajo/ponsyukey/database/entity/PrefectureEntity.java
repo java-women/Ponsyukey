@@ -11,4 +11,12 @@ public class PrefectureEntity {
 
     /** 都道府県名 */
     String name;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
