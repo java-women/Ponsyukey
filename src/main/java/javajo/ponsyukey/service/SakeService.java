@@ -1,6 +1,7 @@
 package javajo.ponsyukey.service;
 
 import javajo.ponsyukey.database.dao.SakeDao;
+import javajo.ponsyukey.model.Sake;
 import javajo.ponsyukey.model.SakeResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,9 +18,10 @@ public class SakeService {
         this.sakeDao = sakeDao;
     }
 
-    public SakeResponse getSakeResponse() {
-        // こんな感じで使えますという雰囲気のサンプル↓ (改修時に消してください)
-        sakeDao.selectById("29892458-f103-89d5-a724-72f789e16e3b");
-        return new SakeResponse();
+    public SakeResponse getSakeResponse(String sakeId) {
+
+
+
+        return new SakeResponse().resultCode().sake();
     }
 }

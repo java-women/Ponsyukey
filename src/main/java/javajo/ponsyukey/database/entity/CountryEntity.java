@@ -7,7 +7,7 @@ import org.seasar.doma.Id;
  * 国情報Entity
  */
 @Entity
-public class Country {
+public class CountryEntity {
 
     /** 国ID */
     @Id

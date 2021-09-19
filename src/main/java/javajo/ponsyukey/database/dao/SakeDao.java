@@ -1,6 +1,6 @@
 package javajo.ponsyukey.database.dao;
 
-import javajo.ponsyukey.database.entity.Sake;
+import javajo.ponsyukey.database.entity.SakeEntity;
 import org.seasar.doma.Dao;
 import org.seasar.doma.Select;
 import org.seasar.doma.boot.ConfigAutowireable;
@@ -10,5 +10,5 @@ import org.seasar.doma.boot.ConfigAutowireable;
 public interface SakeDao {
 
     @Select
-    Sake selectById(String id);
+    SakeEntity selectById(String id);
 }

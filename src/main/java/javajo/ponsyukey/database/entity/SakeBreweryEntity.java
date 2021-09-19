@@ -9,7 +9,7 @@ import java.util.Optional;
  * 酒醸造所entity
  */
 @Entity
-public class SakeBrewery {
+public class SakeBreweryEntity {
 
     /** 醸造所ID */
     @Id

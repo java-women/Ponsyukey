@@ -7,7 +7,7 @@ import org.seasar.doma.Id;
 import java.util.Optional;
 
 @Entity
-public class Sake {
+public class SakeEntity {
     /** id: 酒ID UUID, アプリで生成する */
     @Id
     String id;  // 自動生成はされない
@@ -34,5 +34,37 @@ public class Sake {
 
     /** description: 味情報は固定カラムを持たずに、自由入力 */
     Optional<String> description;
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Optional<String> getImage() {
+        return image;
+    }
+
+    public String getBreweryId() {
+        return breweryId;
+    }
+
+    public Optional<Float> getAlcohol() {
+        return alcohol;
+    }
+
+    public Optional<Float> getPolishingRatio() {
+        return polishingRatio;
+    }
+
+    public Optional<String> getType() {
+        return type;
+    }
+
+    public Optional<String> getDescription() {
+        return description;
+    }
 
 }

@@ -4,7 +4,7 @@ import org.seasar.doma.Entity;
 import org.seasar.doma.Id;
 
 @Entity
-public class Prefecture {
+public class PrefectureEntity {
     /** 都道府県ID(海外の場合は「海外(48)」を選択 */
     @Id
     Integer id;
