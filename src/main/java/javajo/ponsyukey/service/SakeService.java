@@ -21,7 +21,6 @@ public class SakeService {
     public SakeResponse getSakeResponse(String sakeId) {
 
 
-
         return new SakeResponse().resultCode().sake();
     }
 }
