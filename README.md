@@ -1,16 +1,19 @@
-現状と理想
+## 必要なもの
+- Java 11
+- Dockerクライアント ([Mac](https://docs.docker.com/desktop/mac/install/), [Windows](https://docs.docker.com/desktop/windows/install/))
 
-- ローカルでのDB立ち上げ
+## ローカルでのDB立ち上げ
+セットアップ用シェルスクリプトを実行してください。Docker上でSQL Serverが立ち上がり、DDLが適用されます。
 ```shell
-docker-compose up
-```
-FYI 上記にて立ち上がるDBへのログインの仕方
-```shell
-docker exec -it mssql-test /opt/mssql-tools/bin/sqlcmd -U sa -P 'V}Q{kA*"zJlbuymS'
+./setup/setup.sh
 ```
 
-- TODO(要相談): データを効率よく適用する方法どうする？ [Flyway](https://flywaydb.org/) のようなマイグレーションツールを入れてよい？
-- アプリの実行
+DBを落とすには以下を実行してください。なお、登録したデータは消えるので要注意！
+```shell
+docker-compose down
+```
+
+## アプリの実行
 ```shell
 ./gradlew bootRun
 ```
