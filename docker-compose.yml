@@ -16,4 +16,4 @@ services:
       - MSSQL_PID=Express
       - MSSQL_LCID=1041
       - MSSQL_COLLATION=Japanese_CI_AS
-    entrypoint: /bin/bash -c "/setup/setup.sh & /opt/mssql/bin/sqlservr"
+    command: /bin/bash -c "/setup/setup.sh & /opt/mssql/bin/sqlservr"
