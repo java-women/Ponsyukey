@@ -9,9 +9,11 @@ services:
     ports:
       - "1433:1433"
     environment:
+      - MSSQL_USER=sa
+      - MSSQL_PASSWORD=V}Q{kA*"zJlbuymS
       - ACCEPT_EULA=Y
       - SA_PASSWORD=V}Q{kA*"zJlbuymS
       - MSSQL_PID=Express
       - MSSQL_LCID=1041
       - MSSQL_COLLATION=Japanese_CI_AS
-    entrypoint: ["/bin/bash", "/setup/setup.sh"]
+    entrypoint: /bin/bash -c "/setup/setup.sh & /opt/mssql/bin/sqlservr"

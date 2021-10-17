@@ -1,11 +1,16 @@
 #!/bin/bash
 set -e
 
-# SQL Serverを起動する
-/opt/mssql/bin/sqlservr
-
-MSSQL_USER='sa'
-MSSQL_PASSWORD='V}Q{kA*"zJlbuymS'
+# SQL Serverの起動待機(荒業)
+# 3秒に1度SQLを投げてみて正常実行されるようになるのを待つ
+while :
+do
+  sleep 3
+  /opt/mssql-tools/bin/sqlcmd -U $MSSQL_USER -P $MSSQL_PASSWORD -Q "select top 1 name from SYS.DATABASES;" > /dev/null || {
+    continue
+  }
+  break
+done
 
 echo === DDLを適用する ===
 # データベースを作成
