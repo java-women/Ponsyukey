@@ -19,6 +19,8 @@
 - 前回のおさらい
 - 今日やること
   - DDLをShellでまとめて実行できるようにする！
+    - よこなさんが作ってくれたShellを実行してみる！
+      - https://github.com/java-women/Ponsyukey/pull/24
   - local環境のDockerでSQL Serverを起動してみる！
   - アプリケーションからSQL Serverにアクセスしてみる！
 
