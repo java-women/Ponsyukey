@@ -6,6 +6,7 @@
 package javajo.ponsyukey.controller;
 
 import javajo.ponsyukey.model.CreateSake;
+import javajo.ponsyukey.model.Error;
 import javajo.ponsyukey.model.SakeResponse;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-12-19T16:18:45.255431400+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-12-19T16:53:27.171759500+09:00[Asia/Tokyo]")
 @Validated
 @Api(value = "sake", description = "the sake API")
 public interface SakeApi {
@@ -42,8 +43,8 @@ public interface SakeApi {
     @ApiOperation(value = "酒情報登録API", nickname = "createSake", notes = "", response = Object.class, tags={ "sake", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Object.class),
-        @ApiResponse(code = 400, message = "http ステータスコード 400 error"),
-        @ApiResponse(code = 500, message = "http ステータスコード 500 error") })
+        @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
+        @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
     @PostMapping(
         value = "/sake",
         produces = { "application/json" },
@@ -67,8 +68,8 @@ public interface SakeApi {
     @ApiOperation(value = "酒情報一覧取得API", nickname = "getSake", notes = "", response = Object.class, tags={ "sake", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Object.class),
-        @ApiResponse(code = 400, message = "http ステータスコード 400 error"),
-        @ApiResponse(code = 500, message = "http ステータスコード 500 error") })
+        @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
+        @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
     @GetMapping(
         value = "/sake",
         produces = { "application/json" }
@@ -90,8 +91,8 @@ public interface SakeApi {
     @ApiOperation(value = "酒情報取得API", nickname = "getSakeDetail", notes = "", response = SakeResponse.class, tags={ "sake", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = SakeResponse.class),
-        @ApiResponse(code = 400, message = "http ステータスコード 400 error"),
-        @ApiResponse(code = 500, message = "http ステータスコード 500 error") })
+        @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
+        @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
     @GetMapping(
         value = "/sake/{sakeId}",
         produces = { "application/json" }
@@ -100,7 +101,7 @@ public interface SakeApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"error\" : { \"message\" : \"message\" }, \"sake\" : { \"alcohol\" : 0.8008282, \"image\" : \"image\", \"polishingRatio\" : 6.0274563, \"taste\" : [ \"taste\", \"taste\" ], \"name\" : \"name\", \"brewery\" : { \"prefecture\" : \"prefecture\", \"name\" : \"name\" }, \"description\" : \"description\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"type\" : \"type\" } }";
+                    String exampleString = "{ \"sake\" : { \"alcohol\" : 0.8008282, \"image\" : \"image\", \"polishingRatio\" : 6.0274563, \"taste\" : [ \"taste\", \"taste\" ], \"name\" : \"name\", \"brewery\" : { \"prefecture\" : \"prefecture\", \"name\" : \"name\" }, \"description\" : \"description\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"type\" : \"type\" } }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

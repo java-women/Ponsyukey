@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import javajo.ponsyukey.model.Error;
 import javajo.ponsyukey.model.Sake;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -13,34 +12,10 @@ import javax.validation.constraints.*;
 /**
  * SakeResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-12-19T16:18:45.255431400+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-12-19T16:53:27.171759500+09:00[Asia/Tokyo]")
 public class SakeResponse   {
-  @JsonProperty("error")
-  private Error error;
-
   @JsonProperty("sake")
   private Sake sake;
-
-  public SakeResponse error(Error error) {
-    this.error = error;
-    return this;
-  }
-
-  /**
-   * Get error
-   * @return error
-  */
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public Error getError() {
-    return error;
-  }
-
-  public void setError(Error error) {
-    this.error = error;
-  }
 
   public SakeResponse sake(Sake sake) {
     this.sake = sake;
@@ -73,13 +48,12 @@ public class SakeResponse   {
       return false;
     }
     SakeResponse sakeResponse = (SakeResponse) o;
-    return Objects.equals(this.error, sakeResponse.error) &&
-        Objects.equals(this.sake, sakeResponse.sake);
+    return Objects.equals(this.sake, sakeResponse.sake);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(error, sake);
+    return Objects.hash(sake);
   }
 
   @Override
@@ -87,7 +61,6 @@ public class SakeResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SakeResponse {\n");
     
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    sake: ").append(toIndentedString(sake)).append("\n");
     sb.append("}");
     return sb.toString();

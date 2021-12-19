@@ -25,12 +25,12 @@ public class SakeService {
      * @return お酒詳細情報一式
      */
     public SakeResponse getSakeResponse(String sakeId) {
+        //TODO バリデーションエラーの場合はerrorオブジェクトを返却する
+
         //酒IDに紐づく酒情報を取得する
         Sake sake = sakeRepository.getSake(sakeId);
 
         return new SakeResponse()
-//                .resultCode()
-//                .sake(sake)
-                ;
+                .sake(sake);
     }
 }

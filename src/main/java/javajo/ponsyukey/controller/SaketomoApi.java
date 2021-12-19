@@ -6,6 +6,7 @@
 package javajo.ponsyukey.controller;
 
 import javajo.ponsyukey.model.CreateSaketomo;
+import javajo.ponsyukey.model.Error;
 import javajo.ponsyukey.model.SaketomoWithAuth;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-12-19T16:18:45.255431400+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-12-19T16:53:27.171759500+09:00[Asia/Tokyo]")
 @Validated
 @Api(value = "saketomo", description = "the saketomo API")
 public interface SaketomoApi {
@@ -42,8 +43,8 @@ public interface SaketomoApi {
     @ApiOperation(value = "会員登録API", nickname = "createSaketomo", notes = "", response = Object.class, tags={ "saketomo", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Object.class),
-        @ApiResponse(code = 400, message = "http ステータスコード 400 error"),
-        @ApiResponse(code = 500, message = "http ステータスコード 500 error") })
+        @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
+        @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
     @PostMapping(
         value = "/saketomo",
         produces = { "application/json" },
@@ -66,8 +67,8 @@ public interface SaketomoApi {
     @ApiOperation(value = "会員情報取得API", nickname = "getSaketomo", notes = "", response = Object.class, tags={ "saketomo", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Object.class),
-        @ApiResponse(code = 400, message = "http ステータスコード 400 error"),
-        @ApiResponse(code = 500, message = "http ステータスコード 500 error") })
+        @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
+        @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
     @GetMapping(
         value = "/saketomo/{saketomoId}",
         produces = { "application/json" }
@@ -90,8 +91,8 @@ public interface SaketomoApi {
     @ApiOperation(value = "会員編集API", nickname = "updateSaketomo", notes = "", response = Object.class, tags={ "saketomo", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Object.class),
-        @ApiResponse(code = 400, message = "http ステータスコード 400 error"),
-        @ApiResponse(code = 500, message = "http ステータスコード 500 error") })
+        @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
+        @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
     @PostMapping(
         value = "/saketomo/{saketomoId}",
         produces = { "application/json" },

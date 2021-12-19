@@ -7,6 +7,7 @@ package javajo.ponsyukey.controller;
 
 import javajo.ponsyukey.model.CreateReview;
 import javajo.ponsyukey.model.DeleteReview;
+import javajo.ponsyukey.model.Error;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,7 +23,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-12-19T16:18:45.255431400+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-12-19T16:53:27.171759500+09:00[Asia/Tokyo]")
 @Validated
 @Api(value = "review", description = "the review API")
 public interface ReviewApi {
@@ -42,8 +43,8 @@ public interface ReviewApi {
     @ApiOperation(value = "口コミ情報登録API", nickname = "createReview", notes = "", response = Object.class, tags={ "review", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Object.class),
-        @ApiResponse(code = 400, message = "http ステータスコード 400 error"),
-        @ApiResponse(code = 500, message = "http ステータスコード 500 error") })
+        @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
+        @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
     @PostMapping(
         value = "/review",
         produces = { "application/json" },
@@ -64,17 +65,17 @@ public interface ReviewApi {
      *         or http ステータスコード 400 error (status code 400)
      *         or http ステータスコード 500 error (status code 500)
      */
-    @ApiOperation(value = "口コミ情報削除API", nickname = "deleteReview", notes = "", response = Object.class, tags={ "review", })
+    @ApiOperation(value = "口コミ情報削除API", nickname = "deleteReview", notes = "", tags={ "review", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Object.class),
-        @ApiResponse(code = 400, message = "http ステータスコード 400 error"),
-        @ApiResponse(code = 500, message = "http ステータスコード 500 error") })
+        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする"),
+        @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
+        @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
     @PostMapping(
         value = "/review/{reviewId}",
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<Object> deleteReview(@ApiParam(value = "",required=true) @PathVariable("reviewId") String reviewId,@ApiParam(value = "口コミ情報削除に必要な情報" ,required=true )  @Valid @RequestBody DeleteReview deleteReview) {
+    default ResponseEntity<Void> deleteReview(@ApiParam(value = "",required=true) @PathVariable("reviewId") String reviewId,@ApiParam(value = "口コミ情報削除に必要な情報" ,required=true )  @Valid @RequestBody DeleteReview deleteReview) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -94,8 +95,8 @@ public interface ReviewApi {
     @ApiOperation(value = "口コミ情報取得API.", nickname = "getReview", notes = "必ず日付順（降順）でソートされる", response = Object.class, tags={ "review", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Object.class),
-        @ApiResponse(code = 400, message = "http ステータスコード 400 error"),
-        @ApiResponse(code = 500, message = "http ステータスコード 500 error") })
+        @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
+        @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
     @GetMapping(
         value = "/review",
         produces = { "application/json" }

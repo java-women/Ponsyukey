@@ -42,14 +42,20 @@ paths:
             application/json:
               schema:
                 properties:
-                  error:
-                    $ref: '#/components/schemas/error'
                   saketomo:
                     $ref: '#/components/schemas/saketomo'
         400:
           description: http ステータスコード 400 error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
         500:
           description: http ステータスコード 500 error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
 
   /saketomo/{saketomoId}:
     get:
@@ -70,14 +76,20 @@ paths:
             application/json:
               schema:
                 properties:
-                  error:
-                    $ref: '#/components/schemas/error'
                   saketomo:
                     $ref: '#/components/schemas/saketomo'
         400:
           description: http ステータスコード 400 error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
         500:
           description: http ステータスコード 500 error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
 
     post:
       tags:
@@ -104,14 +116,20 @@ paths:
             application/json:
               schema:
                 properties:
-                  error:
-                    $ref: '#/components/schemas/error'
                   saketomo:
                     $ref: '#/components/schemas/saketomo'
         400:
           description: http ステータスコード 400 error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
         500:
           description: http ステータスコード 500 error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
 
 
   /sake:
@@ -138,8 +156,6 @@ paths:
             application/json:
               schema:
                 properties:
-                  error:
-                    $ref: '#/components/schemas/error'
                   totalCount:
                     type: integer
                   sake:
@@ -148,8 +164,16 @@ paths:
                       $ref: '#/components/schemas/sake'
         400:
           description: http ステータスコード 400 error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
         500:
           description: http ステータスコード 500 error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
 
     post:
       tags:
@@ -171,14 +195,20 @@ paths:
             application/json:
               schema:
                 properties:
-                  error:
-                    $ref: '#/components/schemas/error'
                   sake:
                     $ref: '#/components/schemas/sake'
         400:
           description: http ステータスコード 400 error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
         500:
           description: http ステータスコード 500 error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
 
 
   /sake/{sakeId}:
@@ -202,8 +232,16 @@ paths:
                 $ref: '#/components/schemas/sakeResponse'
         400:
           description: http ステータスコード 400 error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
         500:
           description: http ステータスコード 500 error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
 
   /review:
     get:
@@ -234,16 +272,22 @@ paths:
             application/json:
               schema:
                 properties:
-                  error:
-                    $ref: '#/components/schemas/error'
                   review:
                     type: array
                     items:
                       $ref: '#/components/schemas/review'
         400:
           description: http ステータスコード 400 error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
         500:
           description: http ステータスコード 500 error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
 
     post:
       tags:
@@ -265,16 +309,22 @@ paths:
             application/json:
               schema:
                 properties:
-                  error:
-                    $ref: '#/components/schemas/error'
                   review:
                     type: array
                     items:
                       $ref: '#/components/schemas/review'
         400:
           description: http ステータスコード 400 error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
         500:
           description: http ステータスコード 500 error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
 
 
   /review/{reviewId}:
@@ -299,16 +349,18 @@ paths:
       responses:
         200:
           description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
+        400:
+          description: http ステータスコード 400 error
           content:
             application/json:
               schema:
-                properties:
-                  error:
-                    $ref: '#/components/schemas/error'
-        400:
-          description: http ステータスコード 400 error
+                $ref: '#/components/schemas/error'
         500:
           description: http ステータスコード 500 error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
 
 
 components:
@@ -523,7 +575,6 @@ components:
     sakeResponse:
       type: object
       properties:
-        error:
-          $ref: '#/components/schemas/error'
         sake:
           $ref: '#/components/schemas/sake'
+
