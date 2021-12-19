@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import javajo.ponsyukey.model.Error;
 import javajo.ponsyukey.model.Sake;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -12,32 +13,33 @@ import javax.validation.constraints.*;
 /**
  * SakeResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-16T15:18:54.213477800+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-12-19T16:18:45.255431400+09:00[Asia/Tokyo]")
 public class SakeResponse   {
-  @JsonProperty("resultCode")
-  private String resultCode;
+  @JsonProperty("error")
+  private Error error;
 
   @JsonProperty("sake")
   private Sake sake;
 
-  public SakeResponse resultCode(String resultCode) {
-    this.resultCode = resultCode;
+  public SakeResponse error(Error error) {
+    this.error = error;
     return this;
   }
 
   /**
-   * Get resultCode
-   * @return resultCode
+   * Get error
+   * @return error
   */
   @ApiModelProperty(value = "")
 
+  @Valid
 
-  public String getResultCode() {
-    return resultCode;
+  public Error getError() {
+    return error;
   }
 
-  public void setResultCode(String resultCode) {
-    this.resultCode = resultCode;
+  public void setError(Error error) {
+    this.error = error;
   }
 
   public SakeResponse sake(Sake sake) {
@@ -71,13 +73,13 @@ public class SakeResponse   {
       return false;
     }
     SakeResponse sakeResponse = (SakeResponse) o;
-    return Objects.equals(this.resultCode, sakeResponse.resultCode) &&
+    return Objects.equals(this.error, sakeResponse.error) &&
         Objects.equals(this.sake, sakeResponse.sake);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(resultCode, sake);
+    return Objects.hash(error, sake);
   }
 
   @Override
@@ -85,7 +87,7 @@ public class SakeResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SakeResponse {\n");
     
-    sb.append("    resultCode: ").append(toIndentedString(resultCode)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    sake: ").append(toIndentedString(sake)).append("\n");
     sb.append("}");
     return sb.toString();

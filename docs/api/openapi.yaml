@@ -42,8 +42,8 @@ paths:
             application/json:
               schema:
                 properties:
-                  resultCode:
-                    type: string
+                  error:
+                    $ref: '#/components/schemas/error'
                   saketomo:
                     $ref: '#/components/schemas/saketomo'
         400:
@@ -70,8 +70,8 @@ paths:
             application/json:
               schema:
                 properties:
-                  resultCode:
-                    type: string
+                  error:
+                    $ref: '#/components/schemas/error'
                   saketomo:
                     $ref: '#/components/schemas/saketomo'
         400:
@@ -104,8 +104,8 @@ paths:
             application/json:
               schema:
                 properties:
-                  resultCode:
-                    type: string
+                  error:
+                    $ref: '#/components/schemas/error'
                   saketomo:
                     $ref: '#/components/schemas/saketomo'
         400:
@@ -138,8 +138,8 @@ paths:
             application/json:
               schema:
                 properties:
-                  resultCode:
-                    type: string
+                  error:
+                    $ref: '#/components/schemas/error'
                   totalCount:
                     type: integer
                   sake:
@@ -171,8 +171,8 @@ paths:
             application/json:
               schema:
                 properties:
-                  resultCode:
-                    type: string
+                  error:
+                    $ref: '#/components/schemas/error'
                   sake:
                     $ref: '#/components/schemas/sake'
         400:
@@ -234,8 +234,8 @@ paths:
             application/json:
               schema:
                 properties:
-                  resultCode:
-                    type: string
+                  error:
+                    $ref: '#/components/schemas/error'
                   review:
                     type: array
                     items:
@@ -265,8 +265,8 @@ paths:
             application/json:
               schema:
                 properties:
-                  resultCode:
-                    type: string
+                  error:
+                    $ref: '#/components/schemas/error'
                   review:
                     type: array
                     items:
@@ -303,8 +303,8 @@ paths:
             application/json:
               schema:
                 properties:
-                  resultCode:
-                    type: string
+                  error:
+                    $ref: '#/components/schemas/error'
         400:
           description: http ステータスコード 400 error
         500:
@@ -313,6 +313,14 @@ paths:
 
 components:
   schemas:
+    error:
+      type: object
+      description: OKの場合は値を返却しない
+      properties:
+        message:
+          type: string
+          description: 画面表示用エラーメッセージ
+
     auth:
       type: object
       properties:
@@ -515,7 +523,7 @@ components:
     sakeResponse:
       type: object
       properties:
-        resultCode:
-          type: string
+        error:
+          $ref: '#/components/schemas/error'
         sake:
           $ref: '#/components/schemas/sake'

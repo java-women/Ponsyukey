@@ -22,7 +22,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-16T15:18:54.213477800+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-12-19T16:18:45.255431400+09:00[Asia/Tokyo]")
 @Validated
 @Api(value = "sake", description = "the sake API")
 public interface SakeApi {
@@ -100,7 +100,7 @@ public interface SakeApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"resultCode\" : \"resultCode\", \"sake\" : { \"alcohol\" : 0.8008282, \"image\" : \"image\", \"polishingRatio\" : 6.0274563, \"taste\" : [ \"taste\", \"taste\" ], \"name\" : \"name\", \"brewery\" : { \"prefecture\" : \"prefecture\", \"name\" : \"name\" }, \"description\" : \"description\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"type\" : \"type\" } }";
+                    String exampleString = "{ \"error\" : { \"message\" : \"message\" }, \"sake\" : { \"alcohol\" : 0.8008282, \"image\" : \"image\", \"polishingRatio\" : 6.0274563, \"taste\" : [ \"taste\", \"taste\" ], \"name\" : \"name\", \"brewery\" : { \"prefecture\" : \"prefecture\", \"name\" : \"name\" }, \"description\" : \"description\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"type\" : \"type\" } }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

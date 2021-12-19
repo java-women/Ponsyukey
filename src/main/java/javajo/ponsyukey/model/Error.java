@@ -9,54 +9,32 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * SakeBrewery
+ * OKの場合は値を返却しない
  */
+@ApiModel(description = "OKの場合は値を返却しない")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-12-19T16:18:45.255431400+09:00[Asia/Tokyo]")
-public class SakeBrewery   {
-  @JsonProperty("name")
-  private String name;
+public class Error   {
+  @JsonProperty("message")
+  private String message;
 
-  @JsonProperty("prefecture")
-  private String prefecture;
-
-  public SakeBrewery name(String name) {
-    this.name = name;
+  public Error message(String message) {
+    this.message = message;
     return this;
   }
 
   /**
-   * Get name
-   * @return name
+   * 画面表示用エラーメッセージ
+   * @return message
   */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "画面表示用エラーメッセージ")
 
 
-  public String getName() {
-    return name;
+  public String getMessage() {
+    return message;
   }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public SakeBrewery prefecture(String prefecture) {
-    this.prefecture = prefecture;
-    return this;
-  }
-
-  /**
-   * Get prefecture
-   * @return prefecture
-  */
-  @ApiModelProperty(value = "")
-
-
-  public String getPrefecture() {
-    return prefecture;
-  }
-
-  public void setPrefecture(String prefecture) {
-    this.prefecture = prefecture;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
 
@@ -68,23 +46,21 @@ public class SakeBrewery   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SakeBrewery sakeBrewery = (SakeBrewery) o;
-    return Objects.equals(this.name, sakeBrewery.name) &&
-        Objects.equals(this.prefecture, sakeBrewery.prefecture);
+    Error error = (Error) o;
+    return Objects.equals(this.message, error.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, prefecture);
+    return Objects.hash(message);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SakeBrewery {\n");
+    sb.append("class Error {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    prefecture: ").append(toIndentedString(prefecture)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }
