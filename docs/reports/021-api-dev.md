@@ -18,6 +18,8 @@
   - 2022年の目標
 - 前回のおさらい
 - 今日やること
+  - https://github.com/java-women/Ponsyukey/issues/26
+  - log4j一応確認しておく？
   - getSakeDetail APIのException Handlerを完成させ、テストを通す
   - 他のAPIたちの実装に入る
   - 今後の進行方法を見直す議論する
