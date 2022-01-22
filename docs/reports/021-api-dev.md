@@ -6,6 +6,13 @@
 maaya
 
 ## 参加者(敬称略)
+- aya
+- mutsumi
+- yokona
+- robo
+- natsuki
+- yu-ki
+- mii
 
 
 ## 議題にしたいこと or 前回の next action
