@@ -1,46 +1,53 @@
 plugins {
-	id 'org.springframework.boot' version '2.3.1.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-	id 'java'
-	id "org.openapi.generator" version "5.1.0"
-	id 'application'
+	id "org.springframework.boot" version "$orgSpringframeworkBoot"
+	id "io.spring.dependency-management" version "$ioSpringDependencyManagement"
+	id "java"
+	id "org.openapi.generator" version "$orgOpenapiGenerator"
+	id "application"
 }
-group = 'com.javajo'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
-mainClassName = 'javajo.ponsyukey.PonsyukeyApplication'
+
+group = "com.javajo"
+version = "0.0.1-SNAPSHOT"
+sourceCompatibility = "11"
+mainClassName = "javajo.ponsyukey.PonsyukeyApplication"
 
 // DOMA関係
-// JavaクラスとSQLファイルの出力先ディレクトリを同じにする
-processResources.destinationDir = compileJava.destinationDir
-// コンパイルより前にSQLファイルを出力先ディレクトリにコピーするために依存関係を逆転する
-compileJava.dependsOn processResources
 // テンポラリディレクトリのパスを定義する
 ext.domaResourcesDir = "${buildDir}/tmp/doma-resources"
 // domaが注釈処理で参照するリソースをテンポラリディレクトリに抽出
 task extractDomaResources(type: Copy, dependsOn: processResources)  {
 	from processResources.destinationDir
-	include 'doma.compile.config'
-	include 'META-INF/**/*.sql'
-	include 'META-INF/**/*.script'
+	include "doma.compile.config"
+	include "META-INF/**/*.sql"
+	include "META-INF/**/*.script"
 	into domaResourcesDir
 }
+
 // テンポラリディレクトリ内のリソースをcompileJavaタスクの出力先ディレクトリにコピーする
 task copyDomaResources(type: Copy, dependsOn: extractDomaResources)  {
 	from domaResourcesDir
-	into compileJava.destinationDir
+	into compileJava.destinationDirectory.getAsFile().orNull
 }
+
+bootJar {
+	duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+jar {
+	duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
 compileJava {
 	// 上述のタスクに依存させる
   dependsOn copyDomaResources
-	// テンポラリディレクトリをcompileJavaタスクの入力ディレクトリに設定する
-	inputs.dir domaResourcesDir
-	options.encoding = 'UTF-8'
+//	// テンポラリディレクトリをcompileJavaタスクの入力ディレクトリに設定する
+//	inputs.dir domaResourcesDir
+	options.encoding = "UTF-8"
 }
 compileTestJava {
-	options.encoding = 'UTF-8'
+	options.encoding = "UTF-8"
 	// テストの実行時は注釈処理を無効にする
-	options.compilerArgs = ['-proc:none']
+	options.compilerArgs = ["-proc:none"]
 }
 
 repositories {
@@ -48,30 +55,25 @@ repositories {
 }
 
 dependencies {
-	// domaの注釈処理を実行することを示す
-	annotationProcessor "org.seasar.doma:doma:2.20.0"
 	// domaへの依存を示す
-	implementation "org.seasar.doma:doma:2.20.0"
-	implementation "org.seasar.doma.boot:doma-spring-boot-starter:1.5.0"
+	implementation "org.seasar.doma:doma-core:$orgSeasarDoma"
+	annotationProcessor "org.seasar.doma:doma-processor:$orgSeasarDoma"
+	implementation "org.seasar.doma.boot:doma-spring-boot-starter:$orgSeasarDomaSpringBoot"
+
 	// SQL ServerのJDBCドライバーを使えるようにする
-	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
+	runtimeOnly "com.microsoft.sqlserver:mssql-jdbc:$comMicrosoftSqlserver"
 
-	implementation 'org.springframework.boot:spring-boot-starter'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	implementation "org.springframework.boot:spring-boot-starter:$orgSpringframeworkBoot"
+	testImplementation("org.springframework.boot:spring-boot-starter-test:$orgSpringframeworkBoot") {
+		exclude group: "org.junit.vintage", module: "junit-vintage-engine"
 	}
-	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
-	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.4'
-	// https://mvnrepository.com/artifact/org.springframework.data/spring-data-commons
-	implementation group: 'org.springframework.data', name: 'spring-data-commons', version: '2.4.6'
+	implementation "org.springframework.boot:spring-boot-starter-web:$orgSpringframeworkBoot"
+	implementation "org.springframework.data:spring-data-commons:$orgSpringframeworkData"
 
-	// https://mvnrepository.com/artifact/io.springfox/springfox-spring-web
-	implementation group: 'io.springfox', name: 'springfox-spring-web', version: '2.9.2'
-	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
-	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+	implementation "io.springfox:springfox-spring-web:$ioSpringfox"
+	implementation "io.springfox:springfox-swagger2:$ioSpringfox"
 
-	// https://mvnrepository.com/artifact/javax.validation/validation-api
-	implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+	implementation "javax.validation:validation-api:$javaxValidation"
 }
 
 test {
