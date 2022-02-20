@@ -12,10 +12,6 @@ sourceCompatibility = "11"
 mainClassName = "javajo.ponsyukey.PonsyukeyApplication"
 
 // DOMA関係
-// JavaクラスとSQLファイルの出力先ディレクトリを同じにする
-processResources.destinationDir = compileJava.destinationDir
-// コンパイルより前にSQLファイルを出力先ディレクトリにコピーするために依存関係を逆転する
-compileJava.dependsOn processResources
 // テンポラリディレクトリのパスを定義する
 ext.domaResourcesDir = "${buildDir}/tmp/doma-resources"
 // domaが注釈処理で参照するリソースをテンポラリディレクトリに抽出
@@ -30,13 +26,22 @@ task extractDomaResources(type: Copy, dependsOn: processResources)  {
 // テンポラリディレクトリ内のリソースをcompileJavaタスクの出力先ディレクトリにコピーする
 task copyDomaResources(type: Copy, dependsOn: extractDomaResources)  {
 	from domaResourcesDir
-	into compileJava.destinationDir
+	into compileJava.destinationDirectory.getAsFile().orNull
 }
+
+bootJar {
+	duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+jar {
+	duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
 compileJava {
 	// 上述のタスクに依存させる
   dependsOn copyDomaResources
-	// テンポラリディレクトリをcompileJavaタスクの入力ディレクトリに設定する
-	inputs.dir domaResourcesDir
+//	// テンポラリディレクトリをcompileJavaタスクの入力ディレクトリに設定する
+//	inputs.dir domaResourcesDir
 	options.encoding = "UTF-8"
 }
 compileTestJava {
@@ -50,11 +55,11 @@ repositories {
 }
 
 dependencies {
-	// domaの注釈処理を実行することを示す
-	annotationProcessor "org.seasar.doma:doma:$orgSeasarDoma"
 	// domaへの依存を示す
-	implementation "org.seasar.doma:doma:$orgSeasarDoma"
+	implementation "org.seasar.doma:doma-core:$orgSeasarDoma"
+	annotationProcessor "org.seasar.doma:doma-processor:$orgSeasarDoma"
 	implementation "org.seasar.doma.boot:doma-spring-boot-starter:$orgSeasarDomaSpringBoot"
+
 	// SQL ServerのJDBCドライバーを使えるようにする
 	runtimeOnly "com.microsoft.sqlserver:mssql-jdbc:$comMicrosoftSqlserver"
 
