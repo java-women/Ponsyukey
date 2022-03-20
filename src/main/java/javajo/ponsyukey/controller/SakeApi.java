@@ -5,6 +5,7 @@
  */
 package javajo.ponsyukey.controller;
 
+import javajo.ponsyukey.controller.exception.BadRequestException;
 import javajo.ponsyukey.model.CreateSake;
 import javajo.ponsyukey.model.Error;
 import javajo.ponsyukey.model.SakeResponse;
@@ -15,13 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.NativeWebRequest;
-import org.springframework.web.multipart.MultipartFile;
-import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-12-19T16:53:27.171759500+09:00[Asia/Tokyo]")
 @Validated
@@ -97,7 +94,7 @@ public interface SakeApi {
         value = "/sake/{sakeId}",
         produces = { "application/json" }
     )
-    default ResponseEntity<SakeResponse> getSakeDetail(@ApiParam(value = "",required=true) @PathVariable("sakeId") String sakeId) {
+    default ResponseEntity<SakeResponse> getSakeDetail(@ApiParam(value = "",required=true) @PathVariable("sakeId") String sakeId) throws BadRequestException {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
