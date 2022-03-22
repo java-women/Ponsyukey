@@ -1,6 +1,7 @@
 ## 必要なもの
 - Java 11
-- Dockerクライアント ([Mac](https://docs.docker.com/desktop/mac/install/), [Windows](https://docs.docker.com/desktop/windows/install/))
+- Dockerクライアント ([Mac](https://docs.docker.com/desktop/mac/install/), [Windows](https://docs.docker.com/desktop/windows/install/))  
+(Linuxでは ディストリ別の [Docker engine](https://docs.docker.com/engine/install/) と [compose](https://docs.docker.com/compose/install/#install-compose-on-linux-systems) のインストールが必要です)
 
 ## ローカルでのDB立ち上げ
 下記コマンドを実行してください。Docker上でSQL Serverが立ち上がり、DDLが適用されます。
