@@ -39,7 +39,7 @@ public class SakeApiController implements SakeApi {
     }
 
     @Override
-    public ResponseEntity<SakeResponse> getSakeDetail(String sakeId) throws BadRequestException, InternalServerException {
+    public ResponseEntity<SakeResponse> getSakeDetail(String sakeId) {
 
             SakeResponse sakeResponse = sakeService.getSakeResponse(sakeId);
             return new ResponseEntity<SakeResponse>(sakeResponse, HttpStatus.OK);
