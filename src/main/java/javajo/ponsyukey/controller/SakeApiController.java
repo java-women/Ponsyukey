@@ -31,9 +31,14 @@ public class SakeApiController implements SakeApi {
         return Optional.ofNullable(request);
     }
 
+    /**
+     * 酒情報取得API
+     * sakeIDをkeyにして、1つの酒情報を返却する
+     * @param sakeId  (required) 酒ID
+     * @return 酒IDに対する酒情報
+     */
     @Override
     public ResponseEntity<SakeResponse> getSakeDetail(String sakeId) {
-
             SakeResponse sakeResponse = sakeService.getSakeResponse(sakeId);
             return new ResponseEntity<SakeResponse>(sakeResponse, HttpStatus.OK);
 
