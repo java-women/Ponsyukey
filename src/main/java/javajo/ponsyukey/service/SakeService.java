@@ -1,8 +1,5 @@
 package javajo.ponsyukey.service;
 
-import javajo.ponsyukey.controller.exception.BadRequestException;
-import javajo.ponsyukey.controller.exception.InternalServerException;
-import javajo.ponsyukey.database.dao.SakeDao;
 import javajo.ponsyukey.model.Sake;
 import javajo.ponsyukey.model.SakeResponse;
 import javajo.ponsyukey.repository.SakeRepository;

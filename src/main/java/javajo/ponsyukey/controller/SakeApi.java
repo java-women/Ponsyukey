@@ -5,8 +5,6 @@
  */
 package javajo.ponsyukey.controller;
 
-import javajo.ponsyukey.controller.exception.BadRequestException;
-import javajo.ponsyukey.controller.exception.InternalServerException;
 import javajo.ponsyukey.model.CreateSake;
 import javajo.ponsyukey.model.Error;
 import javajo.ponsyukey.model.SakeResponse;
