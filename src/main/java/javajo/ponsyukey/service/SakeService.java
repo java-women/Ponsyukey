@@ -1,5 +1,7 @@
 package javajo.ponsyukey.service;
 
+import javajo.ponsyukey.controller.exception.BadRequestException;
+import javajo.ponsyukey.controller.exception.InternalServerException;
 import javajo.ponsyukey.database.dao.SakeDao;
 import javajo.ponsyukey.model.Sake;
 import javajo.ponsyukey.model.SakeResponse;
@@ -24,8 +26,8 @@ public class SakeService {
      * @param sakeId 酒ID
      * @return お酒詳細情報一式
      */
-    public SakeResponse getSakeResponse(String sakeId) {
-        //酒IDに紐づく酒情報を取得する
+    public SakeResponse getSakeResponse(String sakeId) throws BadRequestException, InternalServerException {
+        // 酒IDに紐づく酒情報を取得する
         Sake sake = sakeRepository.getSake(sakeId);
 
         return new SakeResponse()

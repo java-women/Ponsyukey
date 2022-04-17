@@ -6,6 +6,7 @@
 package javajo.ponsyukey.controller;
 
 import javajo.ponsyukey.controller.exception.BadRequestException;
+import javajo.ponsyukey.controller.exception.InternalServerException;
 import javajo.ponsyukey.model.CreateSake;
 import javajo.ponsyukey.model.Error;
 import javajo.ponsyukey.model.SakeResponse;
@@ -94,7 +95,7 @@ public interface SakeApi {
         value = "/sake/{sakeId}",
         produces = { "application/json" }
     )
-    default ResponseEntity<SakeResponse> getSakeDetail(@ApiParam(value = "",required=true) @PathVariable("sakeId") String sakeId) throws BadRequestException {
+    default ResponseEntity<SakeResponse> getSakeDetail(@ApiParam(value = "",required=true) @PathVariable("sakeId") String sakeId) throws BadRequestException, InternalServerException {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
