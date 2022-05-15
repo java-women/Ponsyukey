@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 /**
  * Review
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-12-19T16:53:27.171759500+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-05-15T15:59:15.741154700+09:00[Asia/Tokyo]")
 public class Review   {
   @JsonProperty("id")
   private UUID id;

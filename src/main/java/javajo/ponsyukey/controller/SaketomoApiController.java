@@ -1,5 +1,9 @@
 package javajo.ponsyukey.controller;
 
+import io.swagger.annotations.ApiParam;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -21,4 +25,8 @@ public class SaketomoApiController implements SaketomoApi {
         return Optional.ofNullable(request);
     }
 
+    public ResponseEntity<Object> getSaketomo(String saketomoId) {
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
 }

@@ -5,37 +5,37 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.UUID;
+import javajo.ponsyukey.model.Saketomo;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * DeleteReview
+ * SaketomoResponse
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-05-15T15:59:15.741154700+09:00[Asia/Tokyo]")
-public class DeleteReview   {
-  @JsonProperty("saketomoId")
-  private UUID saketomoId;
+public class SaketomoResponse   {
+  @JsonProperty("saketomo")
+  private Saketomo saketomo;
 
-  public DeleteReview saketomoId(UUID saketomoId) {
-    this.saketomoId = saketomoId;
+  public SaketomoResponse saketomo(Saketomo saketomo) {
+    this.saketomo = saketomo;
     return this;
   }
 
   /**
-   * 登録者ID
-   * @return saketomoId
+   * Get saketomo
+   * @return saketomo
   */
-  @ApiModelProperty(value = "登録者ID")
+  @ApiModelProperty(value = "")
 
   @Valid
 
-  public UUID getSaketomoId() {
-    return saketomoId;
+  public Saketomo getSaketomo() {
+    return saketomo;
   }
 
-  public void setSaketomoId(UUID saketomoId) {
-    this.saketomoId = saketomoId;
+  public void setSaketomo(Saketomo saketomo) {
+    this.saketomo = saketomo;
   }
 
 
@@ -47,21 +47,21 @@ public class DeleteReview   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DeleteReview deleteReview = (DeleteReview) o;
-    return Objects.equals(this.saketomoId, deleteReview.saketomoId);
+    SaketomoResponse saketomoResponse = (SaketomoResponse) o;
+    return Objects.equals(this.saketomo, saketomoResponse.saketomo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(saketomoId);
+    return Objects.hash(saketomo);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DeleteReview {\n");
+    sb.append("class SaketomoResponse {\n");
     
-    sb.append("    saketomoId: ").append(toIndentedString(saketomoId)).append("\n");
+    sb.append("    saketomo: ").append(toIndentedString(saketomo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
