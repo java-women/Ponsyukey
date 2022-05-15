@@ -581,7 +581,7 @@ components:
       properties:
         totalCount:
           type: integer
-        sake:
+        sakeList:
           type: array
           items:
             $ref: '#/components/schemas/sake'
