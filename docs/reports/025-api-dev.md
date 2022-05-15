@@ -43,6 +43,7 @@ https://javajo.doorkeeper.jp/events/136031
 
 ## 議事録(酒情報一覧取得)
 - GET /sake : 酒情報一覧取得API を作成する
+  - https://github.com/java-women/Ponsyukey/pull/new/add-getSake
 - getSakeDetail APIでデータ系クラスがあるから大丈夫・・・と思いきや複数データを取得するときは微妙にないようが異なるため四苦八苦
 - region/country/prefecture のデータとりあつかいをstreamで処理
   - 全体的にmapにしてkeyでデータ処理を実施
