@@ -75,9 +75,7 @@ paths:
           content:
             application/json:
               schema:
-                properties:
-                  saketomo:
-                    $ref: '#/components/schemas/saketomo'
+                $ref: '#/components/schemas/saketomoResponse'
         400:
           description: http ステータスコード 400 error
           content:
@@ -115,7 +113,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/saketomoResponse'
+                properties:
+                  saketomo:
+                    $ref: '#/components/schemas/saketomo'
         400:
           description: http ステータスコード 400 error
           content:
