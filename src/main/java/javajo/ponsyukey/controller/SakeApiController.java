@@ -1,5 +1,6 @@
 package javajo.ponsyukey.controller;
 
+import javajo.ponsyukey.model.SakeListResponse;
 import javajo.ponsyukey.model.SakeResponse;
 import javajo.ponsyukey.service.SakeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.NativeWebRequest;
 
+import java.util.List;
 import java.util.Optional;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-03-21T15:29:30.596334700+09:00[Asia/Tokyo]")
@@ -42,6 +44,18 @@ public class SakeApiController implements SakeApi {
             SakeResponse sakeResponse = sakeService.getSakeResponse(sakeId);
             return new ResponseEntity<SakeResponse>(sakeResponse, HttpStatus.OK);
 
+    }
+
+    /**
+     * 酒情報一覧取得API
+     * @param limit
+     * @param offset
+     * @return limit, offsetで指定した件数分の酒情報一覧
+     */
+    @Override
+    public ResponseEntity<SakeListResponse> getSake(int limit, int offset) {
+        SakeListResponse sakeResponses = sakeService.getSakeResponses(limit, offset);
+        return new ResponseEntity<SakeListResponse>(sakeResponses, HttpStatus.OK);
     }
 
 }

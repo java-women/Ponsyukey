@@ -5,10 +5,14 @@ import javajo.ponsyukey.database.entity.*;
 import javajo.ponsyukey.database.dao.SakeDao;
 import javajo.ponsyukey.model.Sake;
 import javajo.ponsyukey.model.SakeBrewery;
+import org.seasar.doma.jdbc.SelectOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Repository
 public class SakeRepository {
@@ -24,7 +28,7 @@ public class SakeRepository {
                           RegionDao regionDao,
                           PrefectureDao prefectureDao,
                           CountryDao countryDao
-                          ) {
+    ) {
         this.sakeDao = sakeDao;
         this.breweryDao = breweryDao;
         this.regionDao = regionDao;
@@ -32,7 +36,7 @@ public class SakeRepository {
         this.countryDao = countryDao;
     }
 
-    public Sake getSake(String sakeId){
+    public Sake getSake(String sakeId) {
         //酒情報を取得する
         SakeEntity sakeEntity = sakeDao.selectById(sakeId);
 
@@ -65,5 +69,52 @@ public class SakeRepository {
                 .type(sakeEntity.getType().orElse(null))
                 .description(sakeEntity.getDescription().orElse(null))
                 .brewery(brewery);
+    }
+
+    public List<Sake> getSakeList(int limit, int offset) {
+        SelectOptions options = SelectOptions.get().limit(limit).offset(offset);
+        List<SakeEntity> sakeEntities = sakeDao.selectAll(options);
+
+        List<SakeBreweryEntity> sakeBreweryEntities = breweryDao.selectByIdList(
+                sakeEntities.stream().map(SakeEntity::getId)
+                        .distinct()
+                        .collect(Collectors.toList())
+        );
+
+        // TODO: DomaでMapを返せるかもうちょっと調べる
+        Map<Integer, RegionEntity> regionEntities = regionDao.selectAll().stream().collect(Collectors.toMap(RegionEntity::getId, regionEntity -> regionEntity));
+        Map<Integer, PrefectureEntity> prefectureEntities = prefectureDao.selectAll().stream().collect(Collectors.toMap(PrefectureEntity::getId, prefectureEntity -> prefectureEntity));
+        Map<Integer, CountryEntity> countryEntities = countryDao.selectAll().stream().collect(Collectors.toMap(CountryEntity::getId, countryEntity -> countryEntity));
+
+        // TODO: sakeBreweriesをつくる
+        Map<String, SakeBrewery> breweries = sakeBreweryEntities.stream().map(
+                sakeBreweryEntity -> {
+                    String name;
+                    var regionEntity = regionEntities.get(sakeBreweryEntity.getRegionId());
+                    if (regionEntity.getCountryId().equals("81")) {
+                        PrefectureEntity prefectureEntity = prefectureEntities.get(regionEntity.getPrefectureId());
+                        name = prefectureEntity.getName();
+                    } else {
+                        CountryEntity countryEntity = countryEntities.get(regionEntity.getCountryId());
+                        name = countryEntity.getName();
+                    }
+                    return new SakeBrewery()
+                            .name(sakeBreweryEntity.getName())
+                            .prefecture(name);
+                }
+                // TODO: NameでBreweryを特定しちゃってるので、IDを使えるように検討しなくてはならない
+        ).collect(Collectors.toMap(SakeBrewery::getName, sakeBrewery -> sakeBrewery));
+
+        return sakeEntities.stream().map(sakeEntity ->
+                new Sake()
+                        .id(UUID.fromString(sakeEntity.getId()))
+                        .name(sakeEntity.getName())
+                        .image(sakeEntity.getImage().orElse(null))
+                        .alcohol(sakeEntity.getAlcohol().orElse(null))
+                        .polishingRatio(sakeEntity.getPolishingRatio().orElse(null))
+                        .type(sakeEntity.getType().orElse(null))
+                        .description(sakeEntity.getDescription().orElse(null))
+                        .brewery(breweries.get(sakeEntity.getBreweryId()))
+        ).collect(Collectors.toList());
     }
 }
