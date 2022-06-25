@@ -18,6 +18,7 @@ src/main/java/javajo/ponsyukey/model/Sake.java
 src/main/java/javajo/ponsyukey/model/SakeBrewery.java
 src/main/java/javajo/ponsyukey/model/SakeResponse.java
 src/main/java/javajo/ponsyukey/model/Saketomo.java
+src/main/java/javajo/ponsyukey/model/SaketomoResponse.java
 src/main/java/javajo/ponsyukey/model/SaketomoWithAuth.java
 src/main/java/org/openapitools/configuration/HomeController.java
 src/main/java/org/openapitools/configuration/OpenAPIDocumentationConfig.java
