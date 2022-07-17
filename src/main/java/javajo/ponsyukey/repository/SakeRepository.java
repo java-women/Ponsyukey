@@ -86,9 +86,9 @@ public class SakeRepository {
         Map<Integer, PrefectureEntity> prefectureEntities = prefectureDao.selectAll().stream().collect(Collectors.toMap(PrefectureEntity::getId, prefectureEntity -> prefectureEntity));
         Map<Integer, CountryEntity> countryEntities = countryDao.selectAll().stream().collect(Collectors.toMap(CountryEntity::getId, countryEntity -> countryEntity));
 
-        // TODO: sakeBreweriesをつくる
-        Map<String, SakeBrewery> breweries = sakeBreweryEntities.stream().map(
-                sakeBreweryEntity -> {
+        // TODO: IDをStringからUUIDに変更したい
+        Map<String, SakeBrewery> breweries = sakeBreweryEntities.stream()
+                .collect(Collectors.toMap(SakeBreweryEntity::getId, sakeBreweryEntity -> {
                     String name;
                     var regionEntity = regionEntities.get(sakeBreweryEntity.getRegionId());
                     if (regionEntity.getCountryId().equals("81")) {
@@ -101,9 +101,7 @@ public class SakeRepository {
                     return new SakeBrewery()
                             .name(sakeBreweryEntity.getName())
                             .prefecture(name);
-                }
-                // TODO: NameでBreweryを特定しちゃってるので、IDを使えるように検討しなくてはならない
-        ).collect(Collectors.toMap(SakeBrewery::getName, sakeBrewery -> sakeBrewery));
+                }));
 
         return sakeEntities.stream().map(sakeEntity ->
                 new Sake()

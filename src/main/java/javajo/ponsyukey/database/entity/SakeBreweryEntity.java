@@ -12,6 +12,7 @@ import java.util.Optional;
 public class SakeBreweryEntity {
 
     /** 醸造所ID */
+    // TODO: idをUUIDに変更する
     @Id
     String id;
 
