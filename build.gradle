@@ -8,7 +8,7 @@ plugins {
 
 group = "com.javajo"
 version = "0.0.1-SNAPSHOT"
-sourceCompatibility = "11"
+sourceCompatibility = "17"
 mainClassName = "javajo.ponsyukey.PonsyukeyApplication"
 
 // DOMA関係
@@ -90,7 +90,7 @@ openApiGenerate {
 	generateModelTests = true
 	generateApiTests = true
 	configOptions = [
-			dateLibrary: "java11",
+			dateLibrary: "java17",
 			openApiNullable: "false"
 	]
 }

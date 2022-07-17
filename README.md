@@ -1,5 +1,5 @@
 ## 必要なもの
-- Java 11
+- Java 17
 - Dockerクライアント ([Mac](https://docs.docker.com/desktop/mac/install/), [Windows](https://docs.docker.com/desktop/windows/install/))  
 (Linuxでは ディストリ別の [Docker engine](https://docs.docker.com/engine/install/) と [compose](https://docs.docker.com/compose/install/#install-compose-on-linux-systems) のインストールが必要です)
 
