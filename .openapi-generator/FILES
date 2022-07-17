@@ -1,4 +1,3 @@
-pom.xml
 src/main/java/javajo/ponsyukey/controller/ApiUtil.java
 src/main/java/javajo/ponsyukey/controller/ReviewApi.java
 src/main/java/javajo/ponsyukey/controller/SakeApi.java
