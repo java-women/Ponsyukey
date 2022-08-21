@@ -11,6 +11,11 @@ version = "0.0.1-SNAPSHOT"
 sourceCompatibility = "17"
 mainClassName = "javajo.ponsyukey.PonsyukeyApplication"
 
+application {
+// mainClass = 'xxx'
+	applicationDefaultJvmArgs = ['--add-opens', 'java.base/java.lang=ALL-UNNAMED']
+}
+
 // DOMA関係
 // テンポラリディレクトリのパスを定義する
 ext.domaResourcesDir = "${buildDir}/tmp/doma-resources"
