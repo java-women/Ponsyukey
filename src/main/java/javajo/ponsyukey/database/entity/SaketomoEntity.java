@@ -26,11 +26,9 @@ public class SaketomoEntity {
     String password;
 
     /** 作成日時 */
-    @Column(name="created_at")
     LocalDate createdAt;
 
     /** 更新日時 */
-    @Column(name="updated_at")
     LocalDate updatedAt;
 
     public String getId() {

@@ -12,10 +12,8 @@ public class RegionEntity {
     @Id
     Integer id;
 
-    @Column(name="country_id")
     String countryId;
 
-    @Column(name="prefecture_id")
     String prefectureId;
 
     public Integer getId() {

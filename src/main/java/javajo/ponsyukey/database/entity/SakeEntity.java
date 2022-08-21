@@ -19,14 +19,12 @@ public class SakeEntity {
     Optional<String> image;
 
     /** breweryId: 醸造所ID */
-    @Column(name="brewery_id")
     String breweryId;
 
     /** alcohol: アルコール度数（パーセント) */
     Optional<Float> alcohol;
 
     /** polishingRatio: 精米歩合（パーセント） */
-    @Column(name="polishing_ratio")
     Optional<Float> polishingRatio;
 
     /** type: 特定名称 (例)吟醸酒、大吟醸など */
