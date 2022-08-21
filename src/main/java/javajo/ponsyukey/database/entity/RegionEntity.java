@@ -10,7 +10,7 @@ import org.seasar.doma.Id;
 @Entity
 public class RegionEntity {
     @Id
-    String id;
+    Integer id;
 
     @Column(name="country_id")
     String countryId;
@@ -18,7 +18,7 @@ public class RegionEntity {
     @Column(name="prefecture_id")
     String prefectureId;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
