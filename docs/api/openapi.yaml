@@ -153,7 +153,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/sakeListResponse'
+                properties:
+                  totalCount:
+                    type: integer
+                  sake:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/sake'
         400:
           description: http ステータスコード 400 error
           content:
@@ -576,12 +582,3 @@ components:
         saketomo:
           $ref: '#/components/schemas/saketomo'
 
-    sakeListResponse:
-      type: object
-      properties:
-        totalCount:
-          type: integer
-        sakeList:
-          type: array
-          items:
-            $ref: '#/components/schemas/sake'

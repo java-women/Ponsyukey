@@ -5,14 +5,10 @@ import javajo.ponsyukey.database.entity.*;
 import javajo.ponsyukey.database.dao.SakeDao;
 import javajo.ponsyukey.model.Sake;
 import javajo.ponsyukey.model.SakeBrewery;
-import org.seasar.doma.jdbc.SelectOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Map;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Repository
 public class SakeRepository {
@@ -28,7 +24,7 @@ public class SakeRepository {
                           RegionDao regionDao,
                           PrefectureDao prefectureDao,
                           CountryDao countryDao
-    ) {
+                          ) {
         this.sakeDao = sakeDao;
         this.breweryDao = breweryDao;
         this.regionDao = regionDao;
@@ -36,7 +32,7 @@ public class SakeRepository {
         this.countryDao = countryDao;
     }
 
-    public Sake getSake(String sakeId) {
+    public Sake getSake(String sakeId){
         //酒情報を取得する
         SakeEntity sakeEntity = sakeDao.selectById(sakeId);
 
@@ -70,6 +66,7 @@ public class SakeRepository {
                 .description(sakeEntity.getDescription().orElse(null))
                 .brewery(brewery);
     }
+
 
     public List<Sake> getSakeList(int limit, int offset) {
         SelectOptions options = SelectOptions.get().limit(limit).offset(offset);

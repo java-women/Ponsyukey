@@ -15,7 +15,6 @@ src/main/java/javajo/ponsyukey/model/Review.java
 src/main/java/javajo/ponsyukey/model/ReviewSaketomo.java
 src/main/java/javajo/ponsyukey/model/Sake.java
 src/main/java/javajo/ponsyukey/model/SakeBrewery.java
-src/main/java/javajo/ponsyukey/model/SakeListResponse.java
 src/main/java/javajo/ponsyukey/model/SakeResponse.java
 src/main/java/javajo/ponsyukey/model/Saketomo.java
 src/main/java/javajo/ponsyukey/model/SaketomoResponse.java

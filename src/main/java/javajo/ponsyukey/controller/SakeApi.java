@@ -7,7 +7,6 @@ package javajo.ponsyukey.controller;
 
 import javajo.ponsyukey.model.CreateSake;
 import javajo.ponsyukey.model.Error;
-import javajo.ponsyukey.model.SakeListResponse;
 import javajo.ponsyukey.model.SakeResponse;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -23,7 +22,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-07-17T15:21:26.705272+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-05-15T16:50:50.747712+09:00[Asia/Tokyo]")
 @Validated
 @Api(value = "sake", description = "the sake API")
 public interface SakeApi {
@@ -66,9 +65,9 @@ public interface SakeApi {
      *         or http ステータスコード 400 error (status code 400)
      *         or http ステータスコード 500 error (status code 500)
      */
-    @ApiOperation(value = "酒情報一覧取得API", nickname = "getSake", notes = "", response = SakeListResponse.class, tags={ "sake", })
+    @ApiOperation(value = "酒情報一覧取得API", nickname = "getSake", notes = "", response = Object.class, tags={ "sake", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = SakeListResponse.class),
+        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Object.class),
         @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
         @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
     @RequestMapping(
@@ -76,16 +75,7 @@ public interface SakeApi {
         value = "/sake",
         produces = { "application/json" }
     )
-    default ResponseEntity<SakeListResponse> getSake(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "limit", required = true) Integer limit,@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "offset", required = true) Integer offset) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"sakeList\" : [ { \"alcohol\" : 6.0274563, \"image\" : \"image\", \"polishingRatio\" : 1.4658129, \"taste\" : [ \"taste\", \"taste\" ], \"name\" : \"name\", \"brewery\" : { \"prefecture\" : \"prefecture\", \"name\" : \"name\" }, \"description\" : \"description\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"type\" : \"type\" }, { \"alcohol\" : 6.0274563, \"image\" : \"image\", \"polishingRatio\" : 1.4658129, \"taste\" : [ \"taste\", \"taste\" ], \"name\" : \"name\", \"brewery\" : { \"prefecture\" : \"prefecture\", \"name\" : \"name\" }, \"description\" : \"description\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"type\" : \"type\" } ], \"totalCount\" : 0 }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
+    default ResponseEntity<Object> getSake(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "limit", required = true) Integer limit,@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "offset", required = true) Integer offset) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -113,7 +103,7 @@ public interface SakeApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"sake\" : { \"alcohol\" : 6.0274563, \"image\" : \"image\", \"polishingRatio\" : 1.4658129, \"taste\" : [ \"taste\", \"taste\" ], \"name\" : \"name\", \"brewery\" : { \"prefecture\" : \"prefecture\", \"name\" : \"name\" }, \"description\" : \"description\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"type\" : \"type\" } }";
+                    String exampleString = "{ \"sake\" : { \"alcohol\" : 0.8008282, \"image\" : \"image\", \"polishingRatio\" : 6.0274563, \"taste\" : [ \"taste\", \"taste\" ], \"name\" : \"name\", \"brewery\" : { \"prefecture\" : \"prefecture\", \"name\" : \"name\" }, \"description\" : \"description\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"type\" : \"type\" } }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

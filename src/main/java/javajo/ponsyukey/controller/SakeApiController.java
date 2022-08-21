@@ -1,6 +1,5 @@
 package javajo.ponsyukey.controller;
 
-import javajo.ponsyukey.model.SakeListResponse;
 import javajo.ponsyukey.model.SakeResponse;
 import javajo.ponsyukey.service.SakeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.NativeWebRequest;
 
-import java.util.List;
 import java.util.Optional;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-03-21T15:29:30.596334700+09:00[Asia/Tokyo]")
