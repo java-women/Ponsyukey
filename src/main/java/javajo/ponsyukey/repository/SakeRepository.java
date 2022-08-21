@@ -66,4 +66,50 @@ public class SakeRepository {
                 .description(sakeEntity.getDescription().orElse(null))
                 .brewery(brewery);
     }
+
+
+    public List<Sake> getSakeList(int limit, int offset) {
+        SelectOptions options = SelectOptions.get().limit(limit).offset(offset);
+        List<SakeEntity> sakeEntities = sakeDao.selectAll(options);
+
+        List<SakeBreweryEntity> sakeBreweryEntities = breweryDao.selectByIdList(
+                sakeEntities.stream().map(SakeEntity::getId)
+                        .distinct()
+                        .collect(Collectors.toList())
+        );
+
+        // TODO: DomaでMapを返せるかもうちょっと調べる
+        Map<Integer, RegionEntity> regionEntities = regionDao.selectAll().stream().collect(Collectors.toMap(RegionEntity::getId, regionEntity -> regionEntity));
+        Map<Integer, PrefectureEntity> prefectureEntities = prefectureDao.selectAll().stream().collect(Collectors.toMap(PrefectureEntity::getId, prefectureEntity -> prefectureEntity));
+        Map<Integer, CountryEntity> countryEntities = countryDao.selectAll().stream().collect(Collectors.toMap(CountryEntity::getId, countryEntity -> countryEntity));
+
+        // TODO: IDをStringからUUIDに変更したい
+        Map<String, SakeBrewery> breweries = sakeBreweryEntities.stream()
+                .collect(Collectors.toMap(SakeBreweryEntity::getId, sakeBreweryEntity -> {
+                    String name;
+                    var regionEntity = regionEntities.get(sakeBreweryEntity.getRegionId());
+                    if (regionEntity.getCountryId().equals("81")) {
+                        PrefectureEntity prefectureEntity = prefectureEntities.get(regionEntity.getPrefectureId());
+                        name = prefectureEntity.getName();
+                    } else {
+                        CountryEntity countryEntity = countryEntities.get(regionEntity.getCountryId());
+                        name = countryEntity.getName();
+                    }
+                    return new SakeBrewery()
+                            .name(sakeBreweryEntity.getName())
+                            .prefecture(name);
+                }));
+
+        return sakeEntities.stream().map(sakeEntity ->
+                new Sake()
+                        .id(UUID.fromString(sakeEntity.getId()))
+                        .name(sakeEntity.getName())
+                        .image(sakeEntity.getImage().orElse(null))
+                        .alcohol(sakeEntity.getAlcohol().orElse(null))
+                        .polishingRatio(sakeEntity.getPolishingRatio().orElse(null))
+                        .type(sakeEntity.getType().orElse(null))
+                        .description(sakeEntity.getDescription().orElse(null))
+                        .brewery(breweries.get(sakeEntity.getBreweryId()))
+        ).collect(Collectors.toList());
+    }
 }

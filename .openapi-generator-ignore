@@ -1,5 +1,6 @@
 README.md
 pom.xml
+src/main/resources/application.properties
 
 # インターフェース以外は、OpenAPIGeneraterを実行しても上書きしない(運用に困ったら見直す)
 src/main/java/javajo/ponsyukey/controller/*Controller.java

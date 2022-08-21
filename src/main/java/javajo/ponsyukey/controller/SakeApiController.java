@@ -44,4 +44,16 @@ public class SakeApiController implements SakeApi {
 
     }
 
+    /**
+     * 酒情報一覧取得API
+     * @param limit
+     * @param offset
+     * @return limit, offsetで指定した件数分の酒情報一覧
+     */
+    @Override
+    public ResponseEntity<SakeListResponse> getSake(Integer limit, Integer offset) {
+        SakeListResponse sakeResponses = sakeService.getSakeResponses(limit, offset);
+        return new ResponseEntity<SakeListResponse>(sakeResponses, HttpStatus.OK);
+    }
+
 }
