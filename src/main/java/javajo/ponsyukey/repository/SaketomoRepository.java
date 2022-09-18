@@ -32,4 +32,9 @@ public class SaketomoRepository {
                 .image(Saketomo.ImageEnum.fromValue(saketomoEntity.getImage()));
     }
 
+    public Saketomo insertSaketomo() {
+        SaketomoEntity saketomoEntity = new SaketomoEntity();
+        return new Saketomo();
+    }
+
 }
