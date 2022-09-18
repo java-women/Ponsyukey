@@ -395,25 +395,21 @@ components:
     createSaketomo:
       type: object
       properties:
-        saketomo:
-          type: object
-          properties:
-            name:
-              type: string
-            image:
-              type: string
-              description: 既存画像から選んでもらう(キーもしくはURL)。enumにない値もしくは空/nullの場合はバリデーションチェックでエラーにします
-              enum:
-                - icon1
-                - icon2
-                - icon3
-            auth:
-              $ref: '#/components/schemas/auth'
-          required:
-            - name
-            - image
-            - auth
-
+        name:
+          type: string
+        image:
+          type: string
+          description: 既存画像から選んでもらう(キーもしくはURL)。enumにない値もしくは空/nullの場合はバリデーションチェックでエラーにします
+          enum:
+            - icon1
+            - icon2
+            - icon3
+        auth:
+          $ref: '#/components/schemas/auth'
+      required:
+        - name
+        - image
+        - auth
 
     saketomoWithAuth:
       type: object

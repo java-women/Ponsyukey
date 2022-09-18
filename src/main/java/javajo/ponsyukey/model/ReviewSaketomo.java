@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  * 登録者情報
  */
 @ApiModel(description = "登録者情報")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T14:49:24.794277+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T15:04:04.755758+09:00[Asia/Tokyo]")
 public class ReviewSaketomo   {
   @JsonProperty("id")
   private UUID id;

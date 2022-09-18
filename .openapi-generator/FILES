@@ -8,7 +8,6 @@ src/main/java/javajo/ponsyukey/model/Auth.java
 src/main/java/javajo/ponsyukey/model/CreateReview.java
 src/main/java/javajo/ponsyukey/model/CreateSake.java
 src/main/java/javajo/ponsyukey/model/CreateSaketomo.java
-src/main/java/javajo/ponsyukey/model/CreateSaketomoSaketomo.java
 src/main/java/javajo/ponsyukey/model/DeleteReview.java
 src/main/java/javajo/ponsyukey/model/Error.java
 src/main/java/javajo/ponsyukey/model/Review.java
