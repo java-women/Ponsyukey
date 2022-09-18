@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
 /**
  * CreateSake
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-21T15:59:57.434551747+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T14:49:24.794277+09:00[Asia/Tokyo]")
 public class CreateSake   {
   @JsonProperty("name")
   private String name;

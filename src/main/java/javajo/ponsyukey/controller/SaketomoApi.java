@@ -7,6 +7,7 @@ package javajo.ponsyukey.controller;
 
 import javajo.ponsyukey.model.CreateSaketomo;
 import javajo.ponsyukey.model.Error;
+import javajo.ponsyukey.model.Saketomo;
 import javajo.ponsyukey.model.SaketomoResponse;
 import javajo.ponsyukey.model.SaketomoWithAuth;
 import io.swagger.annotations.*;
@@ -23,7 +24,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-21T15:59:57.434551747+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T14:49:24.794277+09:00[Asia/Tokyo]")
 @Validated
 @Api(value = "saketomo", description = "the saketomo API")
 public interface SaketomoApi {
@@ -40,9 +41,9 @@ public interface SaketomoApi {
      *         or http ステータスコード 400 error (status code 400)
      *         or http ステータスコード 500 error (status code 500)
      */
-    @ApiOperation(value = "会員登録API", nickname = "createSaketomo", notes = "", response = Object.class, tags={ "saketomo", })
+    @ApiOperation(value = "会員登録API", nickname = "createSaketomo", notes = "", response = Saketomo.class, tags={ "saketomo", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Object.class),
+        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Saketomo.class),
         @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
         @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
     @RequestMapping(
@@ -51,7 +52,16 @@ public interface SaketomoApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<Object> createSaketomo(@ApiParam(value = "会員登録に必要な情報", required = true) @Valid @RequestBody CreateSaketomo createSaketomo) {
+    default ResponseEntity<Saketomo> createSaketomo(@ApiParam(value = "会員登録に必要な情報", required = true) @Valid @RequestBody CreateSaketomo createSaketomo) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"image\" : \"icon1\", \"name\" : \"name\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
