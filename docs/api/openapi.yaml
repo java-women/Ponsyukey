@@ -32,7 +32,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createSaketomo'
+              $ref: '#/components/schemas/createSaketomoRequest'
         required: true
 
       responses:
@@ -73,7 +73,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/saketomoResponse'
+                $ref: '#/components/schemas/saketomo'
         400:
           description: http ステータスコード 400 error
           content:
@@ -103,7 +103,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/saketomoWithAuth'
+              $ref: '#/components/schemas/saketomoWithAuthRequest'
         required: true
       responses:
         200:
@@ -111,9 +111,7 @@ paths:
           content:
             application/json:
               schema:
-                properties:
-                  saketomo:
-                    $ref: '#/components/schemas/saketomo'
+                $ref: '#/components/schemas/saketomo'
         400:
           description: http ステータスコード 400 error
           content:
@@ -175,7 +173,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createSake'
+              $ref: '#/components/schemas/createSakeRequest'
         required: true
 
       responses:
@@ -184,9 +182,7 @@ paths:
           content:
             application/json:
               schema:
-                properties:
-                  sake:
-                    $ref: '#/components/schemas/sake'
+                $ref: '#/components/schemas/sakeResponse'
         400:
           description: http ステータスコード 400 error
           content:
@@ -262,10 +258,12 @@ paths:
             application/json:
               schema:
                 properties:
+                  totalCount:
+                    type: integer
                   review:
                     type: array
                     items:
-                      $ref: '#/components/schemas/review'
+                      $ref: '#/components/schemas/reviewResponse'
         400:
           description: http ステータスコード 400 error
           content:
@@ -289,7 +287,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createReview'
+              $ref: '#/components/schemas/createReviewRequest'
         required: true
 
       responses:
@@ -298,11 +296,7 @@ paths:
           content:
             application/json:
               schema:
-                properties:
-                  review:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/review'
+                $ref: '#/components/schemas/reviewResponse'
         400:
           description: http ステータスコード 400 error
           content:
@@ -315,43 +309,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-
-
-  /review/{reviewId}:
-    post:
-      tags:
-        - review
-      summary: 口コミ情報削除API
-      operationId: deleteReview
-      parameters:
-        - in: path
-          name: reviewId
-          schema:
-            type: string
-          required: true
-      requestBody:
-        description: 口コミ情報削除に必要な情報
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/deleteReview'
-        required: true
-      responses:
-        200:
-          description: http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする
-        400:
-          description: http ステータスコード 400 error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        500:
-          description: http ステータスコード 500 error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-
 
 components:
   schemas:
@@ -363,7 +320,7 @@ components:
           type: string
           description: 画面表示用エラーメッセージ
 
-    auth:
+    authRequest:
       type: object
       properties:
         password:
@@ -392,7 +349,7 @@ components:
             - icon2
             - icon3
 
-    createSaketomo:
+    createSaketomoRequest:
       type: object
       properties:
         name:
@@ -405,13 +362,13 @@ components:
             - icon2
             - icon3
         auth:
-          $ref: '#/components/schemas/auth'
+          $ref: '#/components/schemas/authRequest'
       required:
         - name
         - image
         - auth
 
-    saketomoWithAuth:
+    saketomoWithAuthRequest:
       type: object
       properties:
         id:
@@ -427,14 +384,14 @@ components:
             - icon2
             - icon3
         auth:
-          $ref: '#/components/schemas/auth'
+          $ref: '#/components/schemas/authRequest'
       required:
         - id
         - name
         - image
         - auth
 
-    sake:
+    sakeResponse:
       type: object
       properties:
         id:
@@ -468,27 +425,14 @@ components:
             type: string
           description: 味情報は固定カラムを持たずに、自由入力。(例)ハッシュタグ
 
-    review:
+    reviewResponse:
       type: object
       properties:
         id:
           type: string
           format: uuid
         saketomo:
-          type: object
-          description: 登録者情報
-          properties:
-            id:
-              type: string
-              format: uuid
-            name:
-              type: string
-            image:
-              type: string
-              enum:
-                - icon1
-                - icon2
-                - icon3
+          $ref: '#/components/schemas/saketomo'
         createdAt:
           type: string
           format: date-time
@@ -498,30 +442,17 @@ components:
         comment:
           type: string
 
-    createReview:
+    createReviewRequest:
       type: object
       properties:
         saketomo:
-          type: object
-          description: 登録者情報
-          properties:
-            id:
-              type: string
-              format: uuid
-            name:
-              type: string
-            image:
-              type: string
-              enum:
-                - icon1
-                - icon2
-                - icon3
+          $ref: '#/components/schemas/saketomo'
         rating:
           type: integer
         comment:
           type: string
 
-    deleteReview:
+    deleteReviewRequest:
       type: object
       properties:
         saketomoId:
@@ -529,7 +460,7 @@ components:
           format: uuid
           description: 登録者ID
 
-    createSake:
+    createSakeRequest:
       type: object
       properties:
         name:
@@ -558,18 +489,6 @@ components:
           type: object
           description: 味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ
 
-    sakeResponse:
-      type: object
-      properties:
-        sake:
-          $ref: '#/components/schemas/sake'
-
-    saketomoResponse:
-      type: object
-      properties:
-        saketomo:
-          $ref: '#/components/schemas/saketomo'
-
     sakeListResponse:
       type: object
       properties:
@@ -578,4 +497,4 @@ components:
         sakeList:
           type: array
           items:
-            $ref: '#/components/schemas/sake'
+            $ref: '#/components/schemas/sakeResponse'
