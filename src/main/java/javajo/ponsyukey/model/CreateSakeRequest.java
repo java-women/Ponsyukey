@@ -5,21 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import javajo.ponsyukey.model.SakeBrewery;
+import javajo.ponsyukey.model.SakeResponseBrewery;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Sake
+ * CreateSakeRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-21T15:59:57.434551747+09:00[Asia/Tokyo]")
-public class Sake   {
-  @JsonProperty("id")
-  private UUID id;
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
+public class CreateSakeRequest   {
   @JsonProperty("name")
   private String name;
 
@@ -27,7 +21,7 @@ public class Sake   {
   private String image;
 
   @JsonProperty("brewery")
-  private SakeBrewery brewery;
+  private SakeResponseBrewery brewery;
 
   @JsonProperty("alcohol")
   private Float alcohol;
@@ -42,31 +36,9 @@ public class Sake   {
   private String description;
 
   @JsonProperty("taste")
-  @Valid
-  private List<String> taste = null;
+  private Object taste;
 
-  public Sake id(UUID id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-  */
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public UUID getId() {
-    return id;
-  }
-
-  public void setId(UUID id) {
-    this.id = id;
-  }
-
-  public Sake name(String name) {
+  public CreateSakeRequest name(String name) {
     this.name = name;
     return this;
   }
@@ -86,7 +58,7 @@ public class Sake   {
     this.name = name;
   }
 
-  public Sake image(String image) {
+  public CreateSakeRequest image(String image) {
     this.image = image;
     return this;
   }
@@ -106,7 +78,7 @@ public class Sake   {
     this.image = image;
   }
 
-  public Sake brewery(SakeBrewery brewery) {
+  public CreateSakeRequest brewery(SakeResponseBrewery brewery) {
     this.brewery = brewery;
     return this;
   }
@@ -119,15 +91,15 @@ public class Sake   {
 
   @Valid
 
-  public SakeBrewery getBrewery() {
+  public SakeResponseBrewery getBrewery() {
     return brewery;
   }
 
-  public void setBrewery(SakeBrewery brewery) {
+  public void setBrewery(SakeResponseBrewery brewery) {
     this.brewery = brewery;
   }
 
-  public Sake alcohol(Float alcohol) {
+  public CreateSakeRequest alcohol(Float alcohol) {
     this.alcohol = alcohol;
     return this;
   }
@@ -147,7 +119,7 @@ public class Sake   {
     this.alcohol = alcohol;
   }
 
-  public Sake polishingRatio(Float polishingRatio) {
+  public CreateSakeRequest polishingRatio(Float polishingRatio) {
     this.polishingRatio = polishingRatio;
     return this;
   }
@@ -167,7 +139,7 @@ public class Sake   {
     this.polishingRatio = polishingRatio;
   }
 
-  public Sake type(String type) {
+  public CreateSakeRequest type(String type) {
     this.type = type;
     return this;
   }
@@ -187,7 +159,7 @@ public class Sake   {
     this.type = type;
   }
 
-  public Sake description(String description) {
+  public CreateSakeRequest description(String description) {
     this.description = description;
     return this;
   }
@@ -207,31 +179,23 @@ public class Sake   {
     this.description = description;
   }
 
-  public Sake taste(List<String> taste) {
+  public CreateSakeRequest taste(Object taste) {
     this.taste = taste;
     return this;
   }
 
-  public Sake addTasteItem(String tasteItem) {
-    if (this.taste == null) {
-      this.taste = new ArrayList<String>();
-    }
-    this.taste.add(tasteItem);
-    return this;
-  }
-
   /**
-   * 味情報は固定カラムを持たずに、自由入力。(例)ハッシュタグ
+   * 味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ
    * @return taste
   */
-  @ApiModelProperty(value = "味情報は固定カラムを持たずに、自由入力。(例)ハッシュタグ")
+  @ApiModelProperty(value = "味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ")
 
 
-  public List<String> getTaste() {
+  public Object getTaste() {
     return taste;
   }
 
-  public void setTaste(List<String> taste) {
+  public void setTaste(Object taste) {
     this.taste = taste;
   }
 
@@ -244,29 +208,27 @@ public class Sake   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Sake sake = (Sake) o;
-    return Objects.equals(this.id, sake.id) &&
-        Objects.equals(this.name, sake.name) &&
-        Objects.equals(this.image, sake.image) &&
-        Objects.equals(this.brewery, sake.brewery) &&
-        Objects.equals(this.alcohol, sake.alcohol) &&
-        Objects.equals(this.polishingRatio, sake.polishingRatio) &&
-        Objects.equals(this.type, sake.type) &&
-        Objects.equals(this.description, sake.description) &&
-        Objects.equals(this.taste, sake.taste);
+    CreateSakeRequest createSakeRequest = (CreateSakeRequest) o;
+    return Objects.equals(this.name, createSakeRequest.name) &&
+        Objects.equals(this.image, createSakeRequest.image) &&
+        Objects.equals(this.brewery, createSakeRequest.brewery) &&
+        Objects.equals(this.alcohol, createSakeRequest.alcohol) &&
+        Objects.equals(this.polishingRatio, createSakeRequest.polishingRatio) &&
+        Objects.equals(this.type, createSakeRequest.type) &&
+        Objects.equals(this.description, createSakeRequest.description) &&
+        Objects.equals(this.taste, createSakeRequest.taste);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, image, brewery, alcohol, polishingRatio, type, description, taste);
+    return Objects.hash(name, image, brewery, alcohol, polishingRatio, type, description, taste);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Sake {\n");
+    sb.append("class CreateSakeRequest {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    brewery: ").append(toIndentedString(brewery)).append("\n");

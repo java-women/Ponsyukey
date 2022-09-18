@@ -1,13 +1,15 @@
 package javajo.ponsyukey.service;
 
-import javajo.ponsyukey.model.Sake;
+import javajo.ponsyukey.dto.Sake;
 import javajo.ponsyukey.model.SakeListResponse;
 import javajo.ponsyukey.model.SakeResponse;
+import javajo.ponsyukey.model.SakeResponseBrewery;
 import javajo.ponsyukey.repository.SakeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 /*
 酒情報取得に関するロジックをまとめたクラス
@@ -30,9 +32,23 @@ public class SakeService {
     public SakeResponse getSakeResponse(String sakeId) {
         // 酒IDに紐づく酒情報を取得する
         Sake sake = sakeRepository.getSake(sakeId);
+        SakeResponse sakeResponse = new SakeResponse();
+        sakeResponse.id(UUID.fromString(sake.id()));
+        sakeResponse.name(sake.name());
+        sakeResponse.image(sake.image());
 
-        return new SakeResponse()
-                .sake(sake);
+        SakeResponseBrewery sakeResponseBrewery = new SakeResponseBrewery();
+        sakeResponseBrewery.name(sake.sakeBrewery().name());
+        sakeResponseBrewery.prefecture(sake.sakeBrewery().prefecture());
+        sakeResponse.brewery(sakeResponseBrewery);
+
+        sakeResponse.alcohol(sake.alcohol());
+        sakeResponse.polishingRatio(sake.polishingRatio());
+        sakeResponse.type(sake.type());
+        sakeResponse.description(sake.description());
+        sakeResponse.taste(sake.taste());
+
+        return sakeResponse;
     }
 
     /**
@@ -47,7 +63,7 @@ public class SakeService {
             limit = RESPONSE_LIMIT;
         }
 
-        List<Sake> sakeList = sakeRepository.getSakeList(limit, offset);
+        List<SakeResponse> sakeList = sakeRepository.getSakeList(limit, offset);
         return new SakeListResponse()
                 .sakeList(sakeList)
                 .totalCount(sakeList.size());

@@ -6,15 +6,15 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import javajo.ponsyukey.model.Auth;
+import javajo.ponsyukey.model.AuthRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * CreateSaketomoSaketomo
+ * CreateSaketomoRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-21T15:59:57.434551747+09:00[Asia/Tokyo]")
-public class CreateSaketomoSaketomo   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
+public class CreateSaketomoRequest   {
   @JsonProperty("name")
   private String name;
 
@@ -59,9 +59,9 @@ public class CreateSaketomoSaketomo   {
   private ImageEnum image;
 
   @JsonProperty("auth")
-  private Auth auth;
+  private AuthRequest auth;
 
-  public CreateSaketomoSaketomo name(String name) {
+  public CreateSaketomoRequest name(String name) {
     this.name = name;
     return this;
   }
@@ -82,7 +82,7 @@ public class CreateSaketomoSaketomo   {
     this.name = name;
   }
 
-  public CreateSaketomoSaketomo image(ImageEnum image) {
+  public CreateSaketomoRequest image(ImageEnum image) {
     this.image = image;
     return this;
   }
@@ -103,7 +103,7 @@ public class CreateSaketomoSaketomo   {
     this.image = image;
   }
 
-  public CreateSaketomoSaketomo auth(Auth auth) {
+  public CreateSaketomoRequest auth(AuthRequest auth) {
     this.auth = auth;
     return this;
   }
@@ -117,11 +117,11 @@ public class CreateSaketomoSaketomo   {
 
   @Valid
 
-  public Auth getAuth() {
+  public AuthRequest getAuth() {
     return auth;
   }
 
-  public void setAuth(Auth auth) {
+  public void setAuth(AuthRequest auth) {
     this.auth = auth;
   }
 
@@ -134,10 +134,10 @@ public class CreateSaketomoSaketomo   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateSaketomoSaketomo createSaketomoSaketomo = (CreateSaketomoSaketomo) o;
-    return Objects.equals(this.name, createSaketomoSaketomo.name) &&
-        Objects.equals(this.image, createSaketomoSaketomo.image) &&
-        Objects.equals(this.auth, createSaketomoSaketomo.auth);
+    CreateSaketomoRequest createSaketomoRequest = (CreateSaketomoRequest) o;
+    return Objects.equals(this.name, createSaketomoRequest.name) &&
+        Objects.equals(this.image, createSaketomoRequest.image) &&
+        Objects.equals(this.auth, createSaketomoRequest.auth);
   }
 
   @Override
@@ -148,7 +148,7 @@ public class CreateSaketomoSaketomo   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateSaketomoSaketomo {\n");
+    sb.append("class CreateSaketomoRequest {\n");
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");

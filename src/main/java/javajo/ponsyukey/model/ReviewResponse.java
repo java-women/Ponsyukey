@@ -7,20 +7,20 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import java.util.UUID;
-import javajo.ponsyukey.model.ReviewSaketomo;
+import javajo.ponsyukey.model.Saketomo;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Review
+ * ReviewResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-21T15:59:57.434551747+09:00[Asia/Tokyo]")
-public class Review   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
+public class ReviewResponse   {
   @JsonProperty("id")
   private UUID id;
 
   @JsonProperty("saketomo")
-  private ReviewSaketomo saketomo;
+  private Saketomo saketomo;
 
   @JsonProperty("createdAt")
   @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME)
@@ -32,7 +32,7 @@ public class Review   {
   @JsonProperty("comment")
   private String comment;
 
-  public Review id(UUID id) {
+  public ReviewResponse id(UUID id) {
     this.id = id;
     return this;
   }
@@ -53,7 +53,7 @@ public class Review   {
     this.id = id;
   }
 
-  public Review saketomo(ReviewSaketomo saketomo) {
+  public ReviewResponse saketomo(Saketomo saketomo) {
     this.saketomo = saketomo;
     return this;
   }
@@ -66,15 +66,15 @@ public class Review   {
 
   @Valid
 
-  public ReviewSaketomo getSaketomo() {
+  public Saketomo getSaketomo() {
     return saketomo;
   }
 
-  public void setSaketomo(ReviewSaketomo saketomo) {
+  public void setSaketomo(Saketomo saketomo) {
     this.saketomo = saketomo;
   }
 
-  public Review createdAt(Date createdAt) {
+  public ReviewResponse createdAt(Date createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -95,7 +95,7 @@ public class Review   {
     this.createdAt = createdAt;
   }
 
-  public Review rating(Integer rating) {
+  public ReviewResponse rating(Integer rating) {
     this.rating = rating;
     return this;
   }
@@ -115,7 +115,7 @@ public class Review   {
     this.rating = rating;
   }
 
-  public Review comment(String comment) {
+  public ReviewResponse comment(String comment) {
     this.comment = comment;
     return this;
   }
@@ -144,12 +144,12 @@ public class Review   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Review review = (Review) o;
-    return Objects.equals(this.id, review.id) &&
-        Objects.equals(this.saketomo, review.saketomo) &&
-        Objects.equals(this.createdAt, review.createdAt) &&
-        Objects.equals(this.rating, review.rating) &&
-        Objects.equals(this.comment, review.comment);
+    ReviewResponse reviewResponse = (ReviewResponse) o;
+    return Objects.equals(this.id, reviewResponse.id) &&
+        Objects.equals(this.saketomo, reviewResponse.saketomo) &&
+        Objects.equals(this.createdAt, reviewResponse.createdAt) &&
+        Objects.equals(this.rating, reviewResponse.rating) &&
+        Objects.equals(this.comment, reviewResponse.comment);
   }
 
   @Override
@@ -160,7 +160,7 @@ public class Review   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Review {\n");
+    sb.append("class ReviewResponse {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    saketomo: ").append(toIndentedString(saketomo)).append("\n");

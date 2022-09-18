@@ -3,12 +3,15 @@ package javajo.ponsyukey.repository;
 import javajo.ponsyukey.database.dao.*;
 import javajo.ponsyukey.database.entity.*;
 import javajo.ponsyukey.database.dao.SakeDao;
-import javajo.ponsyukey.model.Sake;
-import javajo.ponsyukey.model.SakeBrewery;
+import javajo.ponsyukey.dto.Sake;
+import javajo.ponsyukey.dto.SakeBrewery;
+import javajo.ponsyukey.model.SakeResponse;
+import javajo.ponsyukey.model.SakeResponseBrewery;
 import org.seasar.doma.jdbc.SelectOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -40,6 +43,9 @@ public class SakeRepository {
         //酒情報を取得する
         SakeEntity sakeEntity = sakeDao.selectById(sakeId);
 
+        // TODO: tasteを取得する
+        List<String> taste = getTaste(sakeId);
+
         //醸造所情報を取得する
         SakeBreweryEntity sakeBreweryEntity = breweryDao.selectById(sakeEntity.getBreweryId());
 
@@ -54,25 +60,20 @@ public class SakeRepository {
             name = countryEntity.getName();
         }
 
-        SakeBrewery brewery = new SakeBrewery()
-                .name(sakeBreweryEntity.getName())
-                .prefecture(name);
-
-        //SakeEntityをSakeModelに変換する
-        //TODO 空データ(null)の挙動についてあとで確認・修正
-        return new Sake()
-                .id(UUID.fromString(sakeEntity.getId()))
-                .name(sakeEntity.getName())
-                .image(sakeEntity.getImage().orElse(null))
-                .alcohol(sakeEntity.getAlcohol().orElse(null))
-                .polishingRatio(sakeEntity.getPolishingRatio().orElse(null))
-                .type(sakeEntity.getType().orElse(null))
-                .description(sakeEntity.getDescription().orElse(null))
-                .brewery(brewery);
+        SakeBrewery sakeBrewery = new SakeBrewery(sakeBreweryEntity.getName(), name);
+        return new Sake(sakeEntity.getId(),
+                sakeEntity.getName(),
+                sakeEntity.getImage().orElse(null),
+                sakeBrewery,
+                sakeEntity.getAlcohol().orElse(null),
+                sakeEntity.getPolishingRatio().orElse(null),
+                sakeEntity.getType().orElse(null),
+                sakeEntity.getDescription().orElse(null),
+                taste);
     }
 
 
-    public List<Sake> getSakeList(int limit, int offset) {
+    public List<SakeResponse> getSakeList(int limit, int offset) {
         SelectOptions options = SelectOptions.get().limit(limit).offset(offset);
         List<SakeEntity> sakeEntities = sakeDao.selectAll(options);
 
@@ -88,7 +89,7 @@ public class SakeRepository {
         Map<Integer, CountryEntity> countryEntities = countryDao.selectAll().stream().collect(Collectors.toMap(CountryEntity::getId, countryEntity -> countryEntity));
 
         // TODO: IDをStringからUUIDに変更したい
-        Map<String, SakeBrewery> breweries = sakeBreweryEntities.stream()
+        Map<String, SakeResponseBrewery> breweries = sakeBreweryEntities.stream()
                 .collect(Collectors.toMap(SakeBreweryEntity::getId, sakeBreweryEntity -> {
                     String name;
                     var regionEntity = regionEntities.get(sakeBreweryEntity.getRegionId());
@@ -99,13 +100,13 @@ public class SakeRepository {
                         CountryEntity countryEntity = countryEntities.get(regionEntity.getCountryId());
                         name = countryEntity.getName();
                     }
-                    return new SakeBrewery()
+                    return new SakeResponseBrewery()
                             .name(sakeBreweryEntity.getName())
                             .prefecture(name);
                 }));
 
         return sakeEntities.stream().map(sakeEntity ->
-                new Sake()
+                new SakeResponse()
                         .id(UUID.fromString(sakeEntity.getId()))
                         .name(sakeEntity.getName())
                         .image(sakeEntity.getImage().orElse(null))
@@ -115,5 +116,15 @@ public class SakeRepository {
                         .description(sakeEntity.getDescription().orElse(null))
                         .brewery(breweries.get(sakeEntity.getBreweryId()))
         ).collect(Collectors.toList());
+    }
+
+    private List<String> getTaste(String sakeId) {
+        // TODO: taste tableを取得する
+
+        // TODO: taste map tableから酒IDに紐づくレコードを取得する
+
+        // TODO: taste map table の tasteId と taste table の tasteId を当てて taste word を取得して返却する
+
+        return new ArrayList<>();
     }
 }

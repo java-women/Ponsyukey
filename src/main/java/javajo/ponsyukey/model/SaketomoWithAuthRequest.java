@@ -7,15 +7,15 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.UUID;
+import javajo.ponsyukey.model.AuthRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * 登録者情報
+ * SaketomoWithAuthRequest
  */
-@ApiModel(description = "登録者情報")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-21T15:59:57.434551747+09:00[Asia/Tokyo]")
-public class ReviewSaketomo   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
+public class SaketomoWithAuthRequest   {
   @JsonProperty("id")
   private UUID id;
 
@@ -23,7 +23,7 @@ public class ReviewSaketomo   {
   private String name;
 
   /**
-   * Gets or Sets image
+   * 既存画像から選んでもらう(キーもしくはURL)。enumにない値もしくは空/nullの場合はバリデーションチェックでエラーにします
    */
   public enum ImageEnum {
     ICON1("icon1"),
@@ -62,7 +62,10 @@ public class ReviewSaketomo   {
   @JsonProperty("image")
   private ImageEnum image;
 
-  public ReviewSaketomo id(UUID id) {
+  @JsonProperty("auth")
+  private AuthRequest auth;
+
+  public SaketomoWithAuthRequest id(UUID id) {
     this.id = id;
     return this;
   }
@@ -71,7 +74,8 @@ public class ReviewSaketomo   {
    * Get id
    * @return id
   */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
 
   @Valid
 
@@ -83,7 +87,7 @@ public class ReviewSaketomo   {
     this.id = id;
   }
 
-  public ReviewSaketomo name(String name) {
+  public SaketomoWithAuthRequest name(String name) {
     this.name = name;
     return this;
   }
@@ -92,7 +96,8 @@ public class ReviewSaketomo   {
    * Get name
    * @return name
   */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
 
 
   public String getName() {
@@ -103,16 +108,17 @@ public class ReviewSaketomo   {
     this.name = name;
   }
 
-  public ReviewSaketomo image(ImageEnum image) {
+  public SaketomoWithAuthRequest image(ImageEnum image) {
     this.image = image;
     return this;
   }
 
   /**
-   * Get image
+   * 既存画像から選んでもらう(キーもしくはURL)。enumにない値もしくは空/nullの場合はバリデーションチェックでエラーにします
    * @return image
   */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "既存画像から選んでもらう(キーもしくはURL)。enumにない値もしくは空/nullの場合はバリデーションチェックでエラーにします")
+  @NotNull
 
 
   public ImageEnum getImage() {
@@ -121,6 +127,28 @@ public class ReviewSaketomo   {
 
   public void setImage(ImageEnum image) {
     this.image = image;
+  }
+
+  public SaketomoWithAuthRequest auth(AuthRequest auth) {
+    this.auth = auth;
+    return this;
+  }
+
+  /**
+   * Get auth
+   * @return auth
+  */
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
+
+  @Valid
+
+  public AuthRequest getAuth() {
+    return auth;
+  }
+
+  public void setAuth(AuthRequest auth) {
+    this.auth = auth;
   }
 
 
@@ -132,25 +160,27 @@ public class ReviewSaketomo   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ReviewSaketomo reviewSaketomo = (ReviewSaketomo) o;
-    return Objects.equals(this.id, reviewSaketomo.id) &&
-        Objects.equals(this.name, reviewSaketomo.name) &&
-        Objects.equals(this.image, reviewSaketomo.image);
+    SaketomoWithAuthRequest saketomoWithAuthRequest = (SaketomoWithAuthRequest) o;
+    return Objects.equals(this.id, saketomoWithAuthRequest.id) &&
+        Objects.equals(this.name, saketomoWithAuthRequest.name) &&
+        Objects.equals(this.image, saketomoWithAuthRequest.image) &&
+        Objects.equals(this.auth, saketomoWithAuthRequest.auth);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, image);
+    return Objects.hash(id, name, image, auth);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ReviewSaketomo {\n");
+    sb.append("class SaketomoWithAuthRequest {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
+    sb.append("    auth: ").append(toIndentedString(auth)).append("\n");
     sb.append("}");
     return sb.toString();
   }

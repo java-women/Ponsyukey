@@ -9,17 +9,17 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * SakeBrewery
+ * SakeResponseBrewery
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-21T15:59:57.434551747+09:00[Asia/Tokyo]")
-public class SakeBrewery   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
+public class SakeResponseBrewery   {
   @JsonProperty("name")
   private String name;
 
   @JsonProperty("prefecture")
   private String prefecture;
 
-  public SakeBrewery name(String name) {
+  public SakeResponseBrewery name(String name) {
     this.name = name;
     return this;
   }
@@ -39,7 +39,7 @@ public class SakeBrewery   {
     this.name = name;
   }
 
-  public SakeBrewery prefecture(String prefecture) {
+  public SakeResponseBrewery prefecture(String prefecture) {
     this.prefecture = prefecture;
     return this;
   }
@@ -68,9 +68,9 @@ public class SakeBrewery   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SakeBrewery sakeBrewery = (SakeBrewery) o;
-    return Objects.equals(this.name, sakeBrewery.name) &&
-        Objects.equals(this.prefecture, sakeBrewery.prefecture);
+    SakeResponseBrewery sakeResponseBrewery = (SakeResponseBrewery) o;
+    return Objects.equals(this.name, sakeResponseBrewery.name) &&
+        Objects.equals(this.prefecture, sakeResponseBrewery.prefecture);
   }
 
   @Override
@@ -81,7 +81,7 @@ public class SakeBrewery   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SakeBrewery {\n");
+    sb.append("class SakeResponseBrewery {\n");
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    prefecture: ").append(toIndentedString(prefecture)).append("\n");

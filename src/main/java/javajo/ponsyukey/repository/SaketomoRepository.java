@@ -2,8 +2,6 @@ package javajo.ponsyukey.repository;
 
 import javajo.ponsyukey.database.dao.*;
 import javajo.ponsyukey.database.entity.*;
-import javajo.ponsyukey.model.Sake;
-import javajo.ponsyukey.model.SakeBrewery;
 import javajo.ponsyukey.model.Saketomo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -30,6 +28,11 @@ public class SaketomoRepository {
                 .id(UUID.fromString(saketomoEntity.getId()))
                 .name(saketomoEntity.getName())
                 .image(Saketomo.ImageEnum.fromValue(saketomoEntity.getImage()));
+    }
+
+    public Saketomo insertSaketomo() {
+        SaketomoEntity saketomoEntity = new SaketomoEntity();
+        return new Saketomo();
     }
 
 }

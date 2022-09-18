@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
  * OKの場合は値を返却しない
  */
 @ApiModel(description = "OKの場合は値を返却しない")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-21T15:59:57.434551747+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
 public class Error   {
   @JsonProperty("message")
   private String message;

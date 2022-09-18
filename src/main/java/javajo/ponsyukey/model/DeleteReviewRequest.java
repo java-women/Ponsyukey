@@ -10,14 +10,14 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * DeleteReview
+ * DeleteReviewRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-21T15:59:57.434551747+09:00[Asia/Tokyo]")
-public class DeleteReview   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
+public class DeleteReviewRequest   {
   @JsonProperty("saketomoId")
   private UUID saketomoId;
 
-  public DeleteReview saketomoId(UUID saketomoId) {
+  public DeleteReviewRequest saketomoId(UUID saketomoId) {
     this.saketomoId = saketomoId;
     return this;
   }
@@ -47,8 +47,8 @@ public class DeleteReview   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DeleteReview deleteReview = (DeleteReview) o;
-    return Objects.equals(this.saketomoId, deleteReview.saketomoId);
+    DeleteReviewRequest deleteReviewRequest = (DeleteReviewRequest) o;
+    return Objects.equals(this.saketomoId, deleteReviewRequest.saketomoId);
   }
 
   @Override
@@ -59,7 +59,7 @@ public class DeleteReview   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DeleteReview {\n");
+    sb.append("class DeleteReviewRequest {\n");
     
     sb.append("    saketomoId: ").append(toIndentedString(saketomoId)).append("\n");
     sb.append("}");

@@ -1,8 +1,7 @@
 package javajo.ponsyukey.controller;
 
-import javajo.ponsyukey.model.Sake;
-import javajo.ponsyukey.model.SakeBrewery;
 import javajo.ponsyukey.model.SakeResponse;
+import javajo.ponsyukey.model.SakeResponseBrewery;
 import javajo.ponsyukey.service.SakeService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,8 +15,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -47,27 +44,24 @@ class SakeApiControllerTest {
 
     @Nested
     class 酒情報取得_sakeIdのデータ存在していた場合正しいResponseBodyが返却されること{
-        private SakeResponse sakeResponse;
+        private SakeResponse response;
 
         @BeforeEach
         void setUp(){
-            Sake sake = new Sake();
-            sake.setId(UUID.randomUUID());
-            sake.setAlcohol(15.0F);
-            sake.setDescription("おいしい");
-            sake.setImage("https://ponsyukey.jp/1.jpg");
-            sake.setPolishingRatio(40.0F);
-            sake.setType("吟醸");
-            sake.setName("じゃばじょぽんしゅ");
-            SakeBrewery brewery = new SakeBrewery();
+            response = new SakeResponse();
+            response.setId(UUID.randomUUID());
+            response.setAlcohol(15.0F);
+            response.setDescription("おいしい");
+            response.setImage("https://ponsyukey.jp/1.jpg");
+            response.setPolishingRatio(40.0F);
+            response.setType("吟醸");
+            response.setName("じゃばじょぽんしゅ");
+            SakeResponseBrewery brewery = new SakeResponseBrewery();
             brewery.setName("javajo");
             brewery.setPrefecture("青森県");
-            sake.setBrewery(brewery);
+            response.setBrewery(brewery);
             List<String> taste = List.of("すっきり", "洗練された", "スモークチーズっぽい");
-            sake.setTaste(taste);
-
-            sakeResponse = new SakeResponse();
-            sakeResponse.setSake(sake);
+            response.setTaste(taste);
         }
 
         @Test
