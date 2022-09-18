@@ -5,15 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import javajo.ponsyukey.model.SakeBrewery;
+import javajo.ponsyukey.model.SakeResponseBrewery;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * CreateSake
+ * CreateSakeRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T15:04:04.755758+09:00[Asia/Tokyo]")
-public class CreateSake   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
+public class CreateSakeRequest   {
   @JsonProperty("name")
   private String name;
 
@@ -21,7 +21,7 @@ public class CreateSake   {
   private String image;
 
   @JsonProperty("brewery")
-  private SakeBrewery brewery;
+  private SakeResponseBrewery brewery;
 
   @JsonProperty("alcohol")
   private Float alcohol;
@@ -38,7 +38,7 @@ public class CreateSake   {
   @JsonProperty("taste")
   private Object taste;
 
-  public CreateSake name(String name) {
+  public CreateSakeRequest name(String name) {
     this.name = name;
     return this;
   }
@@ -58,7 +58,7 @@ public class CreateSake   {
     this.name = name;
   }
 
-  public CreateSake image(String image) {
+  public CreateSakeRequest image(String image) {
     this.image = image;
     return this;
   }
@@ -78,7 +78,7 @@ public class CreateSake   {
     this.image = image;
   }
 
-  public CreateSake brewery(SakeBrewery brewery) {
+  public CreateSakeRequest brewery(SakeResponseBrewery brewery) {
     this.brewery = brewery;
     return this;
   }
@@ -91,15 +91,15 @@ public class CreateSake   {
 
   @Valid
 
-  public SakeBrewery getBrewery() {
+  public SakeResponseBrewery getBrewery() {
     return brewery;
   }
 
-  public void setBrewery(SakeBrewery brewery) {
+  public void setBrewery(SakeResponseBrewery brewery) {
     this.brewery = brewery;
   }
 
-  public CreateSake alcohol(Float alcohol) {
+  public CreateSakeRequest alcohol(Float alcohol) {
     this.alcohol = alcohol;
     return this;
   }
@@ -119,7 +119,7 @@ public class CreateSake   {
     this.alcohol = alcohol;
   }
 
-  public CreateSake polishingRatio(Float polishingRatio) {
+  public CreateSakeRequest polishingRatio(Float polishingRatio) {
     this.polishingRatio = polishingRatio;
     return this;
   }
@@ -139,7 +139,7 @@ public class CreateSake   {
     this.polishingRatio = polishingRatio;
   }
 
-  public CreateSake type(String type) {
+  public CreateSakeRequest type(String type) {
     this.type = type;
     return this;
   }
@@ -159,7 +159,7 @@ public class CreateSake   {
     this.type = type;
   }
 
-  public CreateSake description(String description) {
+  public CreateSakeRequest description(String description) {
     this.description = description;
     return this;
   }
@@ -179,7 +179,7 @@ public class CreateSake   {
     this.description = description;
   }
 
-  public CreateSake taste(Object taste) {
+  public CreateSakeRequest taste(Object taste) {
     this.taste = taste;
     return this;
   }
@@ -208,15 +208,15 @@ public class CreateSake   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateSake createSake = (CreateSake) o;
-    return Objects.equals(this.name, createSake.name) &&
-        Objects.equals(this.image, createSake.image) &&
-        Objects.equals(this.brewery, createSake.brewery) &&
-        Objects.equals(this.alcohol, createSake.alcohol) &&
-        Objects.equals(this.polishingRatio, createSake.polishingRatio) &&
-        Objects.equals(this.type, createSake.type) &&
-        Objects.equals(this.description, createSake.description) &&
-        Objects.equals(this.taste, createSake.taste);
+    CreateSakeRequest createSakeRequest = (CreateSakeRequest) o;
+    return Objects.equals(this.name, createSakeRequest.name) &&
+        Objects.equals(this.image, createSakeRequest.image) &&
+        Objects.equals(this.brewery, createSakeRequest.brewery) &&
+        Objects.equals(this.alcohol, createSakeRequest.alcohol) &&
+        Objects.equals(this.polishingRatio, createSakeRequest.polishingRatio) &&
+        Objects.equals(this.type, createSakeRequest.type) &&
+        Objects.equals(this.description, createSakeRequest.description) &&
+        Objects.equals(this.taste, createSakeRequest.taste);
   }
 
   @Override
@@ -227,7 +227,7 @@ public class CreateSake   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateSake {\n");
+    sb.append("class CreateSakeRequest {\n");
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");

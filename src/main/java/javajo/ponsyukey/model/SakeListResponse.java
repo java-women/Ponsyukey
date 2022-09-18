@@ -7,21 +7,21 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import javajo.ponsyukey.model.Sake;
+import javajo.ponsyukey.model.SakeResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
  * SakeListResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T15:04:04.755758+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
 public class SakeListResponse   {
   @JsonProperty("totalCount")
   private Integer totalCount;
 
   @JsonProperty("sakeList")
   @Valid
-  private List<Sake> sakeList = null;
+  private List<SakeResponse> sakeList = null;
 
   public SakeListResponse totalCount(Integer totalCount) {
     this.totalCount = totalCount;
@@ -43,14 +43,14 @@ public class SakeListResponse   {
     this.totalCount = totalCount;
   }
 
-  public SakeListResponse sakeList(List<Sake> sakeList) {
+  public SakeListResponse sakeList(List<SakeResponse> sakeList) {
     this.sakeList = sakeList;
     return this;
   }
 
-  public SakeListResponse addSakeListItem(Sake sakeListItem) {
+  public SakeListResponse addSakeListItem(SakeResponse sakeListItem) {
     if (this.sakeList == null) {
-      this.sakeList = new ArrayList<Sake>();
+      this.sakeList = new ArrayList<SakeResponse>();
     }
     this.sakeList.add(sakeListItem);
     return this;
@@ -64,11 +64,11 @@ public class SakeListResponse   {
 
   @Valid
 
-  public List<Sake> getSakeList() {
+  public List<SakeResponse> getSakeList() {
     return sakeList;
   }
 
-  public void setSakeList(List<Sake> sakeList) {
+  public void setSakeList(List<SakeResponse> sakeList) {
     this.sakeList = sakeList;
   }
 

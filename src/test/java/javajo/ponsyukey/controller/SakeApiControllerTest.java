@@ -1,8 +1,5 @@
 package javajo.ponsyukey.controller;
 
-import javajo.ponsyukey.model.Sake;
-import javajo.ponsyukey.model.SakeBrewery;
-import javajo.ponsyukey.model.SakeResponse;
 import javajo.ponsyukey.service.SakeService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,8 +13,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

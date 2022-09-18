@@ -9,18 +9,17 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Auth
+ * AuthRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T15:04:04.755758+09:00[Asia/Tokyo]")
-public class Auth   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
+public class AuthRequest   {
   @JsonProperty("password")
-  // ハッシュで入る
   private String password;
 
   @JsonProperty("email")
   private String email;
 
-  public Auth password(String password) {
+  public AuthRequest password(String password) {
     this.password = password;
     return this;
   }
@@ -41,7 +40,7 @@ public class Auth   {
     this.password = password;
   }
 
-  public Auth email(String email) {
+  public AuthRequest email(String email) {
     this.email = email;
     return this;
   }
@@ -71,9 +70,9 @@ public class Auth   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Auth auth = (Auth) o;
-    return Objects.equals(this.password, auth.password) &&
-        Objects.equals(this.email, auth.email);
+    AuthRequest authRequest = (AuthRequest) o;
+    return Objects.equals(this.password, authRequest.password) &&
+        Objects.equals(this.email, authRequest.email);
   }
 
   @Override
@@ -84,7 +83,7 @@ public class Auth   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Auth {\n");
+    sb.append("class AuthRequest {\n");
     
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");

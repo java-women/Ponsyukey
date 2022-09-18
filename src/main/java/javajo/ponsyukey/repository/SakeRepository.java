@@ -3,8 +3,6 @@ package javajo.ponsyukey.repository;
 import javajo.ponsyukey.database.dao.*;
 import javajo.ponsyukey.database.entity.*;
 import javajo.ponsyukey.database.dao.SakeDao;
-import javajo.ponsyukey.model.Sake;
-import javajo.ponsyukey.model.SakeBrewery;
 import org.seasar.doma.jdbc.SelectOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

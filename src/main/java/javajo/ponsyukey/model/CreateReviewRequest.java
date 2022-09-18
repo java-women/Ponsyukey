@@ -5,17 +5,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import javajo.ponsyukey.model.ReviewSaketomo;
+import javajo.ponsyukey.model.Saketomo;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * CreateReview
+ * CreateReviewRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T15:04:04.755758+09:00[Asia/Tokyo]")
-public class CreateReview   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
+public class CreateReviewRequest   {
   @JsonProperty("saketomo")
-  private ReviewSaketomo saketomo;
+  private Saketomo saketomo;
 
   @JsonProperty("rating")
   private Integer rating;
@@ -23,7 +23,7 @@ public class CreateReview   {
   @JsonProperty("comment")
   private String comment;
 
-  public CreateReview saketomo(ReviewSaketomo saketomo) {
+  public CreateReviewRequest saketomo(Saketomo saketomo) {
     this.saketomo = saketomo;
     return this;
   }
@@ -36,15 +36,15 @@ public class CreateReview   {
 
   @Valid
 
-  public ReviewSaketomo getSaketomo() {
+  public Saketomo getSaketomo() {
     return saketomo;
   }
 
-  public void setSaketomo(ReviewSaketomo saketomo) {
+  public void setSaketomo(Saketomo saketomo) {
     this.saketomo = saketomo;
   }
 
-  public CreateReview rating(Integer rating) {
+  public CreateReviewRequest rating(Integer rating) {
     this.rating = rating;
     return this;
   }
@@ -64,7 +64,7 @@ public class CreateReview   {
     this.rating = rating;
   }
 
-  public CreateReview comment(String comment) {
+  public CreateReviewRequest comment(String comment) {
     this.comment = comment;
     return this;
   }
@@ -93,10 +93,10 @@ public class CreateReview   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateReview createReview = (CreateReview) o;
-    return Objects.equals(this.saketomo, createReview.saketomo) &&
-        Objects.equals(this.rating, createReview.rating) &&
-        Objects.equals(this.comment, createReview.comment);
+    CreateReviewRequest createReviewRequest = (CreateReviewRequest) o;
+    return Objects.equals(this.saketomo, createReviewRequest.saketomo) &&
+        Objects.equals(this.rating, createReviewRequest.rating) &&
+        Objects.equals(this.comment, createReviewRequest.comment);
   }
 
   @Override
@@ -107,7 +107,7 @@ public class CreateReview   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateReview {\n");
+    sb.append("class CreateReviewRequest {\n");
     
     sb.append("    saketomo: ").append(toIndentedString(saketomo)).append("\n");
     sb.append("    rating: ").append(toIndentedString(rating)).append("\n");

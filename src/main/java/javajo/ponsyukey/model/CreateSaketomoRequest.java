@@ -6,19 +6,15 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.UUID;
-import javajo.ponsyukey.model.Auth;
+import javajo.ponsyukey.model.AuthRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * SaketomoWithAuth
+ * CreateSaketomoRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T15:04:04.755758+09:00[Asia/Tokyo]")
-public class SaketomoWithAuth   {
-  @JsonProperty("id")
-  private UUID id;
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
+public class CreateSaketomoRequest   {
   @JsonProperty("name")
   private String name;
 
@@ -63,31 +59,9 @@ public class SaketomoWithAuth   {
   private ImageEnum image;
 
   @JsonProperty("auth")
-  private Auth auth;
+  private AuthRequest auth;
 
-  public SaketomoWithAuth id(UUID id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-  */
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
-
-  @Valid
-
-  public UUID getId() {
-    return id;
-  }
-
-  public void setId(UUID id) {
-    this.id = id;
-  }
-
-  public SaketomoWithAuth name(String name) {
+  public CreateSaketomoRequest name(String name) {
     this.name = name;
     return this;
   }
@@ -108,7 +82,7 @@ public class SaketomoWithAuth   {
     this.name = name;
   }
 
-  public SaketomoWithAuth image(ImageEnum image) {
+  public CreateSaketomoRequest image(ImageEnum image) {
     this.image = image;
     return this;
   }
@@ -129,7 +103,7 @@ public class SaketomoWithAuth   {
     this.image = image;
   }
 
-  public SaketomoWithAuth auth(Auth auth) {
+  public CreateSaketomoRequest auth(AuthRequest auth) {
     this.auth = auth;
     return this;
   }
@@ -143,11 +117,11 @@ public class SaketomoWithAuth   {
 
   @Valid
 
-  public Auth getAuth() {
+  public AuthRequest getAuth() {
     return auth;
   }
 
-  public void setAuth(Auth auth) {
+  public void setAuth(AuthRequest auth) {
     this.auth = auth;
   }
 
@@ -160,24 +134,22 @@ public class SaketomoWithAuth   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SaketomoWithAuth saketomoWithAuth = (SaketomoWithAuth) o;
-    return Objects.equals(this.id, saketomoWithAuth.id) &&
-        Objects.equals(this.name, saketomoWithAuth.name) &&
-        Objects.equals(this.image, saketomoWithAuth.image) &&
-        Objects.equals(this.auth, saketomoWithAuth.auth);
+    CreateSaketomoRequest createSaketomoRequest = (CreateSaketomoRequest) o;
+    return Objects.equals(this.name, createSaketomoRequest.name) &&
+        Objects.equals(this.image, createSaketomoRequest.image) &&
+        Objects.equals(this.auth, createSaketomoRequest.auth);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, image, auth);
+    return Objects.hash(name, image, auth);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SaketomoWithAuth {\n");
+    sb.append("class CreateSaketomoRequest {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    auth: ").append(toIndentedString(auth)).append("\n");

@@ -5,11 +5,10 @@
  */
 package javajo.ponsyukey.controller;
 
-import javajo.ponsyukey.model.CreateSaketomo;
+import javajo.ponsyukey.model.CreateSaketomoRequest;
 import javajo.ponsyukey.model.Error;
 import javajo.ponsyukey.model.Saketomo;
-import javajo.ponsyukey.model.SaketomoResponse;
-import javajo.ponsyukey.model.SaketomoWithAuth;
+import javajo.ponsyukey.model.SaketomoWithAuthRequest;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,7 +23,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T15:04:04.755758+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
 @Validated
 @Api(value = "saketomo", description = "the saketomo API")
 public interface SaketomoApi {
@@ -36,7 +35,7 @@ public interface SaketomoApi {
     /**
      * POST /saketomo : 会員登録API
      *
-     * @param createSaketomo 会員登録に必要な情報 (required)
+     * @param createSaketomoRequest 会員登録に必要な情報 (required)
      * @return http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする (status code 200)
      *         or http ステータスコード 400 error (status code 400)
      *         or http ステータスコード 500 error (status code 500)
@@ -52,7 +51,7 @@ public interface SaketomoApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<Saketomo> createSaketomo(@ApiParam(value = "会員登録に必要な情報", required = true) @Valid @RequestBody CreateSaketomo createSaketomo) {
+    default ResponseEntity<Saketomo> createSaketomo(@ApiParam(value = "会員登録に必要な情報", required = true) @Valid @RequestBody CreateSaketomoRequest createSaketomoRequest) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
@@ -75,9 +74,9 @@ public interface SaketomoApi {
      *         or http ステータスコード 400 error (status code 400)
      *         or http ステータスコード 500 error (status code 500)
      */
-    @ApiOperation(value = "会員情報取得API", nickname = "getSaketomo", notes = "", response = SaketomoResponse.class, tags={ "saketomo", })
+    @ApiOperation(value = "会員情報取得API", nickname = "getSaketomo", notes = "", response = Saketomo.class, tags={ "saketomo", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = SaketomoResponse.class),
+        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Saketomo.class),
         @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
         @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
     @RequestMapping(
@@ -85,11 +84,11 @@ public interface SaketomoApi {
         value = "/saketomo/{saketomoId}",
         produces = { "application/json" }
     )
-    default ResponseEntity<SaketomoResponse> getSaketomo(@ApiParam(value = "", required = true) @PathVariable("saketomoId") String saketomoId) {
+    default ResponseEntity<Saketomo> getSaketomo(@ApiParam(value = "", required = true) @PathVariable("saketomoId") String saketomoId) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"saketomo\" : { \"image\" : \"icon1\", \"name\" : \"name\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" } }";
+                    String exampleString = "{ \"image\" : \"icon1\", \"name\" : \"name\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -104,14 +103,14 @@ public interface SaketomoApi {
      * POST /saketomo/{saketomoId} : 会員編集API
      *
      * @param saketomoId  (required)
-     * @param saketomoWithAuth 会員編集に必要な情報 (required)
+     * @param saketomoWithAuthRequest 会員編集に必要な情報 (required)
      * @return http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする (status code 200)
      *         or http ステータスコード 400 error (status code 400)
      *         or http ステータスコード 500 error (status code 500)
      */
-    @ApiOperation(value = "会員編集API", nickname = "updateSaketomo", notes = "", response = Object.class, tags={ "saketomo", })
+    @ApiOperation(value = "会員編集API", nickname = "updateSaketomo", notes = "", response = Saketomo.class, tags={ "saketomo", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Object.class),
+        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Saketomo.class),
         @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
         @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
     @RequestMapping(
@@ -120,7 +119,16 @@ public interface SaketomoApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<Object> updateSaketomo(@ApiParam(value = "", required = true) @PathVariable("saketomoId") String saketomoId,@ApiParam(value = "会員編集に必要な情報", required = true) @Valid @RequestBody SaketomoWithAuth saketomoWithAuth) {
+    default ResponseEntity<Saketomo> updateSaketomo(@ApiParam(value = "", required = true) @PathVariable("saketomoId") String saketomoId,@ApiParam(value = "会員編集に必要な情報", required = true) @Valid @RequestBody SaketomoWithAuthRequest saketomoWithAuthRequest) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"image\" : \"icon1\", \"name\" : \"name\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

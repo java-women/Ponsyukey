@@ -5,9 +5,9 @@
  */
 package javajo.ponsyukey.controller;
 
-import javajo.ponsyukey.model.CreateReview;
-import javajo.ponsyukey.model.DeleteReview;
+import javajo.ponsyukey.model.CreateReviewRequest;
 import javajo.ponsyukey.model.Error;
+import javajo.ponsyukey.model.ReviewResponse;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,7 +22,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T15:04:04.755758+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
 @Validated
 @Api(value = "review", description = "the review API")
 public interface ReviewApi {
@@ -34,14 +34,14 @@ public interface ReviewApi {
     /**
      * POST /review : 口コミ情報登録API
      *
-     * @param createReview 口コミ情報登録に必要な情報 (required)
+     * @param createReviewRequest 口コミ情報登録に必要な情報 (required)
      * @return http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする (status code 200)
      *         or http ステータスコード 400 error (status code 400)
      *         or http ステータスコード 500 error (status code 500)
      */
-    @ApiOperation(value = "口コミ情報登録API", nickname = "createReview", notes = "", response = Object.class, tags={ "review", })
+    @ApiOperation(value = "口コミ情報登録API", nickname = "createReview", notes = "", response = ReviewResponse.class, tags={ "review", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Object.class),
+        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = ReviewResponse.class),
         @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
         @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
     @RequestMapping(
@@ -50,33 +50,16 @@ public interface ReviewApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<Object> createReview(@ApiParam(value = "口コミ情報登録に必要な情報", required = true) @Valid @RequestBody CreateReview createReview) {
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
-
-
-    /**
-     * POST /review/{reviewId} : 口コミ情報削除API
-     *
-     * @param reviewId  (required)
-     * @param deleteReview 口コミ情報削除に必要な情報 (required)
-     * @return http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする (status code 200)
-     *         or http ステータスコード 400 error (status code 400)
-     *         or http ステータスコード 500 error (status code 500)
-     */
-    @ApiOperation(value = "口コミ情報削除API", nickname = "deleteReview", notes = "", tags={ "review", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする"),
-        @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
-        @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
-    @RequestMapping(
-        method = RequestMethod.POST,
-        value = "/review/{reviewId}",
-        produces = { "application/json" },
-        consumes = { "application/json" }
-    )
-    default ResponseEntity<Void> deleteReview(@ApiParam(value = "", required = true) @PathVariable("reviewId") String reviewId,@ApiParam(value = "口コミ情報削除に必要な情報", required = true) @Valid @RequestBody DeleteReview deleteReview) {
+    default ResponseEntity<ReviewResponse> createReview(@ApiParam(value = "口コミ情報登録に必要な情報", required = true) @Valid @RequestBody CreateReviewRequest createReviewRequest) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"createdAt\" : \"2000-01-23T04:56:07.000+00:00\", \"rating\" : 0, \"saketomo\" : { \"image\" : \"icon1\", \"name\" : \"name\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }, \"comment\" : \"comment\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

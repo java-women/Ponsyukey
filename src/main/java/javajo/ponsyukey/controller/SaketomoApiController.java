@@ -1,8 +1,5 @@
 package javajo.ponsyukey.controller;
 
-import javajo.ponsyukey.model.CreateSaketomo;
-import javajo.ponsyukey.model.Saketomo;
-import javajo.ponsyukey.model.SaketomoResponse;
 import javajo.ponsyukey.service.SaketomoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,5 @@
 package javajo.ponsyukey.database.entity;
 
-import javajo.ponsyukey.model.Saketomo;
-import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
 import org.seasar.doma.Id;
 

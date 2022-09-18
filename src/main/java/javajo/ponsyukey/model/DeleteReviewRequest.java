@@ -5,37 +5,37 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import javajo.ponsyukey.model.Saketomo;
+import java.util.UUID;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * SaketomoResponse
+ * DeleteReviewRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T15:04:04.755758+09:00[Asia/Tokyo]")
-public class SaketomoResponse   {
-  @JsonProperty("saketomo")
-  private Saketomo saketomo;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
+public class DeleteReviewRequest   {
+  @JsonProperty("saketomoId")
+  private UUID saketomoId;
 
-  public SaketomoResponse saketomo(Saketomo saketomo) {
-    this.saketomo = saketomo;
+  public DeleteReviewRequest saketomoId(UUID saketomoId) {
+    this.saketomoId = saketomoId;
     return this;
   }
 
   /**
-   * Get saketomo
-   * @return saketomo
+   * 登録者ID
+   * @return saketomoId
   */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "登録者ID")
 
   @Valid
 
-  public Saketomo getSaketomo() {
-    return saketomo;
+  public UUID getSaketomoId() {
+    return saketomoId;
   }
 
-  public void setSaketomo(Saketomo saketomo) {
-    this.saketomo = saketomo;
+  public void setSaketomoId(UUID saketomoId) {
+    this.saketomoId = saketomoId;
   }
 
 
@@ -47,21 +47,21 @@ public class SaketomoResponse   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SaketomoResponse saketomoResponse = (SaketomoResponse) o;
-    return Objects.equals(this.saketomo, saketomoResponse.saketomo);
+    DeleteReviewRequest deleteReviewRequest = (DeleteReviewRequest) o;
+    return Objects.equals(this.saketomoId, deleteReviewRequest.saketomoId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(saketomo);
+    return Objects.hash(saketomoId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SaketomoResponse {\n");
+    sb.append("class DeleteReviewRequest {\n");
     
-    sb.append("    saketomo: ").append(toIndentedString(saketomo)).append("\n");
+    sb.append("    saketomoId: ").append(toIndentedString(saketomoId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
