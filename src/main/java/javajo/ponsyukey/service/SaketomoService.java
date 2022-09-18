@@ -1,5 +1,7 @@
 package javajo.ponsyukey.service;
 
+import javajo.ponsyukey.model.CreateSaketomoRequest;
+import javajo.ponsyukey.model.Saketomo;
 import javajo.ponsyukey.repository.SaketomoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,20 +21,17 @@ public class SaketomoService {
      * @param saketomoId 会員ID
      * @return 会員情報一式
      */
-    public SaketomoResponse getSaketomoResponse(String saketomoId) {
+    public Saketomo getSaketomoResponse(String saketomoId) {
         // 会員IDに紐づく会員情報を取得する
-        Saketomo saketomo = saketomoRepository.getSaketomo(saketomoId);
-
-        return new SaketomoResponse()
-                .saketomo(saketomo);
+        return saketomoRepository.getSaketomo(saketomoId);
     }
 
     /**
      * 新しい会員情報を登録する
-     * @param createSaketomo 会員情報一式
+     * @param createSaketomoRequest 会員情報一式
      * @return 会員情報一式
      */
-    public Saketomo createSaketomo(CreateSaketomo createSaketomo) {
+    public Saketomo createSaketomo(CreateSaketomoRequest createSaketomoRequest) {
         // TODO repositoryをよぶ
         saketomoRepository.insertSaketomo();
 

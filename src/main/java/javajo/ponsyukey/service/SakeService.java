@@ -1,5 +1,7 @@
 package javajo.ponsyukey.service;
 
+import javajo.ponsyukey.model.SakeListResponse;
+import javajo.ponsyukey.model.SakeResponse;
 import javajo.ponsyukey.repository.SakeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,10 +28,7 @@ public class SakeService {
      */
     public SakeResponse getSakeResponse(String sakeId) {
         // 酒IDに紐づく酒情報を取得する
-        Sake sake = sakeRepository.getSake(sakeId);
-
-        return new SakeResponse()
-                .sake(sake);
+        return sakeRepository.getSake(sakeId);
     }
 
     /**
@@ -44,7 +43,7 @@ public class SakeService {
             limit = RESPONSE_LIMIT;
         }
 
-        List<Sake> sakeList = sakeRepository.getSakeList(limit, offset);
+        List<SakeResponse> sakeList = sakeRepository.getSakeList(limit, offset);
         return new SakeListResponse()
                 .sakeList(sakeList)
                 .totalCount(sakeList.size());

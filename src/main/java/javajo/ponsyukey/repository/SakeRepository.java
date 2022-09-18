@@ -3,6 +3,8 @@ package javajo.ponsyukey.repository;
 import javajo.ponsyukey.database.dao.*;
 import javajo.ponsyukey.database.entity.*;
 import javajo.ponsyukey.database.dao.SakeDao;
+import javajo.ponsyukey.model.SakeResponse;
+import javajo.ponsyukey.model.SakeResponseBrewery;
 import org.seasar.doma.jdbc.SelectOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,7 +36,7 @@ public class SakeRepository {
         this.countryDao = countryDao;
     }
 
-    public Sake getSake(String sakeId){
+    public SakeResponse getSake(String sakeId){
         //酒情報を取得する
         SakeEntity sakeEntity = sakeDao.selectById(sakeId);
 
@@ -52,13 +54,13 @@ public class SakeRepository {
             name = countryEntity.getName();
         }
 
-        SakeBrewery brewery = new SakeBrewery()
+        SakeResponseBrewery brewery = new SakeResponseBrewery()
                 .name(sakeBreweryEntity.getName())
                 .prefecture(name);
 
         //SakeEntityをSakeModelに変換する
         //TODO 空データ(null)の挙動についてあとで確認・修正
-        return new Sake()
+        return new SakeResponse()
                 .id(UUID.fromString(sakeEntity.getId()))
                 .name(sakeEntity.getName())
                 .image(sakeEntity.getImage().orElse(null))
@@ -70,7 +72,7 @@ public class SakeRepository {
     }
 
 
-    public List<Sake> getSakeList(int limit, int offset) {
+    public List<SakeResponse> getSakeList(int limit, int offset) {
         SelectOptions options = SelectOptions.get().limit(limit).offset(offset);
         List<SakeEntity> sakeEntities = sakeDao.selectAll(options);
 
@@ -86,7 +88,7 @@ public class SakeRepository {
         Map<Integer, CountryEntity> countryEntities = countryDao.selectAll().stream().collect(Collectors.toMap(CountryEntity::getId, countryEntity -> countryEntity));
 
         // TODO: IDをStringからUUIDに変更したい
-        Map<String, SakeBrewery> breweries = sakeBreweryEntities.stream()
+        Map<String, SakeResponseBrewery> breweries = sakeBreweryEntities.stream()
                 .collect(Collectors.toMap(SakeBreweryEntity::getId, sakeBreweryEntity -> {
                     String name;
                     var regionEntity = regionEntities.get(sakeBreweryEntity.getRegionId());
@@ -97,13 +99,13 @@ public class SakeRepository {
                         CountryEntity countryEntity = countryEntities.get(regionEntity.getCountryId());
                         name = countryEntity.getName();
                     }
-                    return new SakeBrewery()
+                    return new SakeResponseBrewery()
                             .name(sakeBreweryEntity.getName())
                             .prefecture(name);
                 }));
 
         return sakeEntities.stream().map(sakeEntity ->
-                new Sake()
+                new SakeResponse()
                         .id(UUID.fromString(sakeEntity.getId()))
                         .name(sakeEntity.getName())
                         .image(sakeEntity.getImage().orElse(null))
