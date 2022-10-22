@@ -11,7 +11,6 @@ import org.seasar.doma.jdbc.SelectOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -24,26 +23,32 @@ public class SakeRepository {
     private final RegionDao regionDao;
     private final PrefectureDao prefectureDao;
     private final CountryDao countryDao;
+    private final TasteDao tasteDao;
+    private final TasteMapDao tasteMapDao;
 
     @Autowired
     public SakeRepository(SakeDao sakeDao,
                           BreweryDao breweryDao,
                           RegionDao regionDao,
                           PrefectureDao prefectureDao,
-                          CountryDao countryDao
+                          CountryDao countryDao,
+                          TasteDao tasteDao,
+                          TasteMapDao tasteMapDao
                           ) {
         this.sakeDao = sakeDao;
         this.breweryDao = breweryDao;
         this.regionDao = regionDao;
         this.prefectureDao = prefectureDao;
         this.countryDao = countryDao;
+        this.tasteDao = tasteDao;
+        this.tasteMapDao = tasteMapDao;
     }
 
     public Sake getSake(String sakeId){
         //酒情報を取得する
         SakeEntity sakeEntity = sakeDao.selectById(sakeId);
 
-        // TODO: tasteを取得する
+        // tasteを取得する
         List<String> taste = getTaste(sakeId);
 
         //醸造所情報を取得する
@@ -119,12 +124,14 @@ public class SakeRepository {
     }
 
     private List<String> getTaste(String sakeId) {
-        // TODO: taste tableを取得する
-
-        // TODO: taste map tableから酒IDに紐づくレコードを取得する
-
-        // TODO: taste map table の tasteId と taste table の tasteId を当てて taste word を取得して返却する
-
-        return new ArrayList<>();
+        // TODO: tasteいっぱい増えてきたら取り方再検討する
+        List<TasteEntity> tasteEntities = tasteDao.selectAll();
+        // taste map tableから酒IDに紐づくtasteIDを取得する
+        List<String> tasteIds = tasteMapDao.selectTasteIdsBySakeId(sakeId);
+        // taste map table の tasteId と taste table の tasteId を当てて taste word を取得して返却する
+        return tasteEntities.stream()
+                .filter(t -> tasteIds.contains(t.getId()))
+                .map(TasteEntity::getValue)
+                .toList();
     }
 }
