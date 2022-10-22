@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Repository
@@ -92,7 +91,7 @@ public class SakeRepository {
         Map<Integer, CountryEntity> countryEntities = countryDao.selectAll().stream().collect(Collectors.toMap(CountryEntity::getId, countryEntity -> countryEntity));
 
         // TODO: IDをStringからUUIDに変更したい
-        Map<String, Sakea> breweries = sakeBreweryEntities.stream()
+        Map<String, SakeBrewery> breweries = sakeBreweryEntities.stream()
                 .collect(Collectors.toMap(SakeBreweryEntity::getId, sakeBreweryEntity -> {
                     String name;
                     var regionEntity = regionEntities.get(sakeBreweryEntity.getRegionId());
@@ -103,21 +102,19 @@ public class SakeRepository {
                         CountryEntity countryEntity = countryEntities.get(regionEntity.getCountryId());
                         name = countryEntity.getName();
                     }
-                    return new SakeResponseBrewery()
-                            .name(sakeBreweryEntity.getName())
-                            .prefecture(name);
+                    return new SakeBrewery(sakeBreweryEntity.getName(), name);
                 }));
 
         return sakeEntities.stream().map(sakeEntity ->
-                new SakeResponse()
-                        .id(UUID.fromString(sakeEntity.getId()))
-                        .name(sakeEntity.getName())
-                        .image(sakeEntity.getImage().orElse(null))
-                        .alcohol(sakeEntity.getAlcohol().orElse(null))
-                        .polishingRatio(sakeEntity.getPolishingRatio().orElse(null))
-                        .type(sakeEntity.getType().orElse(null))
-                        .description(sakeEntity.getDescription().orElse(null))
-                        .brewery(breweries.get(sakeEntity.getBreweryId()))
+                new Sake(sakeEntity.getId(),
+                        sakeEntity.getName(),
+                        sakeEntity.getImage().orElse(null),
+                        breweries.get(sakeEntity.getBreweryId()),
+                        sakeEntity.getAlcohol().orElse(null),
+                        sakeEntity.getPolishingRatio().orElse(null),
+                        sakeEntity.getType().orElse(null),
+                        sakeEntity.getDescription().orElse(null),
+                        getTaste(sakeEntity.getId()))
         ).collect(Collectors.toList());
     }
 

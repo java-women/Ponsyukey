@@ -1,5 +1,7 @@
 package javajo.ponsyukey.service;
 
+import javajo.ponsyukey.model.CreateSaketomoRequest;
+import javajo.ponsyukey.model.Saketomo;
 import javajo.ponsyukey.repository.SaketomoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
