@@ -15,7 +15,7 @@ src/main/java/javajo/ponsyukey/model/Error.java
 src/main/java/javajo/ponsyukey/model/ReviewResponse.java
 src/main/java/javajo/ponsyukey/model/SakeListResponse.java
 src/main/java/javajo/ponsyukey/model/SakeResponse.java
-src/main/java/javajo/ponsyukey/model/Saketomo.java
+src/main/java/javajo/ponsyukey/model/SaketomoRequestResponse.java
 src/main/java/javajo/ponsyukey/model/SaketomoWithAuthRequest.java
 src/main/java/org/openapitools/configuration/HomeController.java
 src/main/java/org/openapitools/configuration/OpenAPIDocumentationConfig.java

@@ -5,17 +5,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import javajo.ponsyukey.model.Saketomo;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
  * CreateReviewRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-10-22T16:06:48.697644+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-10-22T16:58:15.851637+09:00[Asia/Tokyo]")
 public class CreateReviewRequest   {
   @JsonProperty("saketomo")
-  private Saketomo saketomo;
+  private SaketomoRequestResponse saketomo = null;
 
   @JsonProperty("rating")
   private Integer rating;
@@ -23,7 +22,7 @@ public class CreateReviewRequest   {
   @JsonProperty("comment")
   private String comment;
 
-  public CreateReviewRequest saketomo(Saketomo saketomo) {
+  public CreateReviewRequest saketomo(SaketomoRequestResponse saketomo) {
     this.saketomo = saketomo;
     return this;
   }
@@ -36,11 +35,11 @@ public class CreateReviewRequest   {
 
   @Valid
 
-  public Saketomo getSaketomo() {
+  public SaketomoRequestResponse getSaketomo() {
     return saketomo;
   }
 
-  public void setSaketomo(Saketomo saketomo) {
+  public void setSaketomo(SaketomoRequestResponse saketomo) {
     this.saketomo = saketomo;
   }
 

@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 /**
  * SakeListResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-10-22T16:06:48.697644+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-10-22T16:58:15.851637+09:00[Asia/Tokyo]")
 public class SakeListResponse   {
   @JsonProperty("totalCount")
   private Integer totalCount;

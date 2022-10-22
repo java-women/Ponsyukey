@@ -7,7 +7,7 @@ package javajo.ponsyukey.controller;
 
 import javajo.ponsyukey.model.CreateSaketomoRequest;
 import javajo.ponsyukey.model.Error;
-import javajo.ponsyukey.model.Saketomo;
+import javajo.ponsyukey.model.SaketomoRequestResponse;
 import javajo.ponsyukey.model.SaketomoWithAuthRequest;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-10-22T16:06:48.697644+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-10-22T16:58:15.851637+09:00[Asia/Tokyo]")
 @Validated
 @Api(value = "saketomo", description = "the saketomo API")
 public interface SaketomoApi {
@@ -40,9 +40,9 @@ public interface SaketomoApi {
      *         or http ステータスコード 400 error (status code 400)
      *         or http ステータスコード 500 error (status code 500)
      */
-    @ApiOperation(value = "会員登録API", nickname = "createSaketomo", notes = "", response = Saketomo.class, tags={ "saketomo", })
+    @ApiOperation(value = "会員登録API", nickname = "createSaketomo", notes = "", response = SaketomoRequestResponse.class, tags={ "saketomo", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Saketomo.class),
+        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = SaketomoRequestResponse.class),
         @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
         @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
     @RequestMapping(
@@ -51,7 +51,7 @@ public interface SaketomoApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<Saketomo> createSaketomo(@ApiParam(value = "会員登録に必要な情報", required = true) @Valid @RequestBody CreateSaketomoRequest createSaketomoRequest) {
+    default ResponseEntity<SaketomoRequestResponse> createSaketomo(@ApiParam(value = "会員登録に必要な情報", required = true) @Valid @RequestBody CreateSaketomoRequest createSaketomoRequest) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
@@ -74,9 +74,9 @@ public interface SaketomoApi {
      *         or http ステータスコード 400 error (status code 400)
      *         or http ステータスコード 500 error (status code 500)
      */
-    @ApiOperation(value = "会員情報取得API", nickname = "getSaketomo", notes = "", response = Saketomo.class, tags={ "saketomo", })
+    @ApiOperation(value = "会員情報取得API", nickname = "getSaketomo", notes = "", response = SaketomoRequestResponse.class, tags={ "saketomo", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Saketomo.class),
+        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = SaketomoRequestResponse.class),
         @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
         @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
     @RequestMapping(
@@ -84,7 +84,7 @@ public interface SaketomoApi {
         value = "/saketomo/{saketomoId}",
         produces = { "application/json" }
     )
-    default ResponseEntity<Saketomo> getSaketomo(@ApiParam(value = "", required = true) @PathVariable("saketomoId") String saketomoId) {
+    default ResponseEntity<SaketomoRequestResponse> getSaketomo(@ApiParam(value = "", required = true) @PathVariable("saketomoId") String saketomoId) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
@@ -108,9 +108,9 @@ public interface SaketomoApi {
      *         or http ステータスコード 400 error (status code 400)
      *         or http ステータスコード 500 error (status code 500)
      */
-    @ApiOperation(value = "会員編集API", nickname = "updateSaketomo", notes = "", response = Saketomo.class, tags={ "saketomo", })
+    @ApiOperation(value = "会員編集API", nickname = "updateSaketomo", notes = "", response = SaketomoRequestResponse.class, tags={ "saketomo", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = Saketomo.class),
+        @ApiResponse(code = 200, message = "http ステータスコード 200 ok。バリデーションエラー時も200でレスポンスする", response = SaketomoRequestResponse.class),
         @ApiResponse(code = 400, message = "http ステータスコード 400 error", response = Error.class),
         @ApiResponse(code = 500, message = "http ステータスコード 500 error", response = Error.class) })
     @RequestMapping(
@@ -119,7 +119,7 @@ public interface SaketomoApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<Saketomo> updateSaketomo(@ApiParam(value = "", required = true) @PathVariable("saketomoId") String saketomoId,@ApiParam(value = "会員編集に必要な情報", required = true) @Valid @RequestBody SaketomoWithAuthRequest saketomoWithAuthRequest) {
+    default ResponseEntity<SaketomoRequestResponse> updateSaketomo(@ApiParam(value = "", required = true) @PathVariable("saketomoId") String saketomoId,@ApiParam(value = "会員編集に必要な情報", required = true) @Valid @RequestBody SaketomoWithAuthRequest saketomoWithAuthRequest) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {

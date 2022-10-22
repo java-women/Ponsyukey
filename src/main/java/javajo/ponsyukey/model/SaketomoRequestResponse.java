@@ -11,10 +11,11 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Saketomo
+ * saketomoのリクエストとレスポンスに兼用する
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-10-22T16:06:48.697644+09:00[Asia/Tokyo]")
-public class Saketomo   {
+@ApiModel(description = "saketomoのリクエストとレスポンスに兼用する")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-10-22T16:58:15.851637+09:00[Asia/Tokyo]")
+public class SaketomoRequestResponse   {
   @JsonProperty("id")
   private UUID id;
 
@@ -61,7 +62,7 @@ public class Saketomo   {
   @JsonProperty("image")
   private ImageEnum image;
 
-  public Saketomo id(UUID id) {
+  public SaketomoRequestResponse id(UUID id) {
     this.id = id;
     return this;
   }
@@ -82,7 +83,7 @@ public class Saketomo   {
     this.id = id;
   }
 
-  public Saketomo name(String name) {
+  public SaketomoRequestResponse name(String name) {
     this.name = name;
     return this;
   }
@@ -102,7 +103,7 @@ public class Saketomo   {
     this.name = name;
   }
 
-  public Saketomo image(ImageEnum image) {
+  public SaketomoRequestResponse image(ImageEnum image) {
     this.image = image;
     return this;
   }
@@ -131,10 +132,10 @@ public class Saketomo   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Saketomo saketomo = (Saketomo) o;
-    return Objects.equals(this.id, saketomo.id) &&
-        Objects.equals(this.name, saketomo.name) &&
-        Objects.equals(this.image, saketomo.image);
+    SaketomoRequestResponse saketomoRequestResponse = (SaketomoRequestResponse) o;
+    return Objects.equals(this.id, saketomoRequestResponse.id) &&
+        Objects.equals(this.name, saketomoRequestResponse.name) &&
+        Objects.equals(this.image, saketomoRequestResponse.image);
   }
 
   @Override
@@ -145,7 +146,7 @@ public class Saketomo   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Saketomo {\n");
+    sb.append("class SaketomoRequestResponse {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
