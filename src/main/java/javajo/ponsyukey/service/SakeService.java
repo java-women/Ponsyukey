@@ -1,9 +1,6 @@
 package javajo.ponsyukey.service;
 
 import javajo.ponsyukey.dto.Sake;
-import javajo.ponsyukey.model.SakeListResponse;
-import javajo.ponsyukey.model.SakeResponse;
-import javajo.ponsyukey.model.SakeResponseBrewery;
 import javajo.ponsyukey.repository.SakeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

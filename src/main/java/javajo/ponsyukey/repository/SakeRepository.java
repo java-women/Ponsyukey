@@ -5,8 +5,6 @@ import javajo.ponsyukey.database.entity.*;
 import javajo.ponsyukey.database.dao.SakeDao;
 import javajo.ponsyukey.dto.Sake;
 import javajo.ponsyukey.dto.SakeBrewery;
-import javajo.ponsyukey.model.SakeResponse;
-import javajo.ponsyukey.model.SakeResponseBrewery;
 import org.seasar.doma.jdbc.SelectOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -78,7 +76,7 @@ public class SakeRepository {
     }
 
 
-    public List<SakeResponse> getSakeList(int limit, int offset) {
+    public List<Sake> getSakeList(int limit, int offset) {
         SelectOptions options = SelectOptions.get().limit(limit).offset(offset);
         List<SakeEntity> sakeEntities = sakeDao.selectAll(options);
 
@@ -94,7 +92,7 @@ public class SakeRepository {
         Map<Integer, CountryEntity> countryEntities = countryDao.selectAll().stream().collect(Collectors.toMap(CountryEntity::getId, countryEntity -> countryEntity));
 
         // TODO: IDをStringからUUIDに変更したい
-        Map<String, SakeResponseBrewery> breweries = sakeBreweryEntities.stream()
+        Map<String, Sakea> breweries = sakeBreweryEntities.stream()
                 .collect(Collectors.toMap(SakeBreweryEntity::getId, sakeBreweryEntity -> {
                     String name;
                     var regionEntity = regionEntities.get(sakeBreweryEntity.getRegionId());

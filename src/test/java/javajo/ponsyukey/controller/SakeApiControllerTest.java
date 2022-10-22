@@ -1,7 +1,5 @@
 package javajo.ponsyukey.controller;
 
-import javajo.ponsyukey.model.SakeResponse;
-import javajo.ponsyukey.model.SakeResponseBrewery;
 import javajo.ponsyukey.service.SakeService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

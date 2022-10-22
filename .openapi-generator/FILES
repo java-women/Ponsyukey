@@ -5,6 +5,8 @@ src/main/java/javajo/ponsyukey/controller/SaketomoApi.java
 src/main/java/javajo/ponsyukey/invoker/OpenAPI2SpringBoot.java
 src/main/java/javajo/ponsyukey/invoker/RFC3339DateFormat.java
 src/main/java/javajo/ponsyukey/model/AuthRequest.java
+src/main/java/javajo/ponsyukey/model/BreweryRequest.java
+src/main/java/javajo/ponsyukey/model/BreweryResponse.java
 src/main/java/javajo/ponsyukey/model/CreateReviewRequest.java
 src/main/java/javajo/ponsyukey/model/CreateSakeRequest.java
 src/main/java/javajo/ponsyukey/model/CreateSaketomoRequest.java
@@ -13,7 +15,6 @@ src/main/java/javajo/ponsyukey/model/Error.java
 src/main/java/javajo/ponsyukey/model/ReviewResponse.java
 src/main/java/javajo/ponsyukey/model/SakeListResponse.java
 src/main/java/javajo/ponsyukey/model/SakeResponse.java
-src/main/java/javajo/ponsyukey/model/SakeResponseBrewery.java
 src/main/java/javajo/ponsyukey/model/Saketomo.java
 src/main/java/javajo/ponsyukey/model/SaketomoWithAuthRequest.java
 src/main/java/org/openapitools/configuration/HomeController.java

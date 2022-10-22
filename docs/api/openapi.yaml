@@ -402,12 +402,7 @@ components:
         image:
           type: string
         brewery:
-          type: object
-          properties:
-            name:
-              type: string
-            prefecture:
-              type: string
+          $ref: '#/components/schemas/breweryResponse'
         alcohol:
           type: number
           format: float
@@ -424,6 +419,14 @@ components:
           items:
             type: string
           description: 味情報は固定カラムを持たずに、自由入力。(例)ハッシュタグ
+
+    breweryResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        prefecture:
+          type: string
 
     reviewResponse:
       type: object
@@ -468,12 +471,7 @@ components:
         image:
           type: string
         brewery:
-          type: object
-          properties:
-            name:
-              type: string
-            prefecture:
-              type: string
+          $ref: '#/components/schemas/breweryRequest'
         alcohol:
           type: number
           format: float
@@ -488,6 +486,14 @@ components:
         taste:
           type: object
           description: 味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ
+
+    breweryRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        prefecture:
+          type: string
 
     sakeListResponse:
       type: object
