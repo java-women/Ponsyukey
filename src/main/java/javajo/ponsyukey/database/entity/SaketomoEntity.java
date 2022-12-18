@@ -3,7 +3,7 @@ package javajo.ponsyukey.database.entity;
 import org.seasar.doma.Entity;
 import org.seasar.doma.Id;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class SaketomoEntity {
@@ -24,10 +24,10 @@ public class SaketomoEntity {
     String password;
 
     /** 作成日時 */
-    LocalDate createdAt;
+    LocalDateTime createdAt;
 
     /** 更新日時 */
-    LocalDate updatedAt;
+    LocalDateTime updatedAt;
 
     public String getId() {
         return id;
@@ -47,7 +47,28 @@ public class SaketomoEntity {
         return password;
     }
 
-    public LocalDate getCreatedAt() { return createdAt; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
 
-    public LocalDate getUpdatedAt() { return updatedAt; }
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
+
+    public SaketomoEntity() {
+    }
+
+    public SaketomoEntity(
+            String id,
+            String name,
+            String image,
+            String email,
+            String password,
+            LocalDateTime createdAt,
+            LocalDateTime updatedAt
+    ) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.email = email;
+        this.password = password;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 }

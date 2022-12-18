@@ -14,7 +14,9 @@ CREATE TABLE sake
     alcohol         decimal(4,2),
     polishing_ratio  decimal(4,2),
     type            varchar(100),
-    description     varchar(2000)
+    description     varchar(2000),
+    created_at      datetime    NOT NULL    DEFAULT GETDATE(),
+    updated_at      datetime    NOT NULL    DEFAULT GETDATE()
 );
 ALTER TABLE sake ADD CONSTRAINT pk_sake_id PRIMARY KEY CLUSTERED (id);
 -- sakeからbreweryへの外部キーを設定
@@ -27,14 +29,18 @@ ALTER TABLE sake ADD CONSTRAINT fk_sake_brewery FOREIGN KEY (brewery_id)
 CREATE TABLE taste
 (
     id              uniqueidentifier    NOT NULL,
-    value           varchar(100)
+    value           varchar(100),
+    created_at      datetime            NOT NULL    DEFAULT GETDATE(),
+    updated_at      datetime            NOT NULL    DEFAULT GETDATE()
 );
 ALTER TABLE taste ADD CONSTRAINT pk_taste_id PRIMARY KEY CLUSTERED (id);
 
 CREATE TABLE taste_map
 (
     sake_id         uniqueidentifier    NOT NULL,
-    taste_id        uniqueidentifier    NOT NULL
+    taste_id        uniqueidentifier    NOT NULL,
+    created_at      datetime            NOT NULL    DEFAULT GETDATE(),
+    updated_at      datetime            NOT NULL    DEFAULT GETDATE()
 );
 ALTER TABLE taste_map ADD CONSTRAINT pk_taste_map_ids PRIMARY KEY CLUSTERED (sake_id, taste_id);
 -- taste_mapからsakeへの外部キーを設定
