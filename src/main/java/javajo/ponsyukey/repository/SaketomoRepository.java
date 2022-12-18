@@ -2,10 +2,13 @@ package javajo.ponsyukey.repository;
 
 import javajo.ponsyukey.database.dao.*;
 import javajo.ponsyukey.database.entity.*;
+import javajo.ponsyukey.dto.CreateSaketomo;
 import javajo.ponsyukey.model.SaketomoRequestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Repository
@@ -31,9 +34,26 @@ public class SaketomoRepository {
                 .image(SaketomoRequestResponse.ImageEnum.fromValue(saketomoEntity.getImage()));
     }
 
-    public SaketomoRequestResponse insertSaketomo() {
-        SaketomoEntity saketomoEntity = new SaketomoEntity();
-        return new SaketomoRequestResponse();
+    public UUID insertSaketomo(CreateSaketomo createSaketomo) throws SQLException {
+        UUID uuid = UUID.randomUUID();
+
+        // TODO 2022/12/18 重複登録チェック validation を追加すること。
+        SaketomoEntity saketomoEntity = new SaketomoEntity(
+          uuid.toString(), // id
+          createSaketomo.name(),
+          createSaketomo.image(),
+          createSaketomo.email(),
+          createSaketomo.password(),
+          LocalDateTime.now(), // createdAt
+          LocalDateTime.now() // updatedAt
+        );
+        int result = saketomoDao.insert(saketomoEntity);
+        if (result != 1) {
+            throw new SQLException("SaketomoEntityの登録に失敗しました");
+        }
+
+        // uuid ⇒ id を返す
+        return uuid;
     }
 
 }

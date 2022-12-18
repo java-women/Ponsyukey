@@ -1,11 +1,14 @@
 package javajo.ponsyukey.service;
 
-import javajo.ponsyukey.dto.Saketomo;
+import javajo.ponsyukey.dto.CreateSaketomo;
 import javajo.ponsyukey.model.CreateSaketomoRequest;
 import javajo.ponsyukey.model.SaketomoRequestResponse;
 import javajo.ponsyukey.repository.SaketomoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.sql.SQLException;
+import java.util.UUID;
 
 @Service
 public class SaketomoService {
@@ -33,11 +36,24 @@ public class SaketomoService {
      * @return 会員情報一式
      */
     public SaketomoRequestResponse createSaketomo(CreateSaketomoRequest createSaketomoRequest) {
-        // TODO repositoryをよぶ
-        saketomoRepository.insertSaketomo();
+        CreateSaketomo createSaketomo = new CreateSaketomo(
+                createSaketomoRequest.getName(),
+                createSaketomoRequest.getImage().getValue(),
+                createSaketomoRequest.getAuth().getEmail(),
+                createSaketomoRequest.getAuth().getPassword());
+
+        UUID uuid;
+        try {
+            uuid = saketomoRepository.insertSaketomo(createSaketomo);
+        } catch (SQLException exception)  {
+            // TODO 2022/12/18 上層の Controller でエラーハンドリングする必要がある。
+            throw new RuntimeException(exception);
+        }
 
         SaketomoRequestResponse saketomo = new SaketomoRequestResponse();
-        // TODO つめる
+        saketomo.id(uuid);
+        saketomo.name(createSaketomo.name());
+        saketomo.image(SaketomoRequestResponse.ImageEnum.fromValue(createSaketomo.image()));
         return saketomo;
     }
 }
