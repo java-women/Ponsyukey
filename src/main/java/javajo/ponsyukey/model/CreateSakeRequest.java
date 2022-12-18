@@ -5,14 +5,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import javajo.ponsyukey.model.SakeResponseBrewery;
+import javajo.ponsyukey.model.BreweryRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
  * CreateSakeRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-10-22T16:58:15.851637+09:00[Asia/Tokyo]")
 public class CreateSakeRequest   {
   @JsonProperty("name")
   private String name;
@@ -21,7 +21,7 @@ public class CreateSakeRequest   {
   private String image;
 
   @JsonProperty("brewery")
-  private SakeResponseBrewery brewery;
+  private BreweryRequest brewery;
 
   @JsonProperty("alcohol")
   private Float alcohol;
@@ -78,7 +78,7 @@ public class CreateSakeRequest   {
     this.image = image;
   }
 
-  public CreateSakeRequest brewery(SakeResponseBrewery brewery) {
+  public CreateSakeRequest brewery(BreweryRequest brewery) {
     this.brewery = brewery;
     return this;
   }
@@ -91,11 +91,11 @@ public class CreateSakeRequest   {
 
   @Valid
 
-  public SakeResponseBrewery getBrewery() {
+  public BreweryRequest getBrewery() {
     return brewery;
   }
 
-  public void setBrewery(SakeResponseBrewery brewery) {
+  public void setBrewery(BreweryRequest brewery) {
     this.brewery = brewery;
   }
 

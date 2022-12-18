@@ -8,14 +8,14 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import javajo.ponsyukey.model.SakeResponseBrewery;
+import javajo.ponsyukey.model.BreweryResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
  * SakeResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-10-22T16:58:15.851637+09:00[Asia/Tokyo]")
 public class SakeResponse   {
   @JsonProperty("id")
   private UUID id;
@@ -27,7 +27,7 @@ public class SakeResponse   {
   private String image;
 
   @JsonProperty("brewery")
-  private SakeResponseBrewery brewery;
+  private BreweryResponse brewery;
 
   @JsonProperty("alcohol")
   private Float alcohol;
@@ -106,7 +106,7 @@ public class SakeResponse   {
     this.image = image;
   }
 
-  public SakeResponse brewery(SakeResponseBrewery brewery) {
+  public SakeResponse brewery(BreweryResponse brewery) {
     this.brewery = brewery;
     return this;
   }
@@ -119,11 +119,11 @@ public class SakeResponse   {
 
   @Valid
 
-  public SakeResponseBrewery getBrewery() {
+  public BreweryResponse getBrewery() {
     return brewery;
   }
 
-  public void setBrewery(SakeResponseBrewery brewery) {
+  public void setBrewery(BreweryResponse brewery) {
     this.brewery = brewery;
   }
 

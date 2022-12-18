@@ -1,9 +1,9 @@
 package javajo.ponsyukey.service;
 
 import javajo.ponsyukey.dto.Sake;
+import javajo.ponsyukey.model.BreweryResponse;
 import javajo.ponsyukey.model.SakeListResponse;
 import javajo.ponsyukey.model.SakeResponse;
-import javajo.ponsyukey.model.SakeResponseBrewery;
 import javajo.ponsyukey.repository.SakeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,10 +37,10 @@ public class SakeService {
         sakeResponse.name(sake.name());
         sakeResponse.image(sake.image());
 
-        SakeResponseBrewery sakeResponseBrewery = new SakeResponseBrewery();
-        sakeResponseBrewery.name(sake.sakeBrewery().name());
-        sakeResponseBrewery.prefecture(sake.sakeBrewery().prefecture());
-        sakeResponse.brewery(sakeResponseBrewery);
+        BreweryResponse breweryResponse = new BreweryResponse();
+        breweryResponse.name(sake.sakeBrewery().name());
+        breweryResponse.prefecture(sake.sakeBrewery().prefecture());
+        sakeResponse.brewery(breweryResponse);
 
         sakeResponse.alcohol(sake.alcohol());
         sakeResponse.polishingRatio(sake.polishingRatio());
@@ -63,9 +63,28 @@ public class SakeService {
             limit = RESPONSE_LIMIT;
         }
 
-        List<SakeResponse> sakeList = sakeRepository.getSakeList(limit, offset);
+        List<SakeResponse> sakeList = sakeRepository.getSakeList(limit, offset)
+                .stream()
+                .map(s ->convertSakeToResponse(s))
+                .toList();
         return new SakeListResponse()
                 .sakeList(sakeList)
                 .totalCount(sakeList.size());
+    }
+
+    private SakeResponse convertSakeToResponse(Sake sake) {
+        // SakeResponseのコンストラクタに変換処理を持たせるとOpenAPIGeneratorが掛けにくくなってしまうのでここでやる
+        return new SakeResponse()
+                .id(UUID.fromString(sake.id()))
+                .name(sake.name())
+                .image(sake.image())
+                .brewery(new BreweryResponse()
+                        .name(sake.sakeBrewery().name())
+                        .prefecture(sake.sakeBrewery().prefecture()))
+                .alcohol(sake.alcohol())
+                .polishingRatio(sake.polishingRatio())
+                .type(sake.type())
+                .description(sake.description())
+                .taste(sake.taste());
     }
 }

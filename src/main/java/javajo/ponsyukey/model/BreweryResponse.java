@@ -9,56 +9,54 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * AuthRequest
+ * BreweryResponse
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-10-22T16:58:15.851637+09:00[Asia/Tokyo]")
-public class AuthRequest   {
-  @JsonProperty("password")
-  private String password;
+public class BreweryResponse   {
+  @JsonProperty("name")
+  private String name;
 
-  @JsonProperty("email")
-  private String email;
+  @JsonProperty("prefecture")
+  private String prefecture;
 
-  public AuthRequest password(String password) {
-    this.password = password;
+  public BreweryResponse name(String name) {
+    this.name = name;
     return this;
   }
 
   /**
-   * ハッシュ
-   * @return password
+   * Get name
+   * @return name
   */
-  @ApiModelProperty(required = true, value = "ハッシュ")
-  @NotNull
+  @ApiModelProperty(value = "")
 
 
-  public String getPassword() {
-    return password;
+  public String getName() {
+    return name;
   }
 
-  public void setPassword(String password) {
-    this.password = password;
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public AuthRequest email(String email) {
-    this.email = email;
+  public BreweryResponse prefecture(String prefecture) {
+    this.prefecture = prefecture;
     return this;
   }
 
   /**
-   * Get email
-   * @return email
+   * Get prefecture
+   * @return prefecture
   */
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
+  @ApiModelProperty(value = "")
 
 
-  public String getEmail() {
-    return email;
+  public String getPrefecture() {
+    return prefecture;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
+  public void setPrefecture(String prefecture) {
+    this.prefecture = prefecture;
   }
 
 
@@ -70,23 +68,23 @@ public class AuthRequest   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AuthRequest authRequest = (AuthRequest) o;
-    return Objects.equals(this.password, authRequest.password) &&
-        Objects.equals(this.email, authRequest.email);
+    BreweryResponse breweryResponse = (BreweryResponse) o;
+    return Objects.equals(this.name, breweryResponse.name) &&
+        Objects.equals(this.prefecture, breweryResponse.prefecture);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(password, email);
+    return Objects.hash(name, prefecture);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AuthRequest {\n");
+    sb.append("class BreweryResponse {\n");
     
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    prefecture: ").append(toIndentedString(prefecture)).append("\n");
     sb.append("}");
     return sb.toString();
   }

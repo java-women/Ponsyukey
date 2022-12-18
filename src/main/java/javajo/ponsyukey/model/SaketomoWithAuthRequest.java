@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 /**
  * SaketomoWithAuthRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-10-22T16:58:15.851637+09:00[Asia/Tokyo]")
 public class SaketomoWithAuthRequest   {
   @JsonProperty("id")
   private UUID id;

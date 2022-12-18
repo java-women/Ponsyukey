@@ -22,7 +22,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-10-22T16:58:15.851637+09:00[Asia/Tokyo]")
 @Validated
 @Api(value = "review", description = "the review API")
 public interface ReviewApi {
@@ -54,7 +54,7 @@ public interface ReviewApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"createdAt\" : \"2000-01-23T04:56:07.000+00:00\", \"rating\" : 0, \"saketomo\" : { \"image\" : \"icon1\", \"name\" : \"name\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }, \"comment\" : \"comment\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }";
+                    String exampleString = "{ \"createdAt\" : \"2000-01-23T04:56:07.000+00:00\", \"rating\" : 0, \"saketomo\" : \"{}\", \"comment\" : \"comment\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

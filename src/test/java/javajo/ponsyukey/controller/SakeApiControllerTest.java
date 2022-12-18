@@ -1,7 +1,7 @@
 package javajo.ponsyukey.controller;
 
+import javajo.ponsyukey.model.BreweryResponse;
 import javajo.ponsyukey.model.SakeResponse;
-import javajo.ponsyukey.model.SakeResponseBrewery;
 import javajo.ponsyukey.service.SakeService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +16,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.*;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
@@ -56,7 +55,7 @@ class SakeApiControllerTest {
             response.setPolishingRatio(40.0F);
             response.setType("吟醸");
             response.setName("じゃばじょぽんしゅ");
-            SakeResponseBrewery brewery = new SakeResponseBrewery();
+            BreweryResponse brewery = new BreweryResponse();
             brewery.setName("javajo");
             brewery.setPrefecture("青森県");
             response.setBrewery(brewery);

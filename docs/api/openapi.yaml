@@ -41,7 +41,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/saketomo'
+                $ref: '#/components/schemas/saketomoRequestResponse'
         400:
           description: http ステータスコード 400 error
           content:
@@ -73,7 +73,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/saketomo'
+                $ref: '#/components/schemas/saketomoRequestResponse'
         400:
           description: http ステータスコード 400 error
           content:
@@ -111,7 +111,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/saketomo'
+                $ref: '#/components/schemas/saketomoRequestResponse'
         400:
           description: http ステータスコード 400 error
           content:
@@ -333,8 +333,9 @@ components:
         - password
         - email
 
-    saketomo:
+    saketomoRequestResponse:
       type: object
+      description: saketomoのリクエストとレスポンスに兼用する
       properties:
         id:
           type: string
@@ -402,12 +403,7 @@ components:
         image:
           type: string
         brewery:
-          type: object
-          properties:
-            name:
-              type: string
-            prefecture:
-              type: string
+          $ref: '#/components/schemas/breweryResponse'
         alcohol:
           type: number
           format: float
@@ -425,6 +421,14 @@ components:
             type: string
           description: 味情報は固定カラムを持たずに、自由入力。(例)ハッシュタグ
 
+    breweryResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        prefecture:
+          type: string
+
     reviewResponse:
       type: object
       properties:
@@ -432,7 +436,7 @@ components:
           type: string
           format: uuid
         saketomo:
-          $ref: '#/components/schemas/saketomo'
+          $ref: '#/components/schemas/saketomoResponse'
         createdAt:
           type: string
           format: date-time
@@ -446,7 +450,7 @@ components:
       type: object
       properties:
         saketomo:
-          $ref: '#/components/schemas/saketomo'
+          $ref: '#/components/schemas/saketomoRequest'
         rating:
           type: integer
         comment:
@@ -468,12 +472,7 @@ components:
         image:
           type: string
         brewery:
-          type: object
-          properties:
-            name:
-              type: string
-            prefecture:
-              type: string
+          $ref: '#/components/schemas/breweryRequest'
         alcohol:
           type: number
           format: float
@@ -488,6 +487,14 @@ components:
         taste:
           type: object
           description: 味情報は固定カラムを持たずに、自由入力。(例)J-SON、ハッシュタグ
+
+    breweryRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        prefecture:
+          type: string
 
     sakeListResponse:
       type: object

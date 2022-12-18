@@ -1,7 +1,7 @@
 package javajo.ponsyukey.controller;
 
 import javajo.ponsyukey.model.CreateSaketomoRequest;
-import javajo.ponsyukey.model.Saketomo;
+import javajo.ponsyukey.model.SaketomoRequestResponse;
 import javajo.ponsyukey.service.SaketomoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,14 +30,14 @@ public class SaketomoApiController implements SaketomoApi {
         return Optional.ofNullable(request);
     }
 
-    public ResponseEntity<Saketomo> getSaketomo(String saketomoId) {
-        Saketomo saketomoResponse = saketomoService.getSaketomoResponse(saketomoId);
-        return new ResponseEntity<Saketomo>(saketomoResponse, HttpStatus.OK);
+    public ResponseEntity<SaketomoRequestResponse> getSaketomo(String saketomoId) {
+        SaketomoRequestResponse saketomoResponse = saketomoService.getSaketomoResponse(saketomoId);
+        return new ResponseEntity<SaketomoRequestResponse>(saketomoResponse, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<Saketomo> createSaketomo(CreateSaketomoRequest createSaketomoRequest) {
-        Saketomo saketomo = saketomoService.createSaketomo(createSaketomoRequest);
-        return new ResponseEntity<Saketomo>(new Saketomo(), HttpStatus.OK);
+    public ResponseEntity<SaketomoRequestResponse> createSaketomo(CreateSaketomoRequest createSaketomoRequest) {
+        SaketomoRequestResponse saketomo = saketomoService.createSaketomo(createSaketomoRequest);
+        return new ResponseEntity<SaketomoRequestResponse>(new SaketomoRequestResponse(), HttpStatus.OK);
     }
 }

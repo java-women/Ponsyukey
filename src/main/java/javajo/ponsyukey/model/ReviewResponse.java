@@ -2,25 +2,21 @@ package javajo.ponsyukey.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import java.util.UUID;
-import javajo.ponsyukey.model.Saketomo;
 import javax.validation.Valid;
-import javax.validation.constraints.*;
 
 /**
  * ReviewResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-18T16:13:46.002251+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-10-22T16:58:15.851637+09:00[Asia/Tokyo]")
 public class ReviewResponse   {
   @JsonProperty("id")
   private UUID id;
 
   @JsonProperty("saketomo")
-  private Saketomo saketomo;
+  private SaketomoRequestResponse saketomo = null;
 
   @JsonProperty("createdAt")
   @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME)
@@ -53,7 +49,7 @@ public class ReviewResponse   {
     this.id = id;
   }
 
-  public ReviewResponse saketomo(Saketomo saketomo) {
+  public ReviewResponse saketomo(SaketomoRequestResponse saketomo) {
     this.saketomo = saketomo;
     return this;
   }
@@ -66,11 +62,11 @@ public class ReviewResponse   {
 
   @Valid
 
-  public Saketomo getSaketomo() {
+  public SaketomoRequestResponse getSaketomo() {
     return saketomo;
   }
 
-  public void setSaketomo(Saketomo saketomo) {
+  public void setSaketomo(SaketomoRequestResponse saketomo) {
     this.saketomo = saketomo;
   }
 
