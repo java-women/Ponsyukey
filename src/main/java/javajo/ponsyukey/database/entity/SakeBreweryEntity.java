@@ -3,6 +3,7 @@ package javajo.ponsyukey.database.entity;
 import org.seasar.doma.Entity;
 import org.seasar.doma.Id;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 /**
@@ -21,6 +22,20 @@ public class SakeBreweryEntity {
 
     /** リージョンID (国×都道府県) */
     Integer regionId;
+
+    /** 作成日時 */
+    LocalDateTime createdAt;
+
+    /** 更新日時 */
+    LocalDateTime updatedAt;
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
 
     public String getId() {
         return id;
