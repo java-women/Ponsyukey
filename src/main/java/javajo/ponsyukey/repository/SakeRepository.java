@@ -80,7 +80,7 @@ public class SakeRepository {
         List<SakeEntity> sakeEntities = sakeDao.selectAll(options);
 
         List<SakeBreweryEntity> sakeBreweryEntities = breweryDao.selectByIdList(
-                sakeEntities.stream().map(SakeEntity::getId)
+                sakeEntities.stream().map(SakeEntity::getBreweryId)
                         .distinct()
                         .collect(Collectors.toList())
         );
