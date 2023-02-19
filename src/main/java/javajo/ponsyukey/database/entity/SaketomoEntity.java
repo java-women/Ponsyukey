@@ -2,10 +2,12 @@ package javajo.ponsyukey.database.entity;
 
 import org.seasar.doma.Entity;
 import org.seasar.doma.Id;
+import org.seasar.doma.Table;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "saketomo")
 public class SaketomoEntity {
     /** id: 会員ID UUID, アプリで生成する */
     @Id
@@ -24,10 +26,10 @@ public class SaketomoEntity {
     String password;
 
     /** 作成日時 */
-    LocalDate createdAt;
+    LocalDateTime createdAt;
 
     /** 更新日時 */
-    LocalDate updatedAt;
+    LocalDateTime updatedAt;
 
     public String getId() {
         return id;
@@ -47,7 +49,28 @@ public class SaketomoEntity {
         return password;
     }
 
-    public LocalDate getCreatedAt() { return createdAt; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
 
-    public LocalDate getUpdatedAt() { return updatedAt; }
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
+
+    public SaketomoEntity() {
+    }
+
+    public SaketomoEntity(
+            String id,
+            String name,
+            String image,
+            String email,
+            String password,
+            LocalDateTime createdAt,
+            LocalDateTime updatedAt
+    ) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.email = email;
+        this.password = password;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 }

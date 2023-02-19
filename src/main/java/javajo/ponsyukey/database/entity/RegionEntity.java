@@ -12,19 +12,19 @@ public class RegionEntity {
     @Id
     Integer id;
 
-    String countryId;
+    Integer countryId;
 
-    String prefectureId;
+    Integer prefectureId;
 
     public Integer getId() {
         return id;
     }
 
-    public String getCountryId() {
+    public Integer getCountryId() {
         return countryId;
     }
 
-    public String getPrefectureId() {
+    public Integer getPrefectureId() {
         return prefectureId;
     }
 }

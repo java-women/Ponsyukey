@@ -44,7 +44,9 @@ CREATE TABLE brewery
 (
     id              uniqueidentifier    NOT NULL,
     name            varchar(100)        NOT NULL,
-    region_id       smallint   NOT NULL
+    region_id       smallint   NOT NULL,
+    created_at      datetime   NOT NULL    DEFAULT GETDATE(),
+    updated_at      datetime   NOT NULL    DEFAULT GETDATE()
 );
 ALTER TABLE brewery ADD CONSTRAINT pk_brewery_id PRIMARY KEY CLUSTERED (id);
 -- breweryからregionへの外部キーを設定

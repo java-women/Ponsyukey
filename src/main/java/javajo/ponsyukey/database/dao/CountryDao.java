@@ -11,7 +11,7 @@ import java.util.List;
 @Dao
 public interface CountryDao {
     @Select
-    CountryEntity selectById(String id);
+    CountryEntity selectById(int id);
 
     @Select
     List<CountryEntity> selectAll();

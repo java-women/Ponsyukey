@@ -38,6 +38,6 @@ public class SaketomoApiController implements SaketomoApi {
     @Override
     public ResponseEntity<SaketomoRequestResponse> createSaketomo(CreateSaketomoRequest createSaketomoRequest) {
         SaketomoRequestResponse saketomo = saketomoService.createSaketomo(createSaketomoRequest);
-        return new ResponseEntity<SaketomoRequestResponse>(new SaketomoRequestResponse(), HttpStatus.OK);
+        return new ResponseEntity<SaketomoRequestResponse>(saketomo, HttpStatus.OK);
     }
 }

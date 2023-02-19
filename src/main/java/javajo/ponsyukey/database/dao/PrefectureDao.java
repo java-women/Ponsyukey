@@ -11,7 +11,7 @@ import java.util.List;
 @Dao
 public interface PrefectureDao {
   @Select
-  PrefectureEntity selectById(String id);
+  PrefectureEntity selectById(int id);
 
   @Select
   List<PrefectureEntity> selectAll();

@@ -4,6 +4,7 @@ import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
 import org.seasar.doma.Id;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Entity
@@ -32,6 +33,20 @@ public class SakeEntity {
 
     /** description: 味情報は固定カラムを持たずに、自由入力 */
     Optional<String> description;
+
+    /** 作成日時 */
+    LocalDateTime createdAt;
+
+    /** 更新日時 */
+    LocalDateTime updatedAt;
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
 
     public String getId() {
         return id;
