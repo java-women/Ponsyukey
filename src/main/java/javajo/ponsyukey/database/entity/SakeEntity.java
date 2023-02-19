@@ -3,11 +3,13 @@ package javajo.ponsyukey.database.entity;
 import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
 import org.seasar.doma.Id;
+import org.seasar.doma.Table;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Entity
+@Table(name = "sake")
 public class SakeEntity {
     /** id: 酒ID UUID, アプリで生成する */
     @Id
