@@ -16,6 +16,17 @@ DBを落とすには以下を実行してください。なお、登録したデ
 docker-compose down
 ```
 
+## SQLServerの操作方法
+dockerコンテナに入って下記のコマンドを実行してください。
+```shell
+/opt/mssql-tools/bin/sqlcmd -U $MSSQL_USER -P $MSSQL_PASSWORD
+```
+
+```sql
+USE ponsyukey
+GO
+```
+
 ## アプリの実行
 ```shell
 ./gradlew bootRun
