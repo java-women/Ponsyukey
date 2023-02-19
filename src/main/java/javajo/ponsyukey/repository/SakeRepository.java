@@ -54,7 +54,9 @@ public class SakeRepository {
         //都道府県情報を取得する
         RegionEntity regionEntity = regionDao.selectById(sakeBreweryEntity.getRegionId());
         String name;
-        if (regionEntity.getCountryId().equals("81")) { // 日本の場合
+
+        // TODO: アプリ起動時にregion, prefectureのマスタを取得しておきたい
+        if (regionEntity.getCountryId() == 81) { // 日本の場合
             PrefectureEntity prefectureEntity = prefectureDao.selectById(regionEntity.getPrefectureId());
             name = prefectureEntity.getName();
         } else {

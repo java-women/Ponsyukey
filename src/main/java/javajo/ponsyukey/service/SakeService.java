@@ -31,24 +31,7 @@ public class SakeService {
      */
     public SakeResponse getSakeResponse(String sakeId) {
         // 酒IDに紐づく酒情報を取得する
-        Sake sake = sakeRepository.getSake(sakeId);
-        SakeResponse sakeResponse = new SakeResponse();
-        sakeResponse.id(UUID.fromString(sake.id()));
-        sakeResponse.name(sake.name());
-        sakeResponse.image(sake.image());
-
-        BreweryResponse breweryResponse = new BreweryResponse();
-        breweryResponse.name(sake.sakeBrewery().name());
-        breweryResponse.prefecture(sake.sakeBrewery().prefecture());
-        sakeResponse.brewery(breweryResponse);
-
-        sakeResponse.alcohol(sake.alcohol());
-        sakeResponse.polishingRatio(sake.polishingRatio());
-        sakeResponse.type(sake.type());
-        sakeResponse.description(sake.description());
-        sakeResponse.taste(sake.taste());
-
-        return sakeResponse;
+        return convertSakeToResponse(sakeRepository.getSake(sakeId));
     }
 
     /**
