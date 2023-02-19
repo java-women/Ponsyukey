@@ -2,6 +2,7 @@ package javajo.ponsyukey.database.entity;
 
 import org.seasar.doma.Entity;
 import org.seasar.doma.Id;
+import org.seasar.doma.Table;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -10,6 +11,7 @@ import java.util.Optional;
  * 酒醸造所entity
  */
 @Entity
+@Table(name = "brewery")
 public class SakeBreweryEntity {
 
     /** 醸造所ID */

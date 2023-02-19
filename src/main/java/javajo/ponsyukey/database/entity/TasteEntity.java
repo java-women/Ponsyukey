@@ -2,10 +2,12 @@ package javajo.ponsyukey.database.entity;
 
 import org.seasar.doma.Entity;
 import org.seasar.doma.Id;
+import org.seasar.doma.Table;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "taste")
 public class TasteEntity {
 
     @Id
