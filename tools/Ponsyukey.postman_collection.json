@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "b08841e6-dee3-4d3d-a145-7fd385f433d6",
+		"name": "Ponsyukey",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "saketomo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"おさけ だいすき\",\n  \"image\": \"icon1\",\n  \"auth\": {\n    \"password\": \"password1234\",\n    \"email\": \"ponsyukey@example.com\"\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:9898/saketomo"
+			},
+			"response": []
+		},
+		{
+			"name": "saketomo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"おさけ だいすき\",\n  \"image\": \"icon1\",\n  \"auth\": {\n    \"password\": \"password1234\",\n    \"email\": \"ponsyukey@example.com\"\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:9898/saketomo/B1E9AD94-CEE9-43E2-A6DE-FA2DA77348E1"
+			},
+			"response": []
+		},
+		{
+			"name": "sake",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9898/sake?limit=20&offset=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9898",
+					"path": [
+						"sake"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "20"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sake/{sakeId}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:9898/sake/29892458-f103-89d5-a724-72f789e16e3b"
+			},
+			"response": []
+		}
+	]
+}
