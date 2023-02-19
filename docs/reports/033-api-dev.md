@@ -3,10 +3,12 @@
 https://javajo.doorkeeper.jp/events/151382
 
 ## 議事録作成者
-
+maaya
 
 ## 参加者(敬称略)
-
+- mii
+- robo
+- maaya
 
 
 ## 議題にしたいこと or 前回の next action
@@ -28,15 +30,37 @@ https://javajo.doorkeeper.jp/events/151382
       - https://github.com/java-women/Ponsyukey/issues/41
 
 ## 議事内容(概要)
-
+- https://github.com/java-women/Ponsyukey/pull/42
+    - API4本の動作確認
+        - 酒情報一覧取得API
+            - Region/PrefectureのEntity内の各IDの型がStringになってしまっていたためIntegerに変更
+            - 日本(81)判定のif文もInteger用に変更
+        - 酒情報取得API
+            - 日本(81)判定のif文もInteger用に変更
+        - 会員登録API
+            - controllerの返却値不備があったので修正
+        - 会員取得API
+- https://github.com/java-women/Ponsyukey/issues/39
+    - 上記動作確認内で対応済み
+- https://github.com/java-women/Ponsyukey/issues/41
+    - 対応中にタイムアップ
+    - エラーの種類と挙動をもう少しちゃんと設計する必要がある
 
 ### 今回の成果
+- https://github.com/java-women/Ponsyukey/issues/42
+- https://github.com/java-women/Ponsyukey/issues/39
+
+をクローズ、masterマージできました。
 
 
 ### next action(タスク洗い出し)
+- https://github.com/java-women/Ponsyukey/issues/41
+- https://github.com/java-women/Ponsyukey/issues/40
 
 ### 議事録作成者の感想ひとこと
-
+煮え切らない終わりでした。    
+エラーの設計は未知数すぎて大変です。
 
 ## 次回アイスブレイクのお題
+触ってみたいなと思ってまだ触れてない技術なんか１つ語ってください
 
