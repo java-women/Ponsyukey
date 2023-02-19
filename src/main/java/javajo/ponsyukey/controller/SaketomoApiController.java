@@ -35,6 +35,7 @@ public class SaketomoApiController implements SaketomoApi {
         return new ResponseEntity<SaketomoRequestResponse>(saketomoResponse, HttpStatus.OK);
     }
 
+    // TODO 本当は、CreateSaketomoRequest の中で Validationをしたかったが自動生成のためできない。
     @Override
     public ResponseEntity<SaketomoRequestResponse> createSaketomo(CreateSaketomoRequest createSaketomoRequest) {
         SaketomoRequestResponse saketomo = saketomoService.createSaketomo(createSaketomoRequest);
