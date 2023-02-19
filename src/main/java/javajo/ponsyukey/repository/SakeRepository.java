@@ -95,7 +95,7 @@ public class SakeRepository {
                 .collect(Collectors.toMap(SakeBreweryEntity::getId, sakeBreweryEntity -> {
                     String name;
                     var regionEntity = regionEntities.get(sakeBreweryEntity.getRegionId());
-                    if (regionEntity.getCountryId().equals("81")) {
+                    if (regionEntity.getCountryId() == 81) {
                         PrefectureEntity prefectureEntity = prefectureEntities.get(regionEntity.getPrefectureId());
                         name = prefectureEntity.getName();
                     } else {
