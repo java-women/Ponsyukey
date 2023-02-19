@@ -27,6 +27,9 @@ USE ponsyukey
 GO
 ```
 
+## postmanからAPI実行
+postmanに設定ファイル`tools/Ponsyukey.postman_collection.json`をimportしてください。
+
 ## アプリの実行
 ```shell
 ./gradlew bootRun
