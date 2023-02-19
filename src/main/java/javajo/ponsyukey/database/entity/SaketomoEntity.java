@@ -2,10 +2,12 @@ package javajo.ponsyukey.database.entity;
 
 import org.seasar.doma.Entity;
 import org.seasar.doma.Id;
+import org.seasar.doma.Table;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "saketomo")
 public class SaketomoEntity {
     /** id: 会員ID UUID, アプリで生成する */
     @Id
